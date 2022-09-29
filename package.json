@@ -7,10 +7,14 @@
     "preview": "vite preview --port 4173"
   },
   "dependencies": {
-    "vue": "^3.2.38"
+    "modernizr": "^3.12.0",
+    "owl.carousel": "^2.3.4",
+    "vue": "^3.2.38",
+    "waypoint": "^0.2.8"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^3.0.3",
+    "jquery": "^3.6.1",
     "vite": "^3.0.9"
   }
 }
