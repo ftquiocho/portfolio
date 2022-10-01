@@ -2,13 +2,17 @@
 
 import carousel from "vue-owl-carousel"
 import { $vfm, VueFinalModal, ModalsContainer } from 'vue-final-modal'
-import { Hooper, Slide, Navigation as HooperNavigation } from 'hooper';
+import { Hooper, Slide, Navigation as HooperNavigation, Pagination as HooperPagination } from 'hooper';
+
+// Data
+import data from "@/assets/data/data.json"
+
 
 // For Modal screenshots
 const mainPath = "/src/assets/images/portfolio/modals/"
 
 export default {
-	components: { carousel, VueFinalModal, ModalsContainer, Hooper, Slide, HooperNavigation },
+	components: { carousel, VueFinalModal, ModalsContainer, Hooper, Slide, HooperNavigation, HooperPagination },
 	data () {
 		return {
 			skills: [
@@ -47,6 +51,10 @@ export default {
 					skills: [
 						{ name: 'Vue', percent: 60 },
 						{ name: 'Nuxt', percent: 65 },
+						{ name: 'VS Code', percent: 65 },
+						{ name: 'Javascript', percent: 65 },
+						{ name: 'HTML', percent: 70 },
+						{ name: 'CSS', percent: 70 },
 					]
 				},
 				{
@@ -107,67 +115,61 @@ export default {
 				},
 				{
 					logo: '', title: 'Administrator Console for Chatbot',
-					description: 'BMW Philippines <br> (Chatbot Development, Project Managment, QA, UI/UX Design)'
+					description: 'BMW Philippines <br>(Chatbot Development, Project Managment, QA, UI/UX Design)'
 				},
 				{
 					logo: '', title: 'Campus Management System',
-					description: 'Mindanao State University (QA, UI/UX Design)'
+					description: 'Mindanao State University <br> (QA, UI/UX Design)'
+				},
+				{
+					logo: '', title: 'Chatbot and Administrator Portal',
+					description: 'Governor Oyie Umali of Nueva <br>(Chatbot Development, Management, QA)'
+				},
+				{
+					logo: '', title: 'Social Networking',
+					description: 'Chizmis Project <br>(Project Management, UI/UX Design)'
+				},
+				{
+					logo: '', title: 'Social Commerce',
+					description: 'GoRice Philippines <br>(QA)'
 				}
 			],
 
 			modal: { active: false, data: null },
-
-			modals: [
-				{
-					title: "CPD Portal",
-					imagePath: "/src/assets/images/portfolio/prc.png",
-					description: "Professional Regulation Commission",
-					data: {
-						images: this.getScreens("/prc/", 10),
-						title: 'Continuing Professional Development Portal',
-						description: 'This web application was designed to have a separate portal for the accredited CPD Programs, make it convenient for the Providers to apply for accreditation to PRC, and reduce the time it takes to complete certification applications. Aside from the Provider Portal, I have also designed an Administrator Portal to speed up the process of evaluating a program accreditation. There\'s also the Consumer Portal for the Professionals to view and access accredited providers and programs. They can also use the system to view all programs they are enrolled in, hassle free online payment, and easy management of all certificates once all programs are completed',
-						extra: 'PROFESSIONAL REGULATION COMMISSION (PROPOSED SOLUTION)'
-					}
-				},
-				// {
-				// 	title: "e-Payment System Portal",
-				// 	imagePath: "/src/assets/images/portfolio/eodb.png",
-				// 	description: 'Bureau of Customs',
-				// 	data: {
-				// 		images: [
-				// 			"/src/assets/images/portfolio/modals/boc/boc1.png",
-				// 			"/src/assets/images/portfolio/modals/boc/boc2.png",
-				// 			"/src/assets/images/portfolio/modals/boc/boc3.png",
-				// 			"/src/assets/images/portfolio/modals/boc/boc4.png",
-				// 			"/src/assets/images/portfolio/modals/boc/boc5.png",
-				// 			"/src/assets/images/portfolio/modals/boc/boc6.png",
-				// 			"/src/assets/images/portfolio/modals/boc/boc7.png",
-				// 			"/src/assets/images/portfolio/modals/boc/boc8.png",
-				// 			"/src/assets/images/portfolio/modals/boc/boc9.png",
-				// 			"/src/assets/images/portfolio/modals/boc/boc10.png",
-				// 			"/src/assets/images/portfolio/modals/boc/boc11.png",
-				// 			"/src/assets/images/portfolio/modals/boc/boc12.png",
-				// 			"/src/assets/images/portfolio/modals/boc/boc13.png",
-				// 			"/src/assets/images/portfolio/modals/boc/boc14.png",
-				// 			"/src/assets/images/portfolio/modals/boc/boc15.png",
-				// 		],
-				// 		title: 'e-Payment System Portal',
-				// 		description: 'A proposed system portal pursuant to the Ease of Doing Business and Efficient Government Services Delivery Act of 2018 (Republic Act No. 8792), commonly known as the E-Commerce Act of 2000 and RA 11032 that requires all offices and agencies to upgrade their transaction systems and procedures.BUREAU OF CUSTOMS (PROPOSED SOLUTION)'
-				// 	}
-				// }
-			]
-
-
+			modals: this.getModalData()
 		}
 	},
 
+	mounted() {
+		console.log("Module", data)
+		console.log("Module", this.modals)
+	},
+
 	methods: {
+		getModalData() {
+			var modalArray = []
+			data.forEach(e => {
+				modalArray.push({
+					title: e.title,
+					imagePath: e.imagePath,
+					description: e.description,
+					data: {
+						images: this.getScreens(e.data.imagePath, e.data.noOfScreens),
+						title: e.data.title,
+						description: e.data.description,
+						extra: e.data.extra
+					}
+				})
+			})	
+			console.log("asdf", modalArray)
+			return modalArray
+		},
 		getScreens(path, noOfScreens) {
 			var path = mainPath + path
 			// var noOfScreens = 6
 			var paths = []
 			for (let index = 0; index < noOfScreens; index++) {
-				var element = `${path}C${index+1}.png`
+				var element = `${path}${index+1}.png`
 				paths.push(element)
 				
 			}
@@ -422,12 +424,13 @@ export default {
 						height="auto"
 					>
 						<div class="window-header"></div>
-						<hooper :style="{ width: '100%' }" :itemsToShow="2"  v-if="modal.data">
-							<slide v-for="image, index in modal.data.images" :key="index">
+						<hooper  :style="{ height: 'auto' }" :centerMode="true" :itemsToShow="1"  v-if="modal.data">
+							<slide v-for="image, index in modal.data.images" :key="index" :style="{ height: '100%' }">
 								<img v-img :src="image"/>
 							</slide>
 							
 							<hooper-navigation slot="hooper-addons"></hooper-navigation>
+							<hooper-pagination slot="hooper-addons"></hooper-pagination>
 						</hooper>
 						<div>
 							<div class="description-box" v-if="modal.data">
