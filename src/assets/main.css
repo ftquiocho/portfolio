@@ -594,7 +594,7 @@ input[type="url"]:focus,
 input[type="password"]:focus,
 textarea:focus,
 select:focus {
-	color: #cc005f;
+	color: #81d8d0;
 	border-bottom: 1px solid #81d8d0;
 }
 label, legend {
@@ -675,12 +675,12 @@ input[type="button"] {
 }
 .button:hover,
 a.button:hover,
-button:hover,
+/* button:hover, */
 input[type="submit"]:hover,
 input[type="reset"]:hover,
 input[type="button"]:hover,
 .button:focus,
-button:focus,
+/* button:focus, */
 input[type="submit"]:focus,
 input[type="reset"]:focus,
 input[type="button"]:focus {
@@ -1128,6 +1128,7 @@ header .logo a {
  * ------------------------------------------------------------------- 
  */
 .menu-toggle {
+	cursor: pointer;
 	float: left;
 	width: 40px;
 	height: 40px;
@@ -1337,7 +1338,7 @@ header .logo a {
 	text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 .intro-content h5 {
-	color: #cc005f;
+	color: #81d8d0;
 	font-family: "poppins-bold", sans-serif;
 	font-size: 2.3rem;
 	line-height: 1.565;
@@ -1384,7 +1385,7 @@ header .logo a {
 	letter-spacing: .25rem;
 }
 .intro-content .button:hover, .intro-content .button:focus {
-	border-color: #cc005f;
+	border-color: #81d8d0;
 }
 .intro-content .button::after {
 	display: inline-block;
@@ -1416,7 +1417,7 @@ header .logo a {
 	color: #FFFFFF;
 }
 .intro-social li a:hover, .intro-social li a:focus {
-	color: #cc005f;
+	color: #81d8d0;
 }
 
 /**
@@ -1796,6 +1797,7 @@ header .logo a {
 	padding-bottom: 12rem;
 }
 #portfolio .folio-item {
+	cursor: pointer;
 	padding: 0;
 	position: relative;
 	overflow: hidden;
@@ -1905,22 +1907,22 @@ header .logo a {
 .popup-modal img {
 	vertical-align: bottom;
 }
-.popup-modal .description-box {
+.popup-modal .description-box, .description-box {
 	padding: 1.8rem 3.6rem 3rem;
 }
-.popup-modal .description-box h4 {
+.popup-modal .description-box h4, .description-box h4 {
 	font-family: "poppins-bold", sans-serif;
 	font-size: 1.5rem;
 	line-height: 2.4rem;
 	margin-bottom: .6rem;
 }
-.popup-modal .description-box p {
+.popup-modal .description-box p, .description-box p {
 	font-family: "poppins-regular", sans-serif;
 	font-size: 1.4rem;
 	line-height: 2.4rem;
 	margin-bottom: 12px;
 }
-.popup-modal .categories {
+.popup-modal .categories, .categories {
 	font-family: "poppins-bold", sans-serif;
 	font-size: 1.1rem;
 	line-height: 1.8rem;
@@ -1930,12 +1932,12 @@ header .logo a {
 	text-align: left;
 	color: rgba(0, 0, 0, 0.5);
 }
-.popup-modal .link-box {
+.popup-modal .link-box, .link-box {
 	width: 100%;
 	overflow: hidden;
 	background: #000000;
 }
-.popup-modal .link-box a {
+.popup-modal .link-box a, .link-box a {
 	font-family: "poppins-bold", sans-serif;
 	font-size: 1.2rem;
 	line-height: 6rem;
@@ -1946,7 +1948,7 @@ header .logo a {
 	display: block;
 	text-align: center;
 	float: left;
-	width: 50%;
+	width: 100%;
 	-moz-transition: all 0.3s ease-in-out;
 	-o-transition: all 0.3s ease-in-out;
 	-webkit-transition: all 0.3s ease-in-out;
@@ -1956,8 +1958,8 @@ header .logo a {
 .popup-modal .link-box a:first-child {
 	border-right: 1px solid rgba(200, 200, 200, 0.1);
 }
-.popup-modal .link-box a:hover {
-	background: #cc005f;
+.popup-modal .link-box a:hover, .link-box a:hover {
+	background: #81d8d0;
 	border: none;
 }
 @media only screen and (max-width:600px) {
@@ -2096,7 +2098,7 @@ header .logo a {
  * ------------------------------------------------------------------- 
  */
 #services {
-	background: #313131 url(../images/bg.jpg) no-repeat center;
+	background: #313131 url(@/assets/images/bg.jpg) no-repeat center;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	background-size: cover;
@@ -2184,7 +2186,7 @@ header .logo a {
  * ------------------------------------------------------------------- 
  */
 #stats {
-	background: #990047;
+	background: #81d8d0;
 	padding-top: 7.2rem;
 	padding-bottom: 6rem;
 	text-align: center;
@@ -2367,7 +2369,7 @@ header .logo a {
 	color: #FFFFFF;
 }
 #contact button.submitform:hover, #contact button.submitform:focus {
-	background: #cc005f;
+	background: #81d8d0;
 }
 #message-warning, #message-success {
 	display: none;
@@ -2579,7 +2581,7 @@ footer .copyright span:last-child::after {
 	width: 6rem;
 	line-height: 6.6rem;
 	text-align: center;
-	background: #cc005f;
+	background: #81d8d0;
 	color: #FFFFFF;
 	text-align: center;
 	text-transform: uppercase;
