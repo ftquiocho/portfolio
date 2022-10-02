@@ -51,8 +51,8 @@
 		"imagePath": "/src/assets/images/portfolio/hris.png",
 		"description": "Governance Commission for GOCC",
 		"data": {
-			"imagePath": "/vp/",
-			"noOfScreens": 17,
+			"imagePath": "/gcg/",
+			"noOfScreens": 19,
 			"title": "Human Resource Information System / Property Information and Management System",
 			"description": "Designed for GCG that aims to monitor the status and processes to ensure the easy management of human resources, business processes, and data.",
 			"extra": "GOVERNANCE COMMISSION FOR GOCC (LIVE)"
@@ -63,8 +63,8 @@
 		"imagePath": "/src/assets/images/portfolio/doe.png",
 		"description": "Department of Energy",
 		"data": {
-			"imagePath": "/vp/",
-			"noOfScreens": 17,
+			"imagePath": "/doe/",
+			"noOfScreens": 20,
 			"title": "Employees Compensation Payroll System and Personnel Management Information System",
 			"description": "The project is for an integrated solution that will facilitate a more efficient flow and work procedure for the human resource management department. The implementation includes the following project with specifications gathered from different resources from each division: System Administration Module, Employee Self-Service Module, Job Management Module (pre-qualifying of applicants), Recruitment Module, Personnel Information Management Module, Attendance and Leave Credit Module, Payroll Management System, and Reports Module.",
 			"extra": "DEPARTMENT OF ENERGY (CANCELLED)"
@@ -145,7 +145,7 @@
 	{
 		"title": "Hospital Management System",
 		"imagePath": "/src/assets/images/portfolio/hms.png",
-		"description": "City of Manila",
+		"description": "Nueva Ecija",
 		"data": {
 			"imagePath": "/hms/",
 			"noOfScreens": 8,

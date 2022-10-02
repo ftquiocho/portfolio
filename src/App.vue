@@ -30,8 +30,8 @@ export default {
 			skills: [
 				{ name: 'Figma', percent: 90 },
 				{ name: 'Axure', percent: 85 },
-				{ name: 'Adobe XD', percent: 70 },
-				{ name: 'Adobe Photoshop', percent: 95 },
+				{ name: 'Adobe XD', percent: 85 },
+				{ name: 'Adobe Photoshop', percent: 90 },
 				{ name: 'Adobe Illustrator', percent: 80 },
 			],
 
@@ -40,7 +40,7 @@ export default {
 					title: 'Operating Systems',
 					skills: [
 						{ name: 'Mac OS', percent: 90 },
-						{ name: 'Microsoft Windows', percent: 75 }
+						{ name: 'Microsoft Windows', percent: 80 }
 					]
 				},
 				{
@@ -61,10 +61,10 @@ export default {
 				{
 					title: 'Application Software',
 					skills: [
-						{ name: 'Vue', percent: 60 },
-						{ name: 'Nuxt', percent: 65 },
-						{ name: 'VS Code', percent: 65 },
-						{ name: 'Javascript', percent: 65 },
+						{ name: 'Vue', percent: 50 },
+						{ name: 'Nuxt', percent: 50 },
+						{ name: 'VS Code', percent: 50 },
+						{ name: 'Javascript', percent: 55 },
 						{ name: 'HTML', percent: 70 },
 						{ name: 'CSS', percent: 70 },
 					]
@@ -73,7 +73,7 @@ export default {
 					title: 'Project Management Tool',
 					skills: [
 						{ name: 'Trello', percent: 80 },
-						{ name: 'Jira', percent: 75 }
+						{ name: 'Jira', percent: 80 }
 					]
 				}
 			],
@@ -136,38 +136,47 @@ export default {
 				}
 			],
 
+			
 			projects: [
 				{ 
-					icon: 'icon-files', title: 'Ease of Doing Business',
-					description: 'Business Permit & Licensing System of Dolores Quezon - Smartjuan24 (UI/UX Design, App Development)'
+					icon: 'fa fa-briefcase', title: 'Ease of Doing Business',
+					description: 'Automated Business Registration in Dolores Quezon - Smartjuan24 <br> (UI/UX Design, App Development)'
 				},
 				{
-					icon: 'icon-window', title: 'Digital Lifestyle App',
-					description: 'Banking Application for PNB - Digital (Project Management)'
+					icon: 'fa fa-mobile', title: 'Digital Lifestyle App',
+					description: 'Banking Application for PNB - Digital <br>(Project Management)'
 				},
 				{
-					icon: 'icon-paint-brush', title: 'Administrator Console for Chatbot',
+					icon: 'fa fa-desktop', title: 'Administrator Console for Chatbot',
 					description: 'BMW Philippines <br>(Chatbot Development, Project Managment, QA, UI/UX Design)'
 				},
 				{
-					icon: 'icon-toggles', title: 'Campus Management System',
+					icon: 'fa fa-building', title: 'Campus Management System',
 					description: 'Mindanao State University <br> (QA, UI/UX Design)'
 				},
 				{
-					icon: 'icon-image', title: 'Chatbot and Administrator Portal',
+					icon: 'fa fa-desktop', title: 'Chatbot and Administrator Portal',
 					description: 'Governor Oyie Umali of Nueva <br>(Chatbot Development, Management, QA)'
 				},
 				{
-					icon: 'icon-chat', title: 'Social Networking',
+					icon: 'fa fa-wechat', title: 'Social Network',
 					description: 'Chizmis Project <br>(Project Management, UI/UX Design)'
 				},
 				{
-					icon: 'icon-chat', title: 'Social Commerce',
+					icon: 'fa fa-credit-card', title: 'e-Commerce',
 					description: 'GoRice Philippines <br>(QA)'
 				},
 				{
-					icon: 'icon-chat', title: 'Digital ERP',
+					icon: 'fa fa-university', title: 'Digital ERP',
 					description: 'University Information System, Human Resource Information System and Learning Management System for Romblon State University <br> (UI/UX Design)'
+				},
+				{
+					icon: 'fa fa-comment', title: 'Chatbot',
+					description: 'Moves Made Easy in Sydney Australia <br> (App Development)'
+				},
+								{
+					icon: 'fa fa-users', title: 'HRIS - PIMS',
+					description: 'Human Resource Information System - Property Information Management System for GCG <br> (UI/UX Design, QA)'
 				}
 			],
 
@@ -470,7 +479,7 @@ export default {
 						height="auto"
 					>
 						<div class="window-header"></div>
-						<hooper  :style="{ height: 'auto' }" :centerMode="true" :itemsToShow="1"  v-if="modal.data">
+						<hooper  :style="{ height: 'auto' }" :centerMode="false" :itemsToShow="1"  v-if="modal.data">
 							<slide v-for="image, index in modal.data.images" :key="index" :style="{ height: '100%' }">
 								<img v-img :src="image"/>
 							</slide>
@@ -576,66 +585,18 @@ export default {
 					<div class="bgrid stat">
 
 						<div class="icon-part">
-							<i class="icon-pencil-ruler"></i>
+							<i class="fa-regular fa-lightbulb"></i>
 						</div>
 
 						<h3 class="stat-count">
-							1500
-						</h3>
-
-						<h5 class="stat-title">
-							Projects Completed
-						</h5>
-
-					</div> <!-- /stat -->					
-
-					<div class="bgrid stat">
-
-						<div class="icon-part">
-							<i class="icon-users"></i>
-						</div>
-
-						<h3 class="stat-count">
-							900
-						</h3>
-
-						<h5 class="stat-title">
-							Happy Clients
-						</h5>
-
-					</div> <!-- /stat -->
-
-					<div class="bgrid stat">
-
-						<div class="icon-part">
-							<i class="icon-badge"></i>
-						</div>
-
-						<h3 class="stat-count">
-							200
-						</h3>
-
-						<h5 class="stat-title">
-							Awards Received
-						</h5>
-
-					</div> <!-- /stat -->									
-
-					<div class="bgrid stat">
-
-						<div class="icon-part">
-							<i class="icon-light-bulb"></i>
-						</div>
-
-						<h3 class="stat-count">
-							120
+							9098
 						</h3>
 
 						<h5 class="stat-title">
 							Crazy Ideas
 						</h5>
 
-					</div> <!-- /stat -->
+					</div> <!-- /stat -->					
 
 					<div class="bgrid stat">
 
@@ -644,7 +605,7 @@ export default {
 						</div>
 
 						<h3 class="stat-count">
-							1500
+							10001
 						</h3>
 
 						<h5 class="stat-title">
@@ -656,15 +617,63 @@ export default {
 					<div class="bgrid stat">
 
 						<div class="icon-part">
-							<i class="icon-clock"></i>
+							<i class="fa-regular fa-clock"></i>
 						</div>
 
 						<h3 class="stat-count">
-							7200
+							12800
 						</h3>
 
 						<h5 class="stat-title">
-							Hours
+							Hours Worked
+						</h5>
+
+					</div> <!-- /stat -->									
+
+					<div class="bgrid stat">
+
+						<div class="icon-part">
+							<i class="fa-solid fa-display"></i>
+						</div>
+
+						<h3 class="stat-count">
+							2
+						</h3>
+
+						<h5 class="stat-title">
+							Broken Mac
+						</h5>
+
+					</div> <!-- /stat -->
+
+					<div class="bgrid stat">
+
+						<div class="icon-part">
+							<i class="fa-regular fa-pen-to-square"></i>
+						</div>
+
+						<h3 class="stat-count">
+							40
+						</h3>
+
+						<h5 class="stat-title">
+							Broken Nibs
+						</h5>
+
+					</div> <!-- /stat -->
+
+					<div class="bgrid stat">
+
+						<div class="icon-part">
+							<i class="fa-regular fa-face-grin-beam-sweat"></i>
+						</div>
+
+						<h3 class="stat-count">
+							10000
+						</h3>
+
+						<h5 class="stat-title">
+							Sweat & Tears
 						</h5>
 
 					</div> <!-- /stat -->

@@ -71,7 +71,8 @@ html, body {
 }
 body {
 	background: #151515;
-	font-family: "lora-regular", serif;
+	/* font-family: "lora-regular", serif; */
+	font-family: "Alegreya", serif;
 	font-size: 1.7rem;
 	line-height: 3rem;
 	color: #6e6e6e;
@@ -172,10 +173,12 @@ em, i, strong, b {
 	font-weight: normal;
 }
 em, i {
-	font-family: "lora-italic", serif;
+	font-family: "alegreya-italic", serif;
+	/* font-family: "lora-italic", serif; */
 }
 strong, b {
-	font-family: "lora-bold", serif;
+	/* font-family: "lora-bold", serif; */
+	font-family: "alegreya-bold", serif;
 }
 small {
 	font-size: 1.2rem;
@@ -325,7 +328,8 @@ table {
 	border-width: 0;
 	width: 100%;
 	max-width: 100%;
-	font-family: "lora-regular", sans-serif;
+	/* font-family: "lora-regular", sans-serif; */
+	font-family: "alegreya-regular", sans-serif;
 }
 th, td {
 	padding: 1.5rem 3rem;
@@ -1350,7 +1354,8 @@ header .logo a {
 	text-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
 }
 .intro-content .intro-position {
-	font-family: "lora-regular", serif;
+	/* font-family: "lora-regular", serif; */
+	font-family: "alegreya-regular", serif;
 	font-size: 1.7rem;
 	line-height: 2.4rem;
 	text-transform: uppercase;
@@ -1552,7 +1557,7 @@ header .logo a {
 	font-family: "poppins-regular", sans-serif;
 	color: #888888;
 	font-size: 1.5rem;
-	line-height: 1;
+	line-height: 1.5;
 }
 .about-content .skill-bars {
 	margin-top: 6rem;
