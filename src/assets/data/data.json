@@ -171,8 +171,9 @@
 		"imagePath": "/images/portfolio/others2.png",
 		"description": "EODB, CMS",
 		"data": {
-			"imagePath": "/video/",
-			"noOfScreens": 2,
+			"isVideo": true,
+			"imagePath": "/videos/",
+			"noOfScreens": 1,
 			"title": "Launching Video",
 			"description": "Videos created for app launching"
 		}

@@ -1,5 +1,4 @@
 <script>
-
 import carousel from "vue-owl-carousel"
 import { $vfm, VueFinalModal, ModalsContainer } from 'vue-final-modal'
 import { Hooper, Slide, Navigation as HooperNavigation, Pagination as HooperPagination } from 'hooper';
@@ -9,7 +8,7 @@ import data from "@/assets/data/data.json"
 
 
 // For Modal screenshots
-const mainPath = import.meta.env.BASE_URL  + "/images/portfolio/modals/"
+const mainPath = import.meta.env.BASE_URL  + "images/portfolio/modals"
 
 export default {
 	components: { carousel, VueFinalModal, ModalsContainer, Hooper, Slide, HooperNavigation, HooperPagination },
@@ -84,7 +83,7 @@ export default {
 					from: 'February 2017', to: 'Present',
 					positions: [
 						{
-							name: 'UI/UX Designer', from: '2017', to: 'Present', 
+							name: 'Senior UI/UX Designer', from: '2017', to: 'Present', 
 							description: 'Collaborates with the application developers to ensure that the product has an intuitive design and feel and user-friendly software by developing wireframes and lo-fi and hi-fi prototypes. Develops website, web and chatbot applications in support of the company\'s development team. Responsible for the overall design of the IT Group materials for proposal, presentation and collaterals.'
 						},
 						{
@@ -139,11 +138,11 @@ export default {
 			
 			projects: [
 				{ 
-					icon: 'fa fa-briefcase', title: 'Ease of Doing Business',
+					icon: 'fa-solid fa-briefcase', title: 'Ease of Doing Business',
 					description: 'Automated Business Registration in Dolores Quezon - Smartjuan24 <br> (UI/UX Design, App Development)'
 				},
 				{
-					icon: 'fa fa-mobile', title: 'Digital Lifestyle App',
+					icon: 'fa-solid fa-mobile-screen', title: 'Digital Lifestyle App',
 					description: 'Banking Application for PNB - Digital <br>(Project Management)'
 				},
 				{
@@ -151,19 +150,19 @@ export default {
 					description: 'BMW Philippines <br>(Chatbot Development, Project Managment, QA, UI/UX Design)'
 				},
 				{
-					icon: 'fa fa-building', title: 'Campus Management System',
+					icon: 'fa-regular fa-building', title: 'Campus Management System',
 					description: 'Mindanao State University <br> (QA, UI/UX Design)'
 				},
 				{
-					icon: 'fa fa-desktop', title: 'Chatbot and Administrator Portal',
+					icon: 'fa-solid fa-desktop', title: 'Chatbot and Administrator Portal',
 					description: 'Governor Oyie Umali of Nueva <br>(Chatbot Development, Management, QA)'
 				},
 				{
-					icon: 'fa fa-wechat', title: 'Social Network',
+					icon: 'fa-regular fa-comments', title: 'Social Network',
 					description: 'Chizmis Project <br>(Project Management, UI/UX Design)'
 				},
 				{
-					icon: 'fa fa-credit-card', title: 'e-Commerce',
+					icon: 'fa-regular fa-credit-card', title: 'e-Commerce',
 					description: 'GoRice Philippines <br>(QA)'
 				},
 				{
@@ -171,10 +170,10 @@ export default {
 					description: 'University Information System, Human Resource Information System and Learning Management System for Romblon State University <br> (UI/UX Design)'
 				},
 				{
-					icon: 'fa fa-comment', title: 'Chatbot',
+					icon: 'fa-regular fa-comment', title: 'Chatbot',
 					description: 'Moves Made Easy in Sydney Australia <br> (App Development)'
 				},
-								{
+				{
 					icon: 'fa fa-users', title: 'HRIS - PIMS',
 					description: 'Human Resource Information System - Property Information Management System for GCG <br> (UI/UX Design, QA)'
 				}
@@ -199,6 +198,7 @@ export default {
 					imagePath: import.meta.env.BASE_URL + e.imagePath,
 					description: e.description,
 					data: {
+						...(e.data.isVideo && { isVideo: true }),
 						images: this.getScreens(e.data.imagePath, e.data.noOfScreens),
 						title: e.data.title,
 						description: e.data.description,
@@ -214,7 +214,10 @@ export default {
 			// var noOfScreens = 6
 			var paths = []
 			for (let index = 0; index < noOfScreens; index++) {
-				var element = `${path}${index+1}.png`
+				let ext = path.includes('videos') ? '.mp4' : '.png'
+				var element = `${path}${index+1}${ext}`
+				
+				console.log("Elements :>", element)
 				paths.push(element)
 				
 			}
@@ -301,8 +304,8 @@ export default {
    	</div> <!-- /intro-content --> 
 
    	<ul class="intro-social">    
-		 <li><a href=""><i class="fa fa-github"></i></a></li>
-		 <li><a href="https://www.linkedin.com/in/chz-qui-a82b32251" target="_blank"><i class="fa fa-linkedin"></i></a></li>    
+		 <li><a href=""><i class="fa-brands fa-github"></i></i></a></li>
+		 <li><a href="https://www.linkedin.com/in/chz-qui-a82b32251" target="_blank"><i class="fa-brands fa-linkedin"></i></a></li>    
          <!-- <li><a href="#"><i class="fa fa-facebook"></i></a></li>
          <li><a href="#"><i class="fa fa-behance"></i></a></li>
          <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -339,7 +342,7 @@ export default {
 					</li>
 					<li>
 						<strong>Job:</strong>
-						<span>UI/UX Specialist</span>
+						<span>Senior UI/UX Specialist</span>
 					</li>
 					<li>
 						<strong>Education:</strong>
@@ -459,6 +462,7 @@ export default {
 						class="bgrid folio-item" 
 						v-for="modal, index in modals" :key="`modal${index}`">
 						<div class="item-wrap">
+							
 							<img :src="modal.imagePath" alt="Image">
 							<a class="overlay">	                  	           
 							<div class="folio-item-table">
@@ -479,9 +483,18 @@ export default {
 						height="auto"
 					>
 						<div class="window-header"></div>
-						<hooper  :style="{ height: 'auto' }" :centerMode="false" :itemsToShow="1"  v-if="modal.data">
-							<slide v-for="image, index in modal.data.images" :key="index" :style="{ height: '100%' }">
-								<img v-img :src="image"/>
+						<hooper  
+							:style="{ height: '400px' }" 
+							:centerMode="true" 
+							:infiniteScroll="true"
+							:itemsToShow="1"  
+							:trimWhiteSpace="true"
+							v-if="modal.data">
+							<slide v-for="image, index in modal.data.images" :index="index" :key="index" :style="{ height: '100%' }">
+								<video v-if="modal.data.isVideo" controls>
+									<source :src="image" />
+								</video>
+								<img v-else v-img :src="image"/>
 							</slide>
 							
 							<hooper-navigation slot="hooper-addons"></hooper-navigation>
@@ -770,8 +783,8 @@ export default {
      		<div class="col-six tab-full pull-right social">
 
      			<ul class="footer-social">        
-			      <li><a href=""><i class="fa fa-github"></i></a></li>
-			      <li><a href="https://www.linkedin.com/in/chz-qui-a82b32251" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+			      <li><a href=""><i class="fa-brands fa-github"></i></i></a></li>
+			      <li><a href="https://www.linkedin.com/in/chz-qui-a82b32251" target="_blank"><i class="fa-brands fa-linkedin"></i></a></li>
 			      <!-- <li><a href="#"><i class="fa fa-facebook"></i></a></li>
 			      <li><a href="#"><i class="fa fa-behance"></i></a></li>
 			      <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -806,5 +819,20 @@ export default {
 .vm--modal {
 	height: auto !important;
 	overflow: unset !important;
+}
+
+.hooper-indicator.is-active {
+	background: #81d8d0 !important;
+}
+.hooper-slide {
+	background: white;
+	display: flex;
+	justify-content: center;
+	flex-shrink: 0;
+	height: auto !important;
+}
+.hooper-slide img {
+	align-self: center;
+	max-height: 100% !important;
 }
 </style>
