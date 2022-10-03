@@ -173,7 +173,7 @@
 		"data": {
 			"isVideo": true,
 			"imagePath": "/videos/",
-			"noOfScreens": 1,
+			"noOfScreens": 2,
 			"title": "Launching Video",
 			"description": "Videos created for app launching"
 		}
