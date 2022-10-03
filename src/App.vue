@@ -9,7 +9,7 @@ import data from "@/assets/data/data.json"
 
 
 // For Modal screenshots
-const mainPath = "/src/assets/images/portfolio/modals/"
+const mainPath = import.meta.env.BASE_URL  + "/src/assets/images/portfolio/modals/"
 
 export default {
 	components: { carousel, VueFinalModal, ModalsContainer, Hooper, Slide, HooperNavigation, HooperPagination },
@@ -206,7 +206,7 @@ export default {
 					}
 				})
 			})	
-			console.log("asdf", modalArray)
+
 			return modalArray
 		},
 		getScreens(path, noOfScreens) {
@@ -803,5 +803,8 @@ export default {
 </template>
 
 <style>
-
+.vm--modal {
+	height: auto !important;
+	overflow: unset !important;
+}
 </style>
