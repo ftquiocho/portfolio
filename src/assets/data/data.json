@@ -1,7 +1,7 @@
 [	
 	{
 		"title": "CPD Portal",
-		"imagePath": "/src/assets/images/portfolio/prc.png",
+		"imagePath": "/images/portfolio/prc.png",
 		"description": "Professional Regulation Commission",
 		"data": {
 			"imagePath": "/prc/",
@@ -13,7 +13,7 @@
 	},
 	{
 		"title": "e-Payment System",
-		"imagePath": "/src/assets/images/portfolio/boc.png",
+		"imagePath": "/images/portfolio/boc.png",
 		"description": "Bureau of Customs",
 		"data": {
 			"imagePath": "/boc/",
@@ -24,7 +24,7 @@
 	},
 	{
 		"title": "Vaccination Registration Portal",
-		"imagePath": "/src/assets/images/portfolio/calamba.png",
+		"imagePath": "/images/portfolio/calamba.png",
 		"description": "City of Government of Calamba",
 		"data": {
 			"imagePath": "/vp/",
@@ -36,7 +36,7 @@
 	},
 	{
 		"title": "Online Registration System",
-		"imagePath": "/src/assets/images/portfolio/mma.png",
+		"imagePath": "/images/portfolio/mma.png",
 		"description": "Manila Muslim Affairs",
 		"data": {
 			"imagePath": "/vp/",
@@ -48,7 +48,7 @@
 	},
 	{
 		"title": "HRIS - PMIS",
-		"imagePath": "/src/assets/images/portfolio/hris.png",
+		"imagePath": "/images/portfolio/hris.png",
 		"description": "Governance Commission for GOCC",
 		"data": {
 			"imagePath": "/gcg/",
@@ -60,7 +60,7 @@
 	},
 	{
 		"title": "ECPS - PMIS",
-		"imagePath": "/src/assets/images/portfolio/doe.png",
+		"imagePath": "/images/portfolio/doe.png",
 		"description": "Department of Energy",
 		"data": {
 			"imagePath": "/doe/",
@@ -72,7 +72,7 @@
 	},
 	{
 		"title": "Payment Portal",
-		"imagePath": "/src/assets/images/portfolio/pnp.png",
+		"imagePath": "/images/portfolio/pnp.png",
 		"description": "PNP - FEO",
 		"data": {
 			"imagePath": "/pnp/",
@@ -84,7 +84,7 @@
 	},
 	{
 		"title": "Ease of Doing Business",
-		"imagePath": "/src/assets/images/portfolio/eodb.png",
+		"imagePath": "/images/portfolio/eodb.png",
 		"description": "Municipal of Dolores",
 		"data": {
 			"imagePath": "/sj/",
@@ -96,7 +96,7 @@
 	},
 	{
 		"title": "Administrator Console for Chatbot",
-		"imagePath": "/src/assets/images/portfolio/chatbot.png",
+		"imagePath": "/images/portfolio/chatbot.png",
 		"description": "BMW Philippines and Alagang Umali",
 		"data": {
 			"imagePath": "/bmw/",
@@ -108,7 +108,7 @@
 	},
 	{
 		"title": "Campus Management System",
-		"imagePath": "/src/assets/images/portfolio/campus.png",
+		"imagePath": "/images/portfolio/campus.png",
 		"description": "Mindanao State University",
 		"data": {
 			"imagePath": "/cms/",
@@ -120,7 +120,7 @@
 	},
 	{
 		"title": "Social Media App",
-		"imagePath": "/src/assets/images/portfolio/social.png",
+		"imagePath": "/images/portfolio/social.png",
 		"description": "Private Company",
 		"data": {
 			"imagePath": "/social/",
@@ -132,7 +132,7 @@
 	},
 	{
 		"title": "Digital ERP",
-		"imagePath": "/src/assets/images/portfolio/rsu.png",
+		"imagePath": "/images/portfolio/rsu.png",
 		"description": "Romblon State University",
 		"data": {
 			"imagePath": "/rsu/",
@@ -144,7 +144,7 @@
 	},
 	{
 		"title": "Hospital Management System",
-		"imagePath": "/src/assets/images/portfolio/hms.png",
+		"imagePath": "/images/portfolio/hms.png",
 		"description": "Nueva Ecija",
 		"data": {
 			"imagePath": "/hms/",
@@ -156,7 +156,7 @@
 	},
 	{
 		"title": "e-Commerce",
-		"imagePath": "/src/assets/images/portfolio/unlad.png",
+		"imagePath": "/images/portfolio/unlad.png",
 		"description": "Unlad - INC",
 		"data": {
 			"imagePath": "/unlad/",
@@ -168,7 +168,7 @@
 	},
 	{
 		"title": "Launching Video",
-		"imagePath": "/src/assets/images/portfolio/others2.png",
+		"imagePath": "/images/portfolio/others2.png",
 		"description": "EODB, CMS",
 		"data": {
 			"imagePath": "/video/",
@@ -179,7 +179,7 @@
 	},
 	{
 		"title": "Collaterals and Presentations",
-		"imagePath": "/src/assets/images/portfolio/others.png",
+		"imagePath": "/images/portfolio/others.png",
 		"description": "Various Designs",
 		"data": {
 			"imagePath": "/prezi/",

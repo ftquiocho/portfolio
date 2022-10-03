@@ -9,7 +9,7 @@ import data from "@/assets/data/data.json"
 
 
 // For Modal screenshots
-const mainPath = import.meta.env.BASE_URL  + "/src/assets/images/portfolio/modals/"
+const mainPath = import.meta.env.BASE_URL  + "/images/portfolio/modals/"
 
 export default {
 	components: { carousel, VueFinalModal, ModalsContainer, Hooper, Slide, HooperNavigation, HooperPagination },
@@ -196,7 +196,7 @@ export default {
 			data.forEach(e => {
 				modalArray.push({
 					title: e.title,
-					imagePath: e.imagePath,
+					imagePath: import.meta.env.BASE_URL + e.imagePath,
 					description: e.description,
 					data: {
 						images: this.getScreens(e.data.imagePath, e.data.noOfScreens),
