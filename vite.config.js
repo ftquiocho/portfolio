@@ -10,7 +10,7 @@ export default defineConfig({
     assetsDir: 'assets',
     emptyOutDir: true,
   },
-  base: '/qui8/',
+  base: '/portfolio/',
   plugins: [
     vue2(),
     legacy({

@@ -27,7 +27,9 @@
 # git push -f git@github.com:ftquiocho/qui8.git main:gh-pages
 
 # cd -
-
+npm add .
+npm commit -m "up"
+npm push
 
 npm run build
 

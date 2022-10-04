@@ -304,7 +304,7 @@ export default {
    	</div> <!-- /intro-content --> 
 
    	<ul class="intro-social">    
-		 <li><a href=""><i class="fa-brands fa-github"></i></i></a></li>
+		 <li><a href=""><i class="fa-brands fa-github"></i></a></li>
 		 <li><a href="https://www.linkedin.com/in/chz-qui-a82b32251" target="_blank"><i class="fa-brands fa-linkedin"></i></a></li>    
          <!-- <li><a href="#"><i class="fa fa-facebook"></i></a></li>
          <li><a href="#"><i class="fa fa-behance"></i></a></li>
@@ -783,7 +783,7 @@ export default {
      		<div class="col-six tab-full pull-right social">
 
      			<ul class="footer-social">        
-			      <li><a href=""><i class="fa-brands fa-github"></i></i></a></li>
+			      <li><a href=""><i class="fa-brands fa-github"></i></a></li>
 			      <li><a href="https://www.linkedin.com/in/chz-qui-a82b32251" target="_blank"><i class="fa-brands fa-linkedin"></i></a></li>
 			      <!-- <li><a href="#"><i class="fa fa-facebook"></i></a></li>
 			      <li><a href="#"><i class="fa fa-behance"></i></a></li>
