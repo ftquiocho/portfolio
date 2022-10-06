@@ -148,7 +148,7 @@
 		"description": "Nueva Ecija",
 		"data": {
 			"imagePath": "/hms/",
-			"noOfScreens": 8,
+			"noOfScreens": 5,
 			"title": "Hospital Management System",
 			"description": "The system aims to keep track of medical records, inventory management, patients’ data information, appointment booking and streamline the administrative processses in hospitals.",
 			"extra": "NUEVA ECIJA (PROPOSED SOLUTION)"
