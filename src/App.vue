@@ -326,7 +326,7 @@ export default {
 				<h1>Let me introduce myself</h1>
 				<div class="intro-info">
 					<img src="@/assets/images/profile-pic.jpg" alt="Profile Picture">
-					<p class="lead">A UI/UX designer obsessed with <span style="color:#81d8d0">#81d8d0</span> and coffee! Most clients and partners call me "Ms. Chiz" 🧀 (instead of Ms. Chez). I've been designing user interfaces for over 5 years, collateral & presentation designs for a decade, and had maybe around 9098 crazy ideas and 10001 coffee cups to keep me awake while working (I'm not complaining 'coz I love it!). I've worked on everything from app design to development to testing. I used to be a unicorn but I realized that I'm more into creating designs than app development. In my free time, I enjoy eating, trying out new restaurants with the family, playing duolingo, sleeping, online shopping, binge-watching, and of course, coffeeing! Selling has been a side hustle too. Perhaps, entrepreneurship also runs in the blood. <br><br> Btw, don't forget to check out my portfolio below. And if you want to download my CV, feel free to email me so I can give you a password. See yah! 👋</p>
+					<p class="lead">A UI/UX designer obsessed with <span style="color:#81d8d0">#81d8d0</span> and coffee! Most clients and partners call me "Ms. Chiz" 🧀 (instead of Ms. Chez). I've been designing user interfaces for over 7 years, collateral & presentation designs for a decade, and had maybe around 9098 crazy ideas and 10001 coffee cups to keep me awake while working (I'm not complaining 'coz I love it!). I've worked on everything from app design to development to testing. I used to be a unicorn but I realized that I'm more into creating designs than app development. In my free time, I enjoy eating, trying out new restaurants with the family, playing duolingo, sleeping, online shopping, binge-watching, and of course, coffeeing! Selling has been a side hustle too. Perhaps, entrepreneurship also runs in the blood. <br><br> Btw, don't forget to check out my portfolio below. And if you want to download my CV, feel free to email me so I can give you a password. See yah! 👋</p>
 				</div>   			
 			</div>   		
 		</div> <!-- /section-intro -->
@@ -795,11 +795,11 @@ export default {
 	      </div>
 
       	<div class="col-eight tab-full">
-	      	<div class="copyright">
+	      	<!-- <div class="copyright">
 		        	<span>© Copyright 2018 </span> 
 		        	<span>Design by <a href="http://www.styleshout.com/">styleshout</a></span> 
 		        	<span>Distributed by <a href="https://themewagon.com/">themewagon</a></span>	         	
-		         </div>		                  
+		         </div>	--> 	                  
 	      	</div>
 
 	      	<div id="go-top">
