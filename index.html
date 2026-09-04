@@ -15,1288 +15,172 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Caveat:wght@400;600;700&family=Anaheim:wght@400;500;600&display=swap"
         rel="stylesheet">
 
-    <style>
-        :root {
-            --figma-bg: #1e1e1e;
-            --figma-panel: #2d2d2d;
-            --figma-border: #3e3e42;
-            --figma-text: #cccccc;
-            --figma-text-secondary: #9d9d9d;
-            --figma-blue: #0d99ff;
-            --figma-selection: #0d99ff;
-            --figma-cursor: #0d99ff;
-            --figma-canvas-dots: #3e3e42;
-            --accent: #81d8d0;
-            --accent-dark: #4fb3aa;
-            --accent-light: #d4f4f1;
-            --accent-contrast: #1a3a37;
-            --focus-ring: #0d99ff;
-            --canvas-bg: #f5f5f5;
-            --canvas-surface: #ffffff;
-            --canvas-text: #1a1a1a;
-            --canvas-text-secondary: #555555;
-            --canvas-text-muted: #777777;
-            --canvas-border: #e0e0e0;
-            --canvas-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            --toolbar-height: 44px;
-            --panel-width: 220px;
-            --status-height: 28px;
-            --font-sans: 'Inter', -apple-system, sans-serif;
-            --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
-            --font-hand: 'Caveat', cursive;
-            --font-resume: 'Anaheim', 'Inter', sans-serif;
-        }
-
-        .workspace-light {
-            --figma-bg: #f5f5f5;
-            --figma-panel: #ffffff;
-            --figma-border: #d0d0d0;
-            --figma-text: #333333;
-            --figma-text-secondary: #666666;
-            --figma-blue: #0d99ff;
-            --figma-selection: #0d99ff;
-            --figma-cursor: #0d99ff;
-            --figma-canvas-dots: #d0d0d0;
-        }
-
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            -webkit-text-size-adjust: 100%;
-        }
-
-        body {
-            font-family: var(--font-sans);
-            font-size: 16px;
-            line-height: 1.7;
-            color: var(--canvas-text);
-            background: var(--figma-bg);
-            min-height: 100vh;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            overflow: hidden;
-            transition: background 0.3s;
-        }
-
-        a {
-            color: var(--accent-dark);
-            text-decoration: none;
-            transition: color 0.15s;
-        }
-
-        a:hover {
-            color: var(--accent);
-        }
-
-        a:focus-visible,
-        button:focus-visible {
-            outline: 2px solid var(--focus-ring);
-            outline-offset: 3px;
-            border-radius: 2px;
-        }
-
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-
-        .skip-link {
-            position: fixed;
-            top: -60px;
-            left: 16px;
-            z-index: 9999;
-            background: var(--figma-blue);
-            color: #fff;
-            padding: 10px 18px;
-            border-radius: 4px;
-            font-weight: 600;
-            font-size: 14px;
-            transition: top 0.25s;
-        }
-
-        .skip-link:focus {
-            top: 16px;
-            color: #fff;
-        }
-
-        .figma-workspace {
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-            position: relative;
-            background: var(--figma-bg);
-            transition: background 0.3s;
-        }
-
-        /* Toolbar */
-        .figma-toolbar {
-            height: var(--toolbar-height);
-            background: var(--figma-panel);
-            border-bottom: 1px solid var(--figma-border);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 8px;
-            flex-shrink: 0;
-            z-index: 50;
-            font-family: var(--font-mono);
-            font-size: 11px;
-            color: var(--figma-text);
-            user-select: none;
-            -webkit-user-select: none;
-            transition: background 0.3s, border-color 0.3s;
-        }
-
-        .figma-toolbar .toolbar-left,
-        .figma-toolbar .toolbar-center,
-        .figma-toolbar .toolbar-right {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .figma-toolbar .tool-icon {
-            width: 28px;
-            height: 28px;
-            border-radius: 4px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--figma-text-secondary);
-            font-size: 13px;
-            pointer-events: none;
-            transition: color 0.3s;
-        }
-
-        .figma-toolbar .photo-placeholder {
-            width: 28px;
-            height: 28px;
-            border-radius: 100px;
-            background: var(--figma-border);
-            color: var(--figma-text-secondary);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            flex-shrink: 0;
-            pointer-events: auto;
-            cursor: pointer;
-            transition: background 0.15s;
-            border: none;
-        }
-
-        .figma-toolbar .photo-placeholder:hover {
-            background: var(--accent);
-            color: var(--accent-contrast);
-        }
-
-        .photo-badge {
-            width: 28px;
-            height: 28px;
-            border-radius: 100px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .figma-toolbar .file-name {
-            font-weight: 600;
-            font-size: 12px;
-            color: var(--figma-text);
-            letter-spacing: -0.01em;
-            transition: color 0.3s;
-        }
-
-        .figma-toolbar .divider {
-            width: 1px;
-            height: 20px;
-            background: var(--figma-border);
-            margin: 0 4px;
-            transition: background 0.3s;
-        }
-
-        .figma-toolbar .theme-toggle,
-        .figma-toolbar .cursor-toggle {
-            padding: 4px 12px;
-            background: var(--accent);
-            color: var(--accent-contrast);
-            border: none;
-            border-radius: 4px;
-            font-weight: 600;
-            font-size: 10px;
-            cursor: pointer;
-            transition: background 0.15s;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            position: relative;
-        }
-
-        .figma-toolbar .theme-toggle:hover,
-        .figma-toolbar .cursor-toggle:hover {
-            background: var(--accent-dark);
-            color: #fff;
-        }
-
-        .figma-toolbar .cursor-toggle.active {
-            background: var(--figma-blue);
-            color: #fff;
-        }
-
-        .figma-toolbar .cursor-toggle:hover::after {
-            content: attr(data-tooltip);
-            position: absolute;
-            bottom: -28px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #1a1a1a;
-            color: #fff;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 9px;
-            white-space: nowrap;
-            pointer-events: none;
-            z-index: 100;
-            font-family: var(--font-mono);
-        }
-
-        .figma-right-panel .panel-header .tab[data-tooltip] {
-            position: relative;
-        }
-
-        .figma-right-panel .panel-header .tab[data-tooltip]:hover::after {
-            content: attr(data-tooltip);
-            position: absolute;
-            bottom: -28px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #1a1a1a;
-            color: #fff;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 9px;
-            white-space: nowrap;
-            pointer-events: none;
-            z-index: 100;
-            font-family: var(--font-mono);
-        }
-
-        .figma-toolbar .avatar-group {
-            display: flex;
-            gap: 2px;
-        }
-
-        .figma-toolbar .avatar {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            border: 2px solid var(--figma-panel);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 8px;
-            font-weight: 700;
-            color: #fff;
-            text-decoration: none;
-            transition: transform 0.15s, border-color 0.3s;
-            cursor: pointer;
-        }
-
-        .figma-toolbar .avatar:hover {
-            transform: scale(1.15);
-        }
-
-        .avatar--1 {
-            background: #0d99ff;
-        }
-
-        .avatar--2 {
-            background: #e86f51;
-        }
-
-        .avatar--3 {
-            background: #f7d05c;
-            color: #1a1a1a;
-        }
-
-        /* Left Panel */
-        .figma-left-panel {
-            position: fixed;
-            top: var(--toolbar-height);
-            left: 0;
-            bottom: var(--status-height);
-            width: var(--panel-width);
-            background: var(--figma-panel);
-            border-right: 1px solid var(--figma-border);
-            z-index: 40;
-            display: flex;
-            flex-direction: column;
-            overflow-y: auto;
-            font-family: var(--font-mono);
-            font-size: 11px;
-            color: var(--figma-text-secondary);
-            transition: background 0.3s, border-color 0.3s, color 0.3s;
-        }
-
-        .figma-left-panel .panel-header {
-            padding: 8px 12px;
-            border-bottom: 1px solid var(--figma-border);
-            font-weight: 600;
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--figma-text-secondary);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-shrink: 0;
-            transition: border-color 0.3s, color 0.3s;
-        }
-
-        .figma-left-panel .panel-content {
-            padding: 8px 0;
-            flex: 1;
-            overflow-y: auto;
-        }
-
-        .figma-left-panel .layer-group {
-            padding: 6px 12px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            border-left: 2px solid transparent;
-            cursor: pointer;
-            pointer-events: auto;
-            transition: background 0.15s, border-color 0.15s;
-            color: var(--figma-text-secondary);
-            text-decoration: none;
-            font-family: var(--font-mono);
-            font-size: 11px;
-            user-select: none;
-            -webkit-user-select: none;
-            background: none;
-            border: none;
-            width: 100%;
-            text-align: left;
-        }
-
-        .figma-left-panel .layer-group:hover {
-            background: rgba(0, 0, 0, 0.06);
-            color: var(--figma-text);
-        }
-
-        .figma-left-panel .layer-group.active {
-            border-left-color: var(--accent);
-            background: rgba(129, 216, 208, 0.15);
-            color: var(--accent);
-            font-weight: 600;
-        }
-
-        .figma-left-panel .layer-group:focus-visible {
-            outline: 2px solid var(--focus-ring);
-            outline-offset: -2px;
-        }
-
-        .figma-left-panel .layer-group .layer-icon {
-            width: 16px;
-            height: 16px;
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .figma-left-panel .layer-group .layer-name {
-            flex: 1;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .figma-left-panel .layer-group .layer-count {
-            font-size: 8px;
-            background: var(--figma-border);
-            padding: 1px 5px;
-            border-radius: 8px;
-            color: var(--figma-text-secondary);
-        }
-
-        .figma-left-panel .layer-group.layer-indent-1 {
-            padding-left: 28px;
-        }
-
-        .figma-left-panel .layer-group.layer-indent-2 {
-            padding-left: 44px;
-        }
-
-        .figma-left-panel .layer-group.layer-parent {
-            font-weight: 600;
-            color: var(--figma-text);
-            cursor: default;
-            pointer-events: none;
-        }
-
-        .figma-left-panel .back-btn {
-            padding: 10px 12px;
-            margin: 8px;
-            background: var(--accent);
-            color: var(--accent-contrast);
-            border: none;
-            border-radius: 4px;
-            font-family: var(--font-mono);
-            font-size: 10px;
-            font-weight: 600;
-            cursor: pointer;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            justify-content: center;
-            transition: background 0.15s;
-            flex-shrink: 0;
-            pointer-events: auto;
-            z-index: 41;
-        }
-
-        .figma-left-panel .back-btn:hover {
-            background: var(--accent-dark);
-            color: #fff;
-        }
-
-        /* Right Panel */
-        .figma-right-panel {
-            position: fixed;
-            top: var(--toolbar-height);
-            right: 0;
-            bottom: var(--status-height);
-            width: var(--panel-width);
-            background: var(--figma-panel);
-            border-left: 1px solid var(--figma-border);
-            z-index: 40;
-            display: flex;
-            flex-direction: column;
-            overflow-y: auto;
-            font-family: var(--font-mono);
-            font-size: 11px;
-            color: var(--figma-text-secondary);
-            transition: background 0.3s, border-color 0.3s, color 0.3s;
-        }
-
-        .figma-right-panel .panel-header {
-            padding: 8px 12px;
-            border-bottom: 1px solid var(--figma-border);
-            font-weight: 600;
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            display: flex;
-            gap: 6px;
-            align-items: center;
-            flex-shrink: 0;
-            transition: border-color 0.3s;
-        }
-
-        .figma-right-panel .panel-header .tab {
-            padding: 4px 8px;
-            border-radius: 3px;
-            font-size: 9px;
-            text-transform: none;
-            letter-spacing: 0;
-            cursor: pointer;
-            pointer-events: auto;
-            transition: background 0.15s;
-        }
-
-        .figma-right-panel .panel-header .tab.active {
-            background: var(--accent);
-            color: var(--accent-contrast);
-            font-weight: 600;
-        }
-
-        .figma-right-panel .panel-content {
-            padding: 12px;
-            flex: 1;
-            pointer-events: none;
-        }
-
-        .figma-right-panel .prop-group {
-            margin-bottom: 16px;
-        }
-
-        .figma-right-panel .prop-label {
-            font-size: 9px;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            color: var(--figma-text-secondary);
-            margin-bottom: 6px;
-            opacity: 0.7;
-        }
-
-        .figma-right-panel .prop-row {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            padding: 3px 0;
-        }
-
-        .figma-right-panel .prop-input {
-            flex: 1;
-            height: 24px;
-            background: var(--figma-bg);
-            border: 1px solid var(--figma-border);
-            border-radius: 3px;
-            display: flex;
-            align-items: center;
-            padding: 0 6px;
-            font-size: 10px;
-            color: var(--figma-text);
-        }
-
-        .figma-right-panel .prop-color-swatch {
-            width: 20px;
-            height: 20px;
-            border-radius: 3px;
-            border: 1px solid var(--figma-border);
-        }
-
-        .figma-right-panel .download-btn {
-            padding: 10px 20px;
-            background: var(--accent);
-            color: var(--accent-contrast);
-            border: none;
-            border-radius: 6px;
-            font-family: var(--font-mono);
-            font-size: 10px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.15s;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            width: 100%;
-            justify-content: center;
-            pointer-events: auto;
-            margin-top: 8px;
-        }
-
-        .figma-right-panel .download-btn:hover {
-            background: var(--accent-dark);
-            color: #fff;
-        }
-
-        /* Status Bar */
-        .figma-status-bar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: var(--status-height);
-            background: var(--figma-panel);
-            border-top: 1px solid var(--figma-border);
-            z-index: 50;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 12px;
-            font-family: var(--font-mono);
-            font-size: 10px;
-            color: var(--figma-text-secondary);
-            user-select: none;
-            -webkit-user-select: none;
-            pointer-events: none;
-        }
-
-        .figma-status-bar .zoom-control {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .figma-status-bar .zoom-percentage {
-            font-weight: 600;
-            color: var(--figma-text);
-        }
-
-        /* Canvas */
-        .figma-canvas {
-            position: fixed;
-            top: var(--toolbar-height);
-            left: var(--panel-width);
-            right: var(--panel-width);
-            bottom: var(--status-height);
-            overflow-y: auto;
-            overflow-x: hidden;
-            background-color: var(--figma-bg);
-            background-image: radial-gradient(circle, var(--figma-canvas-dots) 1px, transparent 1px), radial-gradient(circle, var(--figma-canvas-dots) 1px, transparent 1px);
-            background-size: 24px 24px, 4px 4px;
-            background-position: 0 0, 12px 12px;
-            z-index: 1;
-            transition: background-color 0.3s;
-        }
-
-        /* Portfolio Content */
-        .portfolio-content,
-        .case-study-view,
-        .resume-view {
-            max-width: 720px;
-            margin: 30px auto;
-            padding: 0 16px;
-            position: relative;
-            z-index: 2;
-            background: var(--canvas-surface);
-            border-radius: 12px;
-            box-shadow: var(--canvas-shadow);
-            overflow: hidden;
-            color: var(--canvas-text);
-        }
-
-        .portfolio-content .portfolio-inner,
-        .case-study-view .case-study-inner,
-        .resume-view .resume-inner {
-            padding: 32px 28px 40px;
-        }
-
-        .portfolio-header {
-            text-align: left;
-            margin-bottom: 28px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid var(--canvas-border);
-        }
-
-        .portfolio-header h1 {
-            font-size: clamp(1.6rem, 3vw, 2.2rem);
-            font-weight: 700;
-            letter-spacing: -0.03em;
-            line-height: 1.2;
-            margin-bottom: 8px;
-        }
-
-        .portfolio-header .subtitle {
-            font-family: var(--font-hand);
-            font-size: 1.3rem;
-            color: var(--accent-dark);
-            margin-bottom: 12px;
-            transform: rotate(-0.5deg);
-            display: inline-block;
-        }
-
-        .portfolio-header .description {
-            font-size: 0.9rem;
-            color: var(--canvas-text-secondary);
-            max-width: 550px;
-            line-height: 1.7;
-        }
-
-        .portfolio-section {
-            margin-bottom: 32px;
-        }
-
-        .portfolio-section .section-heading {
-            display: flex;
-            align-items: baseline;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-bottom: 16px;
-            padding-bottom: 8px;
-            border-bottom: 2px dashed var(--canvas-border);
-        }
-
-        .portfolio-section .section-heading h2 {
-            font-size: 1.2rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-        }
-
-        .portfolio-section .section-heading .section-tag {
-            font-family: var(--font-mono);
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--canvas-text-muted);
-        }
-
-        .portfolio-section .section-heading .section-note {
-            font-family: var(--font-hand);
-            font-size: 1.1rem;
-            color: var(--accent-dark);
-            margin-left: auto;
-            transform: rotate(-1deg);
-        }
-
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 14px;
-        }
-
-        .project-card {
-            background: var(--canvas-surface);
-            border: 1px solid var(--canvas-border);
-            border-radius: 8px;
-            padding: 16px;
-            cursor: pointer;
-            transition: all 0.25s;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            text-align: left;
-        }
-
-        .project-card:hover {
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-            border-color: var(--accent);
-            transform: translateY(-2px);
-        }
-
-        .project-card .card-tag {
-            font-family: var(--font-mono);
-            font-size: 9px;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            color: var(--accent-dark);
-            font-weight: 600;
-        }
-
-        .project-card h3 {
-            font-size: 1rem;
-            font-weight: 600;
-            letter-spacing: -0.01em;
-        }
-
-        .project-card p {
-            font-size: 0.8rem;
-            color: var(--canvas-text-secondary);
-            line-height: 1.6;
-            flex: 1;
-        }
-
-        .project-card .card-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-family: var(--font-mono);
-            font-size: 9px;
-            color: var(--canvas-text-muted);
-            border-top: 1px solid var(--canvas-border);
-            padding-top: 8px;
-        }
-
-        .project-card .card-meta .arrow {
-            color: var(--accent-dark);
-            font-size: 12px;
-            font-weight: 700;
-            transition: transform 0.15s;
-        }
-
-        .project-card:hover .card-meta .arrow {
-            transform: translateX(4px);
-        }
-
-        .skills-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-        }
-
-        .skill-tag {
-            font-family: var(--font-mono);
-            font-size: 10px;
-            padding: 4px 10px;
-            background: var(--accent-light);
-            color: var(--accent-contrast);
-            border-radius: 4px;
-            font-weight: 500;
-            transition: all 0.15s;
-        }
-
-        .skill-tag:hover {
-            background: var(--accent);
-            color: #fff;
-        }
-
-        .contact-box {
-            background: var(--canvas-bg);
-            border: 1px solid var(--canvas-border);
-            border-radius: 8px;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-        }
-
-        .contact-box h3 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .contact-box p {
-            font-size: 0.85rem;
-            color: var(--canvas-text-secondary);
-            margin-bottom: 16px;
-        }
-
-        .contact-box .contact-btn {
-            display: inline-block;
-            padding: 10px 22px;
-            background: var(--accent);
-            color: var(--accent-contrast);
-            font-weight: 600;
-            font-size: 0.85rem;
-            border-radius: 6px;
-            text-decoration: none;
-            transition: all 0.15s;
-            box-shadow: 0 2px 6px rgba(129, 216, 208, 0.4);
-        }
-
-        .contact-box .contact-btn:hover {
-            background: var(--accent-dark);
-            color: #fff;
-            box-shadow: 0 4px 12px rgba(129, 216, 208, 0.5);
-            transform: translateY(-2px);
-        }
-
-        /* Case Study */
-        .case-study-view {
-            display: none;
-        }
-
-        .case-study-view.active {
-            display: block;
-        }
-
-        .case-study-view .back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-family: var(--font-mono);
-            font-size: 11px;
-            color: var(--accent-dark);
-            cursor: pointer;
-            margin-bottom: 16px;
-            background: none;
-            border: none;
-            font-weight: 600;
-            transition: color 0.15s;
-        }
-
-        .case-study-view .back-link:hover {
-            color: var(--accent);
-        }
-
-        .case-study-view .case-tag {
-            font-family: var(--font-mono);
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            color: var(--accent-dark);
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-
-        .case-study-view .case-classification {
-            font-family: var(--font-mono);
-            font-size: 9px;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-            color: var(--canvas-text-muted);
-            margin-bottom: 12px;
-        }
-
-        .case-study-view h2 {
-            font-size: 1.6rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            margin-bottom: 8px;
-        }
-
-        .case-study-view .case-role {
-            font-family: var(--font-mono);
-            font-size: 11px;
-            color: var(--canvas-text-muted);
-            margin-bottom: 16px;
-        }
-
-        .case-study-view .case-note {
-            font-family: var(--font-hand);
-            font-size: 1.1rem;
-            background: var(--accent-light);
-            padding: 12px 16px;
-            border-radius: 4px 12px 4px 12px;
-            margin: 16px 0;
-            color: var(--accent-contrast);
-            transform: rotate(-0.5deg);
-        }
-
-        .case-study-view .case-section {
-            margin: 16px 0;
-        }
-
-        .case-study-view .case-section h3 {
-            font-family: var(--font-mono);
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--canvas-text-muted);
-            margin-bottom: 6px;
-            border-bottom: 1px solid var(--canvas-border);
-            padding-bottom: 4px;
-        }
-
-        .case-study-view .case-section p {
-            font-size: 0.85rem;
-            color: var(--canvas-text-secondary);
-            line-height: 1.7;
-        }
-
-        .case-study-view .case-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin: 16px 0;
-        }
-
-        .case-study-view .case-tags .tag {
-            font-family: var(--font-mono);
-            font-size: 9px;
-            padding: 4px 10px;
-            background: var(--accent-light);
-            color: var(--accent-contrast);
-            border-radius: 4px;
-            font-weight: 500;
-        }
-
-        /* Resume */
-        .resume-view {
-            display: none;
-        }
-
-        .resume-view.active {
-            display: block;
-        }
-
-        .resume-view .resume-inner {
-            font-family: var(--font-resume);
-        }
-
-        .resume-view .resume-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 16px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid var(--canvas-border);
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .resume-view .resume-header h2 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            color: var(--canvas-text);
-        }
-
-        .resume-view .download-btn {
-            padding: 10px 20px;
-            background: var(--accent);
-            color: var(--accent-contrast);
-            border: none;
-            border-radius: 6px;
-            font-family: var(--font-mono);
-            font-size: 10px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.15s;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .resume-view .download-btn:hover {
-            background: var(--accent-dark);
-            color: #fff;
-        }
-
-        .resume-view .resume-contact {
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            color: var(--canvas-text-secondary);
-            margin-bottom: 20px;
-            border-bottom: 1px solid var(--canvas-border);
-            padding-bottom: 8px;
-        }
-
-        .resume-view .resume-section {
-            margin-bottom: 20px;
-        }
-
-        .resume-view .resume-section h3 {
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: var(--canvas-text);
-            margin-bottom: 6px;
-            letter-spacing: -0.01em;
-        }
-
-        .resume-view .resume-section h4 {
-            font-family: var(--font-mono);
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--canvas-text-muted);
-            margin-bottom: 4px;
-            border-bottom: 1px solid var(--canvas-border);
-            padding-bottom: 2px;
-        }
-
-        .resume-view .resume-section ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .resume-view .resume-section li {
-            font-size: 0.8rem;
-            color: var(--canvas-text-secondary);
-            line-height: 1.6;
-            margin-bottom: 4px;
-            padding-left: 14px;
-            position: relative;
-            list-style: none;
-        }
-
-        .resume-view .resume-section li::before {
-            content: '•';
-            position: absolute;
-            left: 0;
-            color: var(--accent-dark);
-            font-weight: 700;
-        }
-
-        .resume-view .resume-section li strong {
-            color: var(--canvas-text);
-            font-weight: 600;
-        }
-
-        /* .resume-view .resume-section li { font-size: 0.8rem; color: var(--canvas-text-secondary); line-height: 1.6; margin-bottom: 8px; }
-        .resume-view .resume-section li strong { color: var(--canvas-text); font-weight: 600; } */
-        .resume-view .resume-date {
-            font-family: var(--font-mono);
-            font-size: 0.7rem;
-            color: var(--accent-dark);
-        }
-
-        /* Cursor */
-        .figma-cursor {
-            position: fixed;
-            pointer-events: none;
-            z-index: 60;
-            user-select: none;
-            -webkit-user-select: none;
-            font-family: var(--font-mono);
-            font-size: 10px;
-            display: flex;
-            align-items: flex-start;
-            gap: 2px;
-            animation: cursor-glide 20s ease-in-out infinite;
-            color: var(--figma-cursor);
-        }
-
-        .figma-cursor.cursor-hidden {
-            display: none;
-        }
-
-        .figma-cursor .cursor-arrow {
-            width: 14px;
-            height: 14px;
-            fill: currentColor;
-            flex-shrink: 0;
-        }
-
-        .figma-cursor .cursor-label {
-            padding: 2px 6px;
-            border-radius: 2px;
-            font-size: 9px;
-            font-weight: 600;
-            white-space: nowrap;
-            background: var(--figma-cursor);
-            color: #fff;
-        }
-
-        @keyframes cursor-glide {
-            0% {
-                transform: translate(0, 0)
-            }
-
-            20% {
-                transform: translate(180px, 100px)
-            }
-
-            40% {
-                transform: translate(320px, 45px)
-            }
-
-            60% {
-                transform: translate(200px, 180px)
-            }
-
-            80% {
-                transform: translate(80px, 60px)
-            }
-
-            100% {
-                transform: translate(0, 0)
-            }
-        }
-
-        /* Photo Modal */
-        .photo-modal {
-            position: fixed;
-            inset: 0;
-            z-index: 200;
-            background: rgba(0, 0, 0, 0.7);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            pointer-events: auto;
-        }
-
-        .photo-modal.active {
-            display: flex;
-        }
-
-        .photo-modal .modal-content {
-            background: var(--canvas-surface);
-            padding: 20px;
-            border-radius: 12px;
-            max-width: 400px;
-            width: 90%;
-            text-align: center;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-        }
-
-        .photo-modal .modal-content img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin: 0 auto 16px;
-            background: var(--figma-border);
-            display: block;
-        }
-
-        .photo-modal .modal-content h3 {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-
-        .photo-modal .modal-content p {
-            font-size: 0.85rem;
-            color: var(--canvas-text-secondary);
-            margin-bottom: 16px;
-        }
-
-        .photo-modal .close-modal {
-            background: var(--accent);
-            color: var(--accent-contrast);
-            border: none;
-            padding: 8px 20px;
-            border-radius: 6px;
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 0.85rem;
-        }
-
-        .photo-modal .close-modal:hover {
-            background: var(--accent-dark);
-            color: #fff;
-        }
-
-        @media (max-width: 1024px) {
-            :root {
-                --panel-width: 180px;
-            }
-
-            .portfolio-content,
-            .case-study-view,
-            .resume-view {
-                max-width: 600px;
-            }
-        }
-
-        @media (max-width: 768px) {
-
-            .figma-toolbar,
-            .figma-left-panel,
-            .figma-right-panel,
-            .figma-status-bar,
-            .figma-cursor {
-                display: none !important;
-            }
-
-            .figma-canvas {
-                margin: 0 !important;
-                top: 0;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                background: var(--canvas-bg);
-            }
-
-            .portfolio-content,
-            .case-study-view,
-            .resume-view {
-                margin: 0;
-                border-radius: 0;
-                max-width: 100%;
-                box-shadow: none;
-            }
-
-            .portfolio-content .portfolio-inner,
-            .case-study-view .case-study-inner,
-            .resume-view .resume-inner {
-                padding: 20px 16px 32px;
-            }
-
-            .project-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section-note {
-                display: none;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            html {
-                scroll-behavior: auto;
-            }
-
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.01ms !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-    </style>
+<style>
+:root{--figma-bg:#1e1e1e;--figma-panel:#2d2d2d;--figma-border:#3e3e42;--figma-text:#ccc;--figma-text-secondary:#9d9d9d;--figma-blue:#0d99ff;--figma-selection:#0d99ff;--figma-cursor:#0d99ff;--figma-canvas-dots:#3e3e42;--accent:#81d8d0;--accent-dark:#4fb3aa;--accent-light:#d4f4f1;--accent-contrast:#1a3a37;--focus-ring:#0d99ff;--canvas-bg:#f5f5f5;--canvas-surface:#fff;--canvas-text:#1a1a1a;--canvas-text-secondary:#555;--canvas-text-muted:#777;--canvas-border:#e0e0e0;--canvas-shadow:0 8px 32px rgba(0,0,0,0.3);--toolbar-height:44px;--panel-width:220px;--status-height:28px;--font-sans:'Inter',-apple-system,sans-serif;--font-mono:'JetBrains Mono','SF Mono',monospace;--font-hand:'Caveat',cursive;--font-resume:'Anaheim','Inter',sans-serif}
+.workspace-light{--figma-bg:#f5f5f5;--figma-panel:#fff;--figma-border:#d0d0d0;--figma-text:#333;--figma-text-secondary:#666;--figma-blue:#0d99ff;--figma-selection:#0d99ff;--figma-cursor:#0d99ff;--figma-canvas-dots:#d0d0d0}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--font-sans);font-size:16px;line-height:1.7;color:var(--canvas-text);background:var(--figma-bg);min-height:100vh;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow:hidden;transition:background 0.3s}
+a{color:var(--accent-dark);text-decoration:none;transition:color 0.15s}
+a:hover{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline-offset:3px;border-radius:2px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip-link{position:fixed;top:-60px;left:16px;z-index:9999;background:var(--figma-blue);color:#fff;padding:10px 18px;border-radius:4px;font-weight:600;font-size:14px;transition:top 0.25s}
+.skip-link:focus{top:16px;color:#fff}
+.figma-workspace{display:flex;flex-direction:column;height:100vh;position:relative;background:var(--figma-bg);transition:background 0.3s}
+
+/* Toolbar */
+.figma-toolbar{height:var(--toolbar-height);background:var(--figma-panel);border-bottom:1px solid var(--figma-border);display:flex;align-items:center;justify-content:space-between;padding:0 8px;flex-shrink:0;z-index:50;font-family:var(--font-mono);font-size:11px;color:var(--figma-text);user-select:none;-webkit-user-select:none;transition:background 0.3s,border-color 0.3s}
+.figma-toolbar .toolbar-left,.figma-toolbar .toolbar-center,.figma-toolbar .toolbar-right{display:flex;align-items:center;gap:6px}
+.figma-toolbar .tool-icon{width:28px;height:28px;border-radius:4px;display:inline-flex;align-items:center;justify-content:center;color:var(--figma-text-secondary);font-size:13px;pointer-events:none;transition:color 0.3s}
+.figma-toolbar .photo-placeholder{width:28px;height:28px;border-radius:100px;background:var(--figma-border);color:var(--figma-text-secondary);display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;letter-spacing:-0.02em;flex-shrink:0;pointer-events:auto;cursor:pointer;transition:background 0.15s;border:none}
+.figma-toolbar .photo-placeholder:hover{background:var(--accent);color:var(--accent-contrast)}
+.photo-badge{width:28px;height:28px;border-radius:100px;object-fit:cover;display:block}
+.figma-toolbar .file-name{font-weight:600;font-size:12px;color:var(--figma-text);letter-spacing:-0.01em;transition:color 0.3s}
+.figma-toolbar .divider{width:1px;height:20px;background:var(--figma-border);margin:0 4px;transition:background 0.3s}
+.figma-toolbar .theme-toggle,.figma-toolbar .cursor-toggle{padding:4px 12px;background:var(--accent);color:var(--accent-contrast);border:none;border-radius:4px;font-weight:600;font-size:10px;cursor:pointer;transition:background 0.15s;display:flex;align-items:center;gap:4px;position:relative}
+.figma-toolbar .theme-toggle:hover,.figma-toolbar .cursor-toggle:hover{background:var(--accent-dark);color:#fff}
+.figma-toolbar .cursor-toggle.active{background:var(--figma-blue);color:#fff}
+.figma-toolbar .cursor-toggle:hover::after{content:attr(data-tooltip);position:absolute;bottom:-28px;left:50%;transform:translateX(-50%);background:#1a1a1a;color:#fff;padding:4px 10px;border-radius:4px;font-size:9px;white-space:nowrap;pointer-events:none;z-index:100;font-family:var(--font-mono)}
+.figma-right-panel .panel-header .tab[data-tooltip]{position:relative}
+.figma-right-panel .panel-header .tab[data-tooltip]:hover::after{content:attr(data-tooltip);position:absolute;bottom:-28px;left:50%;transform:translateX(-50%);background:#1a1a1a;color:#fff;padding:4px 10px;border-radius:4px;font-size:9px;white-space:nowrap;pointer-events:none;z-index:100;font-family:var(--font-mono)}
+.figma-toolbar .avatar-group{display:flex;gap:2px}
+.figma-toolbar .avatar{width:24px;height:24px;border-radius:50%;border:2px solid var(--figma-panel);display:inline-flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:#fff;text-decoration:none;transition:transform 0.15s,border-color 0.3s;cursor:pointer}
+.figma-toolbar .avatar:hover{transform:scale(1.15)}
+.avatar--1{background:#0d99ff}.avatar--2{background:#e86f51}.avatar--3{background:#f7d05c;color:#1a1a1a}
+
+/* Left Panel */
+.figma-left-panel{position:fixed;top:var(--toolbar-height);left:0;bottom:var(--status-height);width:var(--panel-width);background:var(--figma-panel);border-right:1px solid var(--figma-border);z-index:40;display:flex;flex-direction:column;overflow-y:auto;font-family:var(--font-mono);font-size:11px;color:var(--figma-text-secondary);transition:background 0.3s,border-color 0.3s,color 0.3s}
+.figma-left-panel .panel-header{padding:8px 12px;border-bottom:1px solid var(--figma-border);font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:0.08em;color:var(--figma-text-secondary);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;transition:border-color 0.3s,color 0.3s}
+.figma-left-panel .panel-content{padding:8px 0;flex:1;overflow-y:auto}
+.figma-left-panel .layer-group{padding:6px 12px;display:flex;align-items:center;gap:6px;border-left:2px solid transparent;cursor:pointer;pointer-events:auto;transition:background 0.15s,border-color 0.15s;color:var(--figma-text-secondary);text-decoration:none;font-family:var(--font-mono);font-size:11px;user-select:none;-webkit-user-select:none;background:none;border:none;width:100%;text-align:left}
+.figma-left-panel .layer-group:hover{background:rgba(0,0,0,0.06);color:var(--figma-text)}
+.figma-left-panel .layer-group.active{border-left-color:var(--accent);background:rgba(129,216,208,0.15);color:var(--accent);font-weight:600}
+.figma-left-panel .layer-group:focus-visible{outline:2px solid var(--focus-ring);outline-offset:-2px}
+.figma-left-panel .layer-group .layer-icon{width:16px;height:16px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.figma-left-panel .layer-group .layer-name{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.figma-left-panel .layer-group .layer-count{font-size:8px;background:var(--figma-border);padding:1px 5px;border-radius:8px;color:var(--figma-text-secondary)}
+.figma-left-panel .layer-group.layer-indent-1{padding-left:28px}
+.figma-left-panel .layer-group.layer-indent-2{padding-left:44px}
+.figma-left-panel .layer-group.layer-parent{font-weight:600;color:var(--figma-text);cursor:default;pointer-events:none}
+.figma-left-panel .back-btn{padding:10px 12px;margin:8px;background:var(--accent);color:var(--accent-contrast);border:none;border-radius:4px;font-family:var(--font-mono);font-size:10px;font-weight:600;cursor:pointer;text-align:center;display:flex;align-items:center;gap:6px;justify-content:center;transition:background 0.15s;flex-shrink:0;pointer-events:auto;z-index:41}
+.figma-left-panel .back-btn:hover{background:var(--accent-dark);color:#fff}
+
+/* Right Panel */
+.figma-right-panel{position:fixed;top:var(--toolbar-height);right:0;bottom:var(--status-height);width:var(--panel-width);background:var(--figma-panel);border-left:1px solid var(--figma-border);z-index:40;display:flex;flex-direction:column;overflow-y:auto;font-family:var(--font-mono);font-size:11px;color:var(--figma-text-secondary);transition:background 0.3s,border-color 0.3s,color 0.3s}
+.figma-right-panel .panel-header{padding:8px 12px;border-bottom:1px solid var(--figma-border);font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:0.08em;display:flex;gap:6px;align-items:center;flex-shrink:0;transition:border-color 0.3s}
+.figma-right-panel .panel-header .tab{padding:4px 8px;border-radius:3px;font-size:9px;text-transform:none;letter-spacing:0;cursor:pointer;pointer-events:auto;transition:background 0.15s}
+.figma-right-panel .panel-header .tab.active{background:var(--accent);color:var(--accent-contrast);font-weight:600}
+.figma-right-panel .panel-content{padding:12px;flex:1;pointer-events:none}
+.figma-right-panel .prop-group{margin-bottom:16px}
+.figma-right-panel .prop-label{font-size:9px;text-transform:uppercase;letter-spacing:0.06em;color:var(--figma-text-secondary);margin-bottom:6px;opacity:0.7}
+.figma-right-panel .prop-row{display:flex;align-items:center;gap:6px;padding:3px 0}
+.figma-right-panel .prop-input{flex:1;height:24px;background:var(--figma-bg);border:1px solid var(--figma-border);border-radius:3px;display:flex;align-items:center;padding:0 6px;font-size:10px;color:var(--figma-text)}
+.figma-right-panel .prop-color-swatch{width:20px;height:20px;border-radius:3px;border:1px solid var(--figma-border)}
+.figma-right-panel .download-btn{padding:10px 20px;background:var(--accent);color:var(--accent-contrast);border:none;border-radius:6px;font-family:var(--font-mono);font-size:10px;font-weight:600;cursor:pointer;transition:background 0.15s;display:flex;align-items:center;gap:6px;width:100%;justify-content:center;pointer-events:auto;margin-top:8px}
+.figma-right-panel .download-btn:hover{background:var(--accent-dark);color:#fff}
+
+/* Status Bar */
+.figma-status-bar{position:fixed;bottom:0;left:0;right:0;height:var(--status-height);background:var(--figma-panel);border-top:1px solid var(--figma-border);z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 12px;font-family:var(--font-mono);font-size:10px;color:var(--figma-text-secondary);user-select:none;-webkit-user-select:none;pointer-events:none}
+.figma-status-bar .zoom-control{display:flex;align-items:center;gap:8px}
+.figma-status-bar .zoom-percentage{font-weight:600;color:var(--figma-text)}
+
+/* Canvas */
+.figma-canvas{position:fixed;top:var(--toolbar-height);left:var(--panel-width);right:var(--panel-width);bottom:var(--status-height);overflow-y:auto;overflow-x:hidden;background-color:var(--figma-bg);background-image:radial-gradient(circle,var(--figma-canvas-dots) 1px,transparent 1px),radial-gradient(circle,var(--figma-canvas-dots) 1px,transparent 1px);background-size:24px 24px,4px 4px;background-position:0 0,12px 12px;z-index:1;transition:background-color 0.3s}
+
+/* Portfolio Content */
+.portfolio-content,.case-study-view,.resume-view{max-width:720px;margin:30px auto;padding:0 16px;position:relative;z-index:2;background:var(--canvas-surface);border-radius:12px;box-shadow:var(--canvas-shadow);overflow:hidden;color:var(--canvas-text)}
+.portfolio-content .portfolio-inner,.case-study-view .case-study-inner,.resume-view .resume-inner{padding:32px 28px 40px}
+.portfolio-header{text-align:left;margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--canvas-border)}
+.portfolio-header h1{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;letter-spacing:-0.03em;line-height:1.2;margin-bottom:8px}
+.portfolio-header .subtitle{font-family:var(--font-hand);font-size:1.3rem;color:var(--accent-dark);margin-bottom:12px;transform:rotate(-0.5deg);display:inline-block}
+.portfolio-header .description{font-size:0.9rem;color:var(--canvas-text-secondary);max-width:550px;line-height:1.7}
+.portfolio-section{margin-bottom:32px}
+.portfolio-section .section-heading{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:16px;padding-bottom:8px;border-bottom:2px dashed var(--canvas-border)}
+.portfolio-section .section-heading h2{font-size:1.2rem;font-weight:700;letter-spacing:-0.02em}
+.portfolio-section .section-heading .section-tag{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.08em;color:var(--canvas-text-muted)}
+.portfolio-section .section-heading .section-note{font-family:var(--font-hand);font-size:1.1rem;color:var(--accent-dark);margin-left:auto;transform:rotate(-1deg)}
+.project-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+.project-card{background:var(--canvas-surface);border:1px solid var(--canvas-border);border-radius:8px;padding:16px;cursor:pointer;transition:all 0.25s;box-shadow:0 1px 3px rgba(0,0,0,0.04);position:relative;display:flex;flex-direction:column;gap:8px;text-align:left}
+.project-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.08);border-color:var(--accent);transform:translateY(-2px)}
+.project-card .card-tag{font-family:var(--font-mono);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;color:var(--accent-dark);font-weight:600}
+.project-card h3{font-size:1rem;font-weight:600;letter-spacing:-0.01em}
+.project-card p{font-size:0.8rem;color:var(--canvas-text-secondary);line-height:1.6;flex:1}
+.project-card .card-meta{display:flex;justify-content:space-between;align-items:center;font-family:var(--font-mono);font-size:9px;color:var(--canvas-text-muted);border-top:1px solid var(--canvas-border);padding-top:8px}
+.project-card .card-meta .arrow{color:var(--accent-dark);font-size:12px;font-weight:700;transition:transform 0.15s}
+.project-card:hover .card-meta .arrow{transform:translateX(4px)}
+.skills-tags{display:flex;flex-wrap:wrap;gap:6px}
+.skill-tag{font-family:var(--font-mono);font-size:10px;padding:4px 10px;background:var(--accent-light);color:var(--accent-contrast);border-radius:4px;font-weight:500;transition:all 0.15s}
+.skill-tag:hover{background:var(--accent);color:#fff}
+.contact-box{background:var(--canvas-bg);border:1px solid var(--canvas-border);border-radius:8px;padding:20px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.05)}
+.contact-box h3{font-size:1rem;font-weight:600;margin-bottom:8px}
+.contact-box p{font-size:0.85rem;color:var(--canvas-text-secondary);margin-bottom:16px}
+.contact-box .contact-btn{display:inline-block;padding:10px 22px;background:var(--accent);color:var(--accent-contrast);font-weight:600;font-size:0.85rem;border-radius:6px;text-decoration:none;transition:all 0.15s;box-shadow:0 2px 6px rgba(129,216,208,0.4)}
+.contact-box .contact-btn:hover{background:var(--accent-dark);color:#fff;box-shadow:0 4px 12px rgba(129,216,208,0.5);transform:translateY(-2px)}
+
+/* Case Study */
+.case-study-view{display:none}
+.case-study-view.active{display:block}
+.case-study-view .back-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-mono);font-size:11px;color:var(--accent-dark);cursor:pointer;margin-bottom:16px;background:none;border:none;font-weight:600;transition:color 0.15s}
+.case-study-view .back-link:hover{color:var(--accent)}
+.case-study-view .case-tag{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--accent-dark);font-weight:600;margin-bottom:4px}
+.case-study-view .case-classification{font-family:var(--font-mono);font-size:9px;text-transform:uppercase;letter-spacing:0.04em;color:var(--canvas-text-muted);margin-bottom:12px}
+.case-study-view h2{font-size:1.6rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:8px}
+.case-study-view .case-role{font-family:var(--font-mono);font-size:11px;color:var(--canvas-text-muted);margin-bottom:16px}
+.case-study-view .case-note{font-family:var(--font-hand);font-size:1.1rem;background:var(--accent-light);padding:12px 16px;border-radius:4px 12px 4px 12px;margin:16px 0;color:var(--accent-contrast);transform:rotate(-0.5deg)}
+.case-study-view .case-section{margin:16px 0}
+.case-study-view .case-section h3{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--canvas-text-muted);margin-bottom:6px;border-bottom:1px solid var(--canvas-border);padding-bottom:4px}
+.case-study-view .case-section p{font-size:0.85rem;color:var(--canvas-text-secondary);line-height:1.7}
+.case-study-view .case-tags{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0}
+.case-study-view .case-tags .tag{font-family:var(--font-mono);font-size:9px;padding:4px 10px;background:var(--accent-light);color:var(--accent-contrast);border-radius:4px;font-weight:500}
+
+/* Project Links */
+.project-links{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;padding-top:16px;border-top:1px solid var(--canvas-border)}
+.project-link-btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:var(--accent);color:var(--accent-contrast);border-radius:6px;font-weight:600;font-size:0.85rem;text-decoration:none;transition:all 0.15s;box-shadow:0 2px 6px rgba(129,216,208,0.4)}
+.project-link-btn:hover{background:var(--accent-dark);color:#fff;box-shadow:0 4px 12px rgba(129,216,208,0.5);transform:translateY(-2px)}
+.project-link-btn--github{background:var(--canvas-text);color:var(--canvas-surface);box-shadow:0 2px 6px rgba(0,0,0,0.2)}
+.project-link-btn--github:hover{background:#333;color:#fff}
+
+/* Resume */
+.resume-view{display:none}
+.resume-view.active{display:block}
+.resume-view .resume-inner{font-family:var(--font-resume)}
+.resume-view .resume-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--canvas-border);flex-wrap:wrap;gap:8px}
+.resume-view .resume-header h2{font-size:1.5rem;font-weight:700;letter-spacing:-0.02em;color:var(--canvas-text)}
+.resume-view .download-btn{padding:10px 20px;background:var(--accent);color:var(--accent-contrast);border:none;border-radius:6px;font-family:var(--font-mono);font-size:10px;font-weight:600;cursor:pointer;transition:background 0.15s;display:flex;align-items:center;gap:6px}
+.resume-view .download-btn:hover{background:var(--accent-dark);color:#fff}
+.resume-view .resume-contact{font-family:var(--font-mono);font-size:0.8rem;color:var(--canvas-text-secondary);margin-bottom:20px;border-bottom:1px solid var(--canvas-border);padding-bottom:8px}
+.resume-view .resume-section{margin-bottom:20px}
+.resume-view .resume-section h3{font-size:0.9rem;font-weight:700;color:var(--canvas-text);margin-bottom:6px;letter-spacing:-0.01em}
+.resume-view .resume-section h4{font-family:var(--font-mono);font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--canvas-text-muted);margin-bottom:4px;border-bottom:1px solid var(--canvas-border);padding-bottom:2px}
+.resume-view .resume-section ul{list-style:none;padding:0}
+.resume-view .resume-section li{font-size:0.8rem;color:var(--canvas-text-secondary);line-height:1.6;margin-bottom:4px;padding-left:14px;position:relative;list-style:none}
+.resume-view .resume-section li::before{content:'•';position:absolute;left:0;color:var(--accent-dark);font-weight:700}
+.resume-view .resume-section li strong{color:var(--canvas-text);font-weight:600}
+.resume-view .resume-date{font-family:var(--font-mono);font-size:0.7rem;color:var(--accent-dark)}
+
+/* Cursor */
+.figma-cursor{position:fixed;pointer-events:none;z-index:60;user-select:none;-webkit-user-select:none;font-family:var(--font-mono);font-size:10px;display:flex;align-items:flex-start;gap:2px;animation:cursor-glide 20s ease-in-out infinite;color:var(--figma-cursor)}
+.figma-cursor.cursor-hidden{display:none}
+.figma-cursor .cursor-arrow{width:14px;height:14px;fill:currentColor;flex-shrink:0}
+.figma-cursor .cursor-label{padding:2px 6px;border-radius:2px;font-size:9px;font-weight:600;white-space:nowrap;background:var(--figma-cursor);color:#fff}
+@keyframes cursor-glide{0%{transform:translate(0,0)}20%{transform:translate(180px,100px)}40%{transform:translate(320px,45px)}60%{transform:translate(200px,180px)}80%{transform:translate(80px,60px)}100%{transform:translate(0,0)}}
+
+/* Photo Modal */
+.photo-modal{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.7);display:none;align-items:center;justify-content:center;pointer-events:auto}
+.photo-modal.active{display:flex}
+.photo-modal .modal-content{background:var(--canvas-surface);padding:20px;border-radius:12px;max-width:400px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.5)}
+.photo-modal .modal-content img{width:200px;height:200px;border-radius:50%;object-fit:cover;margin:0 auto 16px;background:var(--figma-border);display:block}
+.photo-modal .modal-content h3{font-size:1.2rem;font-weight:700;margin-bottom:4px}
+.photo-modal .modal-content p{font-size:0.85rem;color:var(--canvas-text-secondary);margin-bottom:16px}
+.photo-modal .close-modal{background:var(--accent);color:var(--accent-contrast);border:none;padding:8px 20px;border-radius:6px;font-weight:600;cursor:pointer;font-size:0.85rem}
+.photo-modal .close-modal:hover{background:var(--accent-dark);color:#fff}
+
+/* Responsive */
+@media(max-width:1024px){:root{--panel-width:180px}.portfolio-content,.case-study-view,.resume-view{max-width:600px}}
+@media(max-width:768px){.figma-toolbar,.figma-left-panel,.figma-right-panel,.figma-status-bar,.figma-cursor{display:none!important}.figma-canvas{margin:0!important;top:0;bottom:0;left:0;right:0;background:var(--canvas-bg)}.portfolio-content,.case-study-view,.resume-view{margin:0;border-radius:0;max-width:100%;box-shadow:none}.portfolio-content .portfolio-inner,.case-study-view .case-study-inner,.resume-view .resume-inner{padding:20px 16px 32px}.project-grid{grid-template-columns:1fr}.section-note{display:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important}}
+</style>
 </head>
 
 <body>
@@ -1328,8 +212,8 @@
                     <!-- <a href="https://ftquiocho.github.io/portfolio/" target="_blank" rel="noopener noreferrer" class="avatar avatar--1" aria-label="GitHub profile" title="GitHub">GH</a> -->
                     <a href="https://linkedin.com/in/franchezca-q-a82b32251" target="_blank" rel="noopener noreferrer"
                         class="avatar avatar--2" aria-label="LinkedIn profile" title="View my LinkedIn profile">LI</a>
-                    <a href="mailto:iamftq@gmail.com" class="avatar avatar--3" aria-label="Email me"
-                        title="Email">@</a>
+                    <a href="mailto:iamftq@gmail.com" class="avatar avatar--3" aria-label="Email"
+                        title="Email me">@</a>
                 </div>
                 <button class="cursor-toggle" id="cursor-toggle" aria-label="Toggle floating cursor visibility"
                     data-tooltip="Hide cursor">
@@ -1417,7 +301,7 @@
                         <h1>Franchezca Quiocho</h1>
                         <span class="subtitle">Senior UI/UX Designer · mapping flows with Figma, AI, and code</span>
                         <p class="description">
-                            I design enterprise-grade digital products that feel effortless. With over 8 years
+                            I design enterprise-grade digital products that feel effortless. With over 9 years
                             of experience across maritime, government, HR, banking, education, and chatbot ecosystems,
                             I turn complex workflows into clear, accessible, and developer-ready interfaces.
                             I'm currently exploring AI-enabled product design and AI-assisted workflows.
@@ -1498,6 +382,7 @@
                         <p id="case-impact"></p>
                     </div>
                     <div class="case-tags" id="case-tags"></div>
+                    <div class="project-links" id="project-links" style="display:none;"></div>
                 </div>
             </div>
 
@@ -1715,7 +600,8 @@
                     impact: "Brought multiple systems into one platform, making it easier for users to complete tasks without switching between tools.",
                     tags: ["Enterprise", "ERP", "Education", "HR", "LMS"],
                     shortDesc: "Designing a multi-module ERP for education, HR, and LMS.",
-                    note: "One platform, many roles. Clarity for everyone."
+                    note: "One platform, many roles. Clarity for everyone.",
+                    // links: [{ label: "Live Demo", url: "#", type: "demo" }]
                 },
                 gov: {
                     cardTitle: "Government EODB Platform",
@@ -1770,13 +656,13 @@
                 },
                 rebranding: {
                     cardTitle: "Rebranding Design System",
-                    cardDesc: "AdonisHR and ShipAdmin brand unification",
+                    cardDesc: "Company Brand unification",
                     cardMetric: "Brand standardization",
                     caseTag: "B2B+SAAS_01 // REBRANDING DS",
                     classification: "B2B · Enterprise · Brand Integration",
-                    title: "AdonisHR + ShipAdmin Rebranding Design System",
+                    title: "Rebranding Design System",
                     context: "Post-Acquisition · Design System · Brand Standardization",
-                    overview: "Led the design system and rebranding initiative following the acquisition of ShipAdmin Philippines Inc. by Adonis HR. Standardized colors, typography, components, and branding across both platforms to create a unified visual identity.",
+                    overview: "Led the design system and rebranding initiative following the acquisition of ShipAdmin Philippines Inc and Adonis HR by Ripple Operations. Standardized colors, typography, components, and branding across both platforms to create a unified visual identity.",
                     problem: "After the acquisition, two separate products (ShipAdmin and Adonis HR) had inconsistent branding, different color schemes, conflicting UI patterns, and duplicated design efforts.",
                     process: "Audited both platforms to identify design inconsistencies. Defined a unified color palette, typography scale, and component library that respected both brand legacies. Created design tokens and documented implementation guidelines for developers.",
                     solution: "Built a centralized design system with standardized colors, typography, spacing, and reusable components. Applied the new branding consistently across both platforms while maintaining familiar workflows for existing users.",
@@ -1877,6 +763,7 @@
                         e.preventDefault();
                         if (section.id === 'resume') {
                             switchTab('inspect');
+                            setActiveNav(section.target);
                         } else {
                             document.getElementById(section.target).scrollIntoView({ behavior: 'smooth' });
                             setActiveNav(section.target);
@@ -1964,6 +851,17 @@
                 caseSolution.textContent = data.solution;
                 caseImpact.textContent = data.impact;
                 caseTags.innerHTML = data.tags.map(tag => '<span class="tag">' + tag + '</span>').join('');
+                const linksContainer = document.getElementById('project-links');
+                if (data.links && data.links.length > 0) {
+                                linksContainer.innerHTML = data.links.map(link =>
+                                    '<a href="' + link.url + '" target="_blank" rel="noopener noreferrer" class="project-link-btn ' +
+                                    (link.type === 'github' ? 'project-link-btn--github' : '') + '">' +
+                                    link.label + ' ↗</a>'
+                                ).join('');
+                                linksContainer.style.display = 'flex';
+                            } else {
+                                linksContainer.style.display = 'none';
+                            }
                 document.getElementById('case-overview').setAttribute('data-section', 'overview');
                 document.getElementById('case-problem').setAttribute('data-section', 'problem');
                 document.getElementById('case-process').setAttribute('data-section', 'process');
