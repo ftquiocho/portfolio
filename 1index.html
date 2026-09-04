@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E👩‍💻%3C/text%3E%3C/svg%3E" />
+    <title>Franchezca Quiocho | Senior UI/UX Designer</title>
+    <meta name="description"
+        content="Portfolio of Franchezca Quiocho, Senior UI/UX Designer with 9+ years of experience in enterprise-grade digital products.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Caveat:wght@400;600;700&family=Anaheim:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+<style>
+:root{--figma-bg:#1e1e1e;--figma-panel:#2d2d2d;--figma-border:#3e3e42;--figma-text:#ccc;--figma-text-secondary:#9d9d9d;--figma-blue:#0d99ff;--figma-selection:#0d99ff;--figma-cursor:#0d99ff;--figma-canvas-dots:#3e3e42;--accent:#81d8d0;--accent-dark:#4fb3aa;--accent-light:#d4f4f1;--accent-contrast:#1a3a37;--focus-ring:#0d99ff;--canvas-bg:#f5f5f5;--canvas-surface:#fff;--canvas-text:#1a1a1a;--canvas-text-secondary:#555;--canvas-text-muted:#777;--canvas-border:#e0e0e0;--canvas-shadow:0 8px 32px rgba(0,0,0,0.3);--toolbar-height:44px;--panel-width:220px;--status-height:28px;--font-sans:'Inter',-apple-system,sans-serif;--font-mono:'JetBrains Mono','SF Mono',monospace;--font-hand:'Caveat',cursive;--font-resume:'Anaheim','Inter',sans-serif}
+.workspace-light{--figma-bg:#f5f5f5;--figma-panel:#fff;--figma-border:#d0d0d0;--figma-text:#333;--figma-text-secondary:#666;--figma-blue:#0d99ff;--figma-selection:#0d99ff;--figma-cursor:#0d99ff;--figma-canvas-dots:#d0d0d0}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--font-sans);font-size:16px;line-height:1.7;color:var(--canvas-text);background:var(--figma-bg);min-height:100vh;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow:hidden;transition:background 0.3s}
+a{color:var(--accent-dark);text-decoration:none;transition:color 0.15s}
+a:hover{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline-offset:3px;border-radius:2px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip-link{position:fixed;top:-60px;left:16px;z-index:9999;background:var(--figma-blue);color:#fff;padding:10px 18px;border-radius:4px;font-weight:600;font-size:14px;transition:top 0.25s}
+.skip-link:focus{top:16px;color:#fff}
+.figma-workspace{display:flex;flex-direction:column;height:100vh;position:relative;background:var(--figma-bg);transition:background 0.3s}
+
+/* Toolbar */
+.figma-toolbar{height:var(--toolbar-height);background:var(--figma-panel);border-bottom:1px solid var(--figma-border);display:flex;align-items:center;justify-content:space-between;padding:0 8px;flex-shrink:0;z-index:50;font-family:var(--font-mono);font-size:11px;color:var(--figma-text);user-select:none;-webkit-user-select:none;transition:background 0.3s,border-color 0.3s}
+.figma-toolbar .toolbar-left,.figma-toolbar .toolbar-center,.figma-toolbar .toolbar-right{display:flex;align-items:center;gap:6px}
+.figma-toolbar .tool-icon{width:28px;height:28px;border-radius:4px;display:inline-flex;align-items:center;justify-content:center;color:var(--figma-text-secondary);font-size:13px;pointer-events:none;transition:color 0.3s}
+.figma-toolbar .photo-placeholder{width:28px;height:28px;border-radius:100px;background:var(--figma-border);color:var(--figma-text-secondary);display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;letter-spacing:-0.02em;flex-shrink:0;pointer-events:auto;cursor:pointer;transition:background 0.15s;border:none}
+.figma-toolbar .photo-placeholder:hover{background:var(--accent);color:var(--accent-contrast)}
+.photo-badge{width:28px;height:28px;border-radius:100px;object-fit:cover;display:block}
+.figma-toolbar .file-name{font-weight:600;font-size:12px;color:var(--figma-text);letter-spacing:-0.01em;transition:color 0.3s}
+.figma-toolbar .divider{width:1px;height:20px;background:var(--figma-border);margin:0 4px;transition:background 0.3s}
+.figma-toolbar .theme-toggle,.figma-toolbar .cursor-toggle{padding:4px 12px;background:var(--accent);color:var(--accent-contrast);border:none;border-radius:4px;font-weight:600;font-size:10px;cursor:pointer;transition:background 0.15s;display:flex;align-items:center;gap:4px;position:relative}
+.figma-toolbar .theme-toggle:hover,.figma-toolbar .cursor-toggle:hover{background:var(--accent-dark);color:#fff}
+.figma-toolbar .cursor-toggle.active{background:var(--figma-blue);color:#fff}
+.figma-toolbar .cursor-toggle:hover::after{content:attr(data-tooltip);position:absolute;bottom:-28px;left:50%;transform:translateX(-50%);background:#1a1a1a;color:#fff;padding:4px 10px;border-radius:4px;font-size:9px;white-space:nowrap;pointer-events:none;z-index:100;font-family:var(--font-mono)}
+.figma-right-panel .panel-header .tab[data-tooltip]{position:relative}
+.figma-right-panel .panel-header .tab[data-tooltip]:hover::after{content:attr(data-tooltip);position:absolute;bottom:-28px;left:50%;transform:translateX(-50%);background:#1a1a1a;color:#fff;padding:4px 10px;border-radius:4px;font-size:9px;white-space:nowrap;pointer-events:none;z-index:100;font-family:var(--font-mono)}
+.figma-toolbar .avatar-group{display:flex;gap:2px}
+.figma-toolbar .avatar{width:24px;height:24px;border-radius:50%;border:2px solid var(--figma-panel);display:inline-flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:#fff;text-decoration:none;transition:transform 0.15s,border-color 0.3s;cursor:pointer}
+.figma-toolbar .avatar:hover{transform:scale(1.15)}
+.avatar--1{background:#0d99ff}.avatar--2{background:#e86f51}.avatar--3{background:#f7d05c;color:#1a1a1a}
+
+/* Left Panel */
+.figma-left-panel{position:fixed;top:var(--toolbar-height);left:0;bottom:var(--status-height);width:var(--panel-width);background:var(--figma-panel);border-right:1px solid var(--figma-border);z-index:40;display:flex;flex-direction:column;overflow-y:auto;font-family:var(--font-mono);font-size:11px;color:var(--figma-text-secondary);transition:background 0.3s,border-color 0.3s,color 0.3s}
+.figma-left-panel .panel-header{padding:8px 12px;border-bottom:1px solid var(--figma-border);font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:0.08em;color:var(--figma-text-secondary);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;transition:border-color 0.3s,color 0.3s}
+.figma-left-panel .panel-content{padding:8px 0;flex:1;overflow-y:auto}
+.figma-left-panel .layer-group{padding:6px 12px;display:flex;align-items:center;gap:6px;border-left:2px solid transparent;cursor:pointer;pointer-events:auto;transition:background 0.15s,border-color 0.15s;color:var(--figma-text-secondary);text-decoration:none;font-family:var(--font-mono);font-size:11px;user-select:none;-webkit-user-select:none;background:none;border:none;width:100%;text-align:left}
+.figma-left-panel .layer-group:hover{background:rgba(0,0,0,0.06);color:var(--figma-text)}
+.figma-left-panel .layer-group.active{border-left-color:var(--accent);background:rgba(129,216,208,0.15);color:var(--accent);font-weight:600}
+.figma-left-panel .layer-group:focus-visible{outline:2px solid var(--focus-ring);outline-offset:-2px}
+.figma-left-panel .layer-group .layer-icon{width:16px;height:16px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.figma-left-panel .layer-group .layer-name{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.figma-left-panel .layer-group .layer-count{font-size:8px;background:var(--figma-border);padding:1px 5px;border-radius:8px;color:var(--figma-text-secondary)}
+.figma-left-panel .layer-group.layer-indent-1{padding-left:28px}
+.figma-left-panel .layer-group.layer-indent-2{padding-left:44px}
+.figma-left-panel .layer-group.layer-parent{font-weight:600;color:var(--figma-text);cursor:default;pointer-events:none}
+.figma-left-panel .back-btn{padding:10px 12px;margin:8px;background:var(--accent);color:var(--accent-contrast);border:none;border-radius:4px;font-family:var(--font-mono);font-size:10px;font-weight:600;cursor:pointer;text-align:center;display:flex;align-items:center;gap:6px;justify-content:center;transition:background 0.15s;flex-shrink:0;pointer-events:auto;z-index:41}
+.figma-left-panel .back-btn:hover{background:var(--accent-dark);color:#fff}
+
+/* Right Panel */
+.figma-right-panel{position:fixed;top:var(--toolbar-height);right:0;bottom:var(--status-height);width:var(--panel-width);background:var(--figma-panel);border-left:1px solid var(--figma-border);z-index:40;display:flex;flex-direction:column;overflow-y:auto;font-family:var(--font-mono);font-size:11px;color:var(--figma-text-secondary);transition:background 0.3s,border-color 0.3s,color 0.3s}
+.figma-right-panel .panel-header{padding:8px 12px;border-bottom:1px solid var(--figma-border);font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:0.08em;display:flex;gap:6px;align-items:center;flex-shrink:0;transition:border-color 0.3s}
+.figma-right-panel .panel-header .tab{padding:4px 8px;border-radius:3px;font-size:9px;text-transform:none;letter-spacing:0;cursor:pointer;pointer-events:auto;transition:background 0.15s}
+.figma-right-panel .panel-header .tab.active{background:var(--accent);color:var(--accent-contrast);font-weight:600}
+.figma-right-panel .panel-content{padding:12px;flex:1;pointer-events:none}
+.figma-right-panel .prop-group{margin-bottom:16px}
+.figma-right-panel .prop-label{font-size:9px;text-transform:uppercase;letter-spacing:0.06em;color:var(--figma-text-secondary);margin-bottom:6px;opacity:0.7}
+.figma-right-panel .prop-row{display:flex;align-items:center;gap:6px;padding:3px 0}
+.figma-right-panel .prop-input{flex:1;height:24px;background:var(--figma-bg);border:1px solid var(--figma-border);border-radius:3px;display:flex;align-items:center;padding:0 6px;font-size:10px;color:var(--figma-text)}
+.figma-right-panel .prop-color-swatch{width:20px;height:20px;border-radius:3px;border:1px solid var(--figma-border)}
+.figma-right-panel .download-btn{padding:10px 20px;background:var(--accent);color:var(--accent-contrast);border:none;border-radius:6px;font-family:var(--font-mono);font-size:10px;font-weight:600;cursor:pointer;transition:background 0.15s;display:flex;align-items:center;gap:6px;width:100%;justify-content:center;pointer-events:auto;margin-top:8px}
+.figma-right-panel .download-btn:hover{background:var(--accent-dark);color:#fff}
+
+/* Status Bar */
+.figma-status-bar{position:fixed;bottom:0;left:0;right:0;height:var(--status-height);background:var(--figma-panel);border-top:1px solid var(--figma-border);z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 12px;font-family:var(--font-mono);font-size:10px;color:var(--figma-text-secondary);user-select:none;-webkit-user-select:none;pointer-events:none}
+.figma-status-bar .zoom-control{display:flex;align-items:center;gap:8px}
+.figma-status-bar .zoom-percentage{font-weight:600;color:var(--figma-text)}
+
+/* Canvas */
+.figma-canvas{position:fixed;top:var(--toolbar-height);left:var(--panel-width);right:var(--panel-width);bottom:var(--status-height);overflow-y:auto;overflow-x:hidden;background-color:var(--figma-bg);background-image:radial-gradient(circle,var(--figma-canvas-dots) 1px,transparent 1px),radial-gradient(circle,var(--figma-canvas-dots) 1px,transparent 1px);background-size:24px 24px,4px 4px;background-position:0 0,12px 12px;z-index:1;transition:background-color 0.3s}
+
+/* Portfolio Content */
+.portfolio-content,.case-study-view,.resume-view{max-width:720px;margin:30px auto;padding:0 16px;position:relative;z-index:2;background:var(--canvas-surface);border-radius:12px;box-shadow:var(--canvas-shadow);overflow:hidden;color:var(--canvas-text)}
+.portfolio-content .portfolio-inner,.case-study-view .case-study-inner,.resume-view .resume-inner{padding:32px 28px 40px}
+.portfolio-header{text-align:left;margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--canvas-border)}
+.portfolio-header h1{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;letter-spacing:-0.03em;line-height:1.2;margin-bottom:8px}
+.portfolio-header .subtitle{font-family:var(--font-hand);font-size:1.3rem;color:var(--accent-dark);margin-bottom:12px;transform:rotate(-0.5deg);display:inline-block}
+.portfolio-header .description{font-size:0.9rem;color:var(--canvas-text-secondary);max-width:550px;line-height:1.7}
+.portfolio-section{margin-bottom:32px}
+.portfolio-section .section-heading{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:16px;padding-bottom:8px;border-bottom:2px dashed var(--canvas-border)}
+.portfolio-section .section-heading h2{font-size:1.2rem;font-weight:700;letter-spacing:-0.02em}
+.portfolio-section .section-heading .section-tag{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.08em;color:var(--canvas-text-muted)}
+.portfolio-section .section-heading .section-note{font-family:var(--font-hand);font-size:1.1rem;color:var(--accent-dark);margin-left:auto;transform:rotate(-1deg)}
+.project-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+.project-card{background:var(--canvas-surface);border:1px solid var(--canvas-border);border-radius:8px;padding:16px;cursor:pointer;transition:all 0.25s;box-shadow:0 1px 3px rgba(0,0,0,0.04);position:relative;display:flex;flex-direction:column;gap:8px;text-align:left}
+.project-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.08);border-color:var(--accent);transform:translateY(-2px)}
+.project-card .card-tag{font-family:var(--font-mono);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;color:var(--accent-dark);font-weight:600}
+.project-card h3{font-size:1rem;font-weight:600;letter-spacing:-0.01em}
+.project-card p{font-size:0.8rem;color:var(--canvas-text-secondary);line-height:1.6;flex:1}
+.project-card .card-meta{display:flex;justify-content:space-between;align-items:center;font-family:var(--font-mono);font-size:9px;color:var(--canvas-text-muted);border-top:1px solid var(--canvas-border);padding-top:8px}
+.project-card .card-meta .arrow{color:var(--accent-dark);font-size:12px;font-weight:700;transition:transform 0.15s}
+.project-card:hover .card-meta .arrow{transform:translateX(4px)}
+.skills-tags{display:flex;flex-wrap:wrap;gap:6px}
+.skill-tag{font-family:var(--font-mono);font-size:10px;padding:4px 10px;background:var(--accent-light);color:var(--accent-contrast);border-radius:4px;font-weight:500;transition:all 0.15s}
+.skill-tag:hover{background:var(--accent);color:#fff}
+.contact-box{background:var(--canvas-bg);border:1px solid var(--canvas-border);border-radius:8px;padding:20px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.05)}
+.contact-box h3{font-size:1rem;font-weight:600;margin-bottom:8px}
+.contact-box p{font-size:0.85rem;color:var(--canvas-text-secondary);margin-bottom:16px}
+.contact-box .contact-btn{display:inline-block;padding:10px 22px;background:var(--accent);color:var(--accent-contrast);font-weight:600;font-size:0.85rem;border-radius:6px;text-decoration:none;transition:all 0.15s;box-shadow:0 2px 6px rgba(129,216,208,0.4)}
+.contact-box .contact-btn:hover{background:var(--accent-dark);color:#fff;box-shadow:0 4px 12px rgba(129,216,208,0.5);transform:translateY(-2px)}
+
+/* Case Study */
+.case-study-view{display:none}
+.case-study-view.active{display:block}
+.case-study-view .back-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-mono);font-size:11px;color:var(--accent-dark);cursor:pointer;margin-bottom:16px;background:none;border:none;font-weight:600;transition:color 0.15s}
+.case-study-view .back-link:hover{color:var(--accent)}
+.case-study-view .case-tag{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--accent-dark);font-weight:600;margin-bottom:4px}
+.case-study-view .case-classification{font-family:var(--font-mono);font-size:9px;text-transform:uppercase;letter-spacing:0.04em;color:var(--canvas-text-muted);margin-bottom:12px}
+.case-study-view h2{font-size:1.6rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:8px}
+.case-study-view .case-role{font-family:var(--font-mono);font-size:11px;color:var(--canvas-text-muted);margin-bottom:16px}
+.case-study-view .case-note{font-family:var(--font-hand);font-size:1.1rem;background:var(--accent-light);padding:12px 16px;border-radius:4px 12px 4px 12px;margin:16px 0;color:var(--accent-contrast);transform:rotate(-0.5deg)}
+.case-study-view .case-section{margin:16px 0}
+.case-study-view .case-section h3{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--canvas-text-muted);margin-bottom:6px;border-bottom:1px solid var(--canvas-border);padding-bottom:4px}
+.case-study-view .case-section p{font-size:0.85rem;color:var(--canvas-text-secondary);line-height:1.7}
+.case-study-view .case-tags{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0}
+.case-study-view .case-tags .tag{font-family:var(--font-mono);font-size:9px;padding:4px 10px;background:var(--accent-light);color:var(--accent-contrast);border-radius:4px;font-weight:500}
+
+/* Project Links */
+.project-links{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;padding-top:16px;border-top:1px solid var(--canvas-border)}
+.project-link-btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:var(--accent);color:var(--accent-contrast);border-radius:6px;font-weight:600;font-size:0.85rem;text-decoration:none;transition:all 0.15s;box-shadow:0 2px 6px rgba(129,216,208,0.4)}
+.project-link-btn:hover{background:var(--accent-dark);color:#fff;box-shadow:0 4px 12px rgba(129,216,208,0.5);transform:translateY(-2px)}
+.project-link-btn--github{background:var(--canvas-text);color:var(--canvas-surface);box-shadow:0 2px 6px rgba(0,0,0,0.2)}
+.project-link-btn--github:hover{background:#333;color:#fff}
+
+/* Resume */
+.resume-view{display:none}
+.resume-view.active{display:block}
+.resume-view .resume-inner{font-family:var(--font-resume)}
+.resume-view .resume-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--canvas-border);flex-wrap:wrap;gap:8px}
+.resume-view .resume-header h2{font-size:1.5rem;font-weight:700;letter-spacing:-0.02em;color:var(--canvas-text)}
+.resume-view .download-btn{padding:10px 20px;background:var(--accent);color:var(--accent-contrast);border:none;border-radius:6px;font-family:var(--font-mono);font-size:10px;font-weight:600;cursor:pointer;transition:background 0.15s;display:flex;align-items:center;gap:6px}
+.resume-view .download-btn:hover{background:var(--accent-dark);color:#fff}
+.resume-view .resume-contact{font-family:var(--font-mono);font-size:0.8rem;color:var(--canvas-text-secondary);margin-bottom:20px;border-bottom:1px solid var(--canvas-border);padding-bottom:8px}
+.resume-view .resume-section{margin-bottom:20px}
+.resume-view .resume-section h3{font-size:0.9rem;font-weight:700;color:var(--canvas-text);margin-bottom:6px;letter-spacing:-0.01em}
+.resume-view .resume-section h4{font-family:var(--font-mono);font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--canvas-text-muted);margin-bottom:4px;border-bottom:1px solid var(--canvas-border);padding-bottom:2px}
+.resume-view .resume-section ul{list-style:none;padding:0}
+.resume-view .resume-section li{font-size:0.8rem;color:var(--canvas-text-secondary);line-height:1.6;margin-bottom:4px;padding-left:14px;position:relative;list-style:none}
+.resume-view .resume-section li::before{content:'•';position:absolute;left:0;color:var(--accent-dark);font-weight:700}
+.resume-view .resume-section li strong{color:var(--canvas-text);font-weight:600}
+.resume-view .resume-date{font-family:var(--font-mono);font-size:0.7rem;color:var(--accent-dark)}
+
+/* Cursor */
+.figma-cursor{position:fixed;pointer-events:none;z-index:60;user-select:none;-webkit-user-select:none;font-family:var(--font-mono);font-size:10px;display:flex;align-items:flex-start;gap:2px;animation:cursor-glide 20s ease-in-out infinite;color:var(--figma-cursor)}
+.figma-cursor.cursor-hidden{display:none}
+.figma-cursor .cursor-arrow{width:14px;height:14px;fill:currentColor;flex-shrink:0}
+.figma-cursor .cursor-label{padding:2px 6px;border-radius:2px;font-size:9px;font-weight:600;white-space:nowrap;background:var(--figma-cursor);color:#fff}
+@keyframes cursor-glide{0%{transform:translate(0,0)}20%{transform:translate(180px,100px)}40%{transform:translate(320px,45px)}60%{transform:translate(200px,180px)}80%{transform:translate(80px,60px)}100%{transform:translate(0,0)}}
+
+/* Photo Modal */
+.photo-modal{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.7);display:none;align-items:center;justify-content:center;pointer-events:auto}
+.photo-modal.active{display:flex}
+.photo-modal .modal-content{background:var(--canvas-surface);padding:20px;border-radius:12px;max-width:400px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.5)}
+.photo-modal .modal-content img{width:200px;height:200px;border-radius:50%;object-fit:cover;margin:0 auto 16px;background:var(--figma-border);display:block}
+.photo-modal .modal-content h3{font-size:1.2rem;font-weight:700;margin-bottom:4px}
+.photo-modal .modal-content p{font-size:0.85rem;color:var(--canvas-text-secondary);margin-bottom:16px}
+.photo-modal .close-modal{background:var(--accent);color:var(--accent-contrast);border:none;padding:8px 20px;border-radius:6px;font-weight:600;cursor:pointer;font-size:0.85rem}
+.photo-modal .close-modal:hover{background:var(--accent-dark);color:#fff}
+
+/* Responsive */
+@media(max-width:1024px){:root{--panel-width:180px}.portfolio-content,.case-study-view,.resume-view{max-width:600px}}
+@media(max-width:768px){.figma-toolbar,.figma-left-panel,.figma-right-panel,.figma-status-bar,.figma-cursor{display:none!important}.figma-canvas{margin:0!important;top:0;bottom:0;left:0;right:0;background:var(--canvas-bg)}.portfolio-content,.case-study-view,.resume-view{margin:0;border-radius:0;max-width:100%;box-shadow:none}.portfolio-content .portfolio-inner,.case-study-view .case-study-inner,.resume-view .resume-inner{padding:20px 16px 32px}.project-grid{grid-template-columns:1fr}.section-note{display:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important}}
+</style>
+</head>
+
+<body>
+    <a href="#portfolio-main" class="skip-link">Skip to portfolio content</a>
+
+    <div class="figma-workspace" id="figma-workspace">
+        <header class="figma-toolbar" aria-label="Figma toolbar">
+            <div class="toolbar-left">
+                <button class="photo-placeholder" id="photo-btn" aria-label="View photo preview">
+                    <img src="ftq.jpg" alt="Franchezca Quiocho" class="photo-badge">
+                </button>
+                <span class="file-name">Quiocho_Portfolio_v1.0.fig</span>
+                <span class="divider"></span>
+                <span class="tool-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                        stroke="currentColor" stroke-width="1">
+                        <path d="M3 1H1v10h10V9" />
+                        <path d="M5 7L11 1M11 1H8M11 1V4" />
+                    </svg></span>
+                <span class="tool-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                        stroke="currentColor" stroke-width="1">
+                        <rect x="1" y="1" width="10" height="10" />
+                    </svg></span>
+            </div>
+            <div class="toolbar-center">
+                <span style="font-size:10px;color:var(--figma-text-secondary);">View</span>
+            </div>
+            <div class="toolbar-right">
+                <div class="avatar-group">
+                    <!-- <a href="https://ftquiocho.github.io/portfolio/" target="_blank" rel="noopener noreferrer" class="avatar avatar--1" aria-label="GitHub profile" title="GitHub">GH</a> -->
+                    <a href="https://linkedin.com/in/franchezca-q-a82b32251" target="_blank" rel="noopener noreferrer"
+                        class="avatar avatar--2" aria-label="LinkedIn profile" title="View my LinkedIn profile">LI</a>
+                    <a href="mailto:iamftq@gmail.com" class="avatar avatar--3" aria-label="Email"
+                        title="Email me">@</a>
+                </div>
+                <button class="cursor-toggle" id="cursor-toggle" aria-label="Toggle floating cursor visibility"
+                    data-tooltip="Hide cursor">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+                        <path d="M0 0 L14 8 L8 10 L6 14 Z" />
+                    </svg>
+                </button>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle workspace theme">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1">
+                        <circle cx="6" cy="6" r="2" />
+                        <path d="M6 1V3M6 9V11M11 6H9M3 6H1M9.5 2.5L8 4M4 8L2.5 9.5M9.5 9.5L8 8M4 4L2.5 2.5" />
+                    </svg>
+                    <span>Light</span>
+                </button>
+            </div>
+        </header>
+        <nav class="figma-left-panel" aria-label="Portfolio navigation">
+            <div class="panel-header"><span>Navigation</span></div>
+            <div class="panel-content" id="nav-layers"></div>
+        </nav>
+
+        <aside class="figma-right-panel" aria-label="Properties panel">
+            <div class="panel-header">
+                <span class="tab active" id="tab-design" role="button" tabindex="0">Design</span>
+                <span class="tab" id="tab-inspect" role="button" tabindex="0" aria-label="Inspect"
+                    data-tooltip="Resume preview + download">Inspect</span>
+            </div>
+            <div class="panel-content" id="panel-design-content">
+                <div class="prop-group">
+                    <div class="prop-label">Canvas</div>
+                    <div class="prop-row"><span>W</span><span class="prop-input">720</span></div>
+                </div>
+                <div class="prop-group">
+                    <div class="prop-label">Fill</div>
+                    <div class="prop-row">
+                        <div class="prop-color-swatch" style="background:#ffffff;"></div><span
+                            class="prop-input">#FFFFFF</span>
+                    </div>
+                </div>
+                <div class="prop-group">
+                    <div class="prop-label">Accent</div>
+                    <div class="prop-row">
+                        <div class="prop-color-swatch" style="background:#81d8d0;"></div><span
+                            class="prop-input">#81D8D0</span>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-content" id="panel-inspect-content" style="display:none;pointer-events:auto;">
+                <div class="prop-group">
+                    <div class="prop-label">Career Highlights</div>
+                    <div
+                        style="background:var(--figma-bg);border:1px solid var(--figma-border);border-radius:4px;padding:10px;font-size:9px;color:var(--figma-text);min-height:200px;">
+                        <div style="font-weight:600;margin-bottom:8px;">FRANCHEZCA QUIOCHO</div>
+                        <div style="color:var(--figma-text-secondary);margin-bottom:12px;">Senior UI/UX Designer</div>
+                        <div style="border-top:1px solid var(--figma-border);padding-top:6px;margin-bottom:6px;">
+                            <span style="color:var(--accent);font-weight:700;">2016</span> — Started in visual design,
+                            branding, and digital experiences
+                        </div>
+                        <div style="border-top:1px solid var(--figma-border);padding-top:6px;margin-bottom:6px;">
+                            <span style="color:var(--accent);font-weight:700;">2017</span> — Moved into UI/UX for
+                            enterprise and government systems
+                        </div>
+                        <div style="border-top:1px solid var(--figma-border);padding-top:6px;margin-bottom:6px;">
+                            <span style="color:var(--accent);font-weight:700;">2021</span> — Led UI/UX work for
+                            government digital permitting platforms
+                        </div>
+                        <div style="border-top:1px solid var(--figma-border);padding-top:6px;margin-bottom:6px;">
+                            <span style="color:var(--accent);font-weight:700;">2023</span> — Built reusable UI systems
+                            for large-scale applications
+                        </div>
+                        <div style="border-top:1px solid var(--figma-border);padding-top:6px;margin-bottom:6px;">
+                            <span style="color:var(--accent);font-weight:700;">Today</span> — Leading UX and UI work for
+                            enterprise and workflow-heavy platforms
+                        </div>
+                    </div>
+                    <button class="download-btn" id="download-resume">Download Resume</button>
+                </div>
+            </div>
+        </aside>
+
+        <main class="figma-canvas" id="portfolio-main">
+            <div class="portfolio-content" id="portfolio-view">
+                <div class="portfolio-inner">
+                    <header class="portfolio-header">
+                        <h1>Franchezca Quiocho</h1>
+                        <span class="subtitle">Senior UI/UX Designer · mapping flows with Figma, AI, and code</span>
+                        <p class="description">
+                            I design enterprise-grade digital products that feel effortless. With over 9 years
+                            of experience across maritime, government, HR, banking, education, and chatbot ecosystems,
+                            I turn complex workflows into clear, accessible, and developer-ready interfaces.
+                            I'm currently exploring AI-enabled product design and AI-assisted workflows.
+                        </p>
+                    </header>
+
+                    <section class="portfolio-section" id="section-work">
+                        <div class="section-heading">
+                            <h2>Selected Work</h2>
+                            <span class="section-tag">[enterprise_ux]</span>
+                            <span class="section-note">click to open case study</span>
+                        </div>
+                        <div class="project-grid" id="project-grid" role="list"></div>
+                    </section>
+
+                    <section class="portfolio-section" id="section-skills">
+                        <div class="section-heading">
+                            <h2>Toolbox</h2>
+                            <span class="section-tag">[daily_drivers]</span>
+                            <span class="section-note">what I work with</span>
+                        </div>
+                        <div class="skills-tags" role="list">
+                            <span class="skill-tag" role="listitem">Figma</span>
+                            <span class="skill-tag" role="listitem">Axure RP</span>
+                            <span class="skill-tag" role="listitem">HTML/CSS</span>
+                            <span class="skill-tag" role="listitem">JavaScript</span>
+                            <span class="skill-tag" role="listitem">Bootstrap</span>
+                            <span class="skill-tag" role="listitem">Tailwind CSS</span>
+                            <span class="skill-tag" role="listitem">Ant Design</span>
+                            <span class="skill-tag" role="listitem">DevExtreme</span>
+                            <span class="skill-tag" role="listitem">Design Tokens</span>
+                            <span class="skill-tag" role="listitem">WCAG 2.1</span>
+                            <span class="skill-tag" role="listitem">AI-Assisted Design</span>
+                            <span class="skill-tag" role="listitem">Rapid Prototyping</span>
+                        </div>
+                    </section>
+
+                    <section class="portfolio-section" id="section-contact">
+                        <div class="section-heading">
+                            <h2>Let's Connect</h2>
+                            <span class="section-tag">[open_to_remote]</span>
+                        </div>
+                        <div class="contact-box">
+                            <h3>Philippines · Open to Remote (Global)</h3>
+                            <p>Direct email. No intake forms.</p>
+                            <a href="mailto:iamftq@gmail.com" class="contact-btn">Email Me</a>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <div class="case-study-view" id="case-study-view" role="region" aria-live="polite">
+                <div class="case-study-inner">
+                    <button class="back-link" id="case-back-btn">← Back to Portfolio</button>
+                    <div class="case-tag" id="case-tag"></div>
+                    <div class="case-classification" id="case-classification"></div>
+                    <h2 id="case-title"></h2>
+                    <div class="case-role" id="case-role"></div>
+                    <div class="case-note" id="case-note"></div>
+                    <div class="case-section">
+                        <h3>Overview</h3>
+                        <p id="case-overview"></p>
+                    </div>
+                    <div class="case-section">
+                        <h3>Problem</h3>
+                        <p id="case-problem"></p>
+                    </div>
+                    <div class="case-section">
+                        <h3>Process</h3>
+                        <p id="case-process"></p>
+                    </div>
+                    <div class="case-section">
+                        <h3>Solution</h3>
+                        <p id="case-solution"></p>
+                    </div>
+                    <div class="case-section">
+                        <h3>Impact</h3>
+                        <p id="case-impact"></p>
+                    </div>
+                    <div class="case-tags" id="case-tags"></div>
+                    <div class="project-links" id="project-links" style="display:none;"></div>
+                </div>
+            </div>
+
+            <div class="resume-view" id="resume-view" role="region" aria-live="polite">
+                <div class="resume-inner">
+                    <div class="resume-header">
+                        <h2>Resume</h2>
+                        <button class="download-btn" id="download-resume-main" aria-label="Download resume PDF">Download
+                            PDF</button>
+                    </div>
+                    <div class="resume-contact">iamftq@gmail.com | Philippines | Open to Remote (Global)</div>
+
+                    <div class="resume-section">
+                        <h3>Professional Summary</h3>
+                        <p>Senior UI/UX Designer with over 9 years of experience designing enterprise-grade digital
+                            products across maritime operations, HR systems, government platforms, banking tools,
+                            education systems, and chatbot ecosystems. Experienced in leading end-to-end product design,
+                            UX strategy, and design system development for complex workflow-driven applications. Strong
+                            capability in bridging design and development through interactive prototyping and
+                            developer-ready UI implementation.</p>
+                    </div>
+
+                    <div class="resume-section">
+                        <h4>Core Skills</h4>
+                        <ul>
+                            <li><strong>UX & Product Design:</strong> UI/UX Design, Product Design, UX Strategy,
+                                Information Architecture, Workflow Design, Wireframing, Prototyping, User Flows, Journey
+                                Mapping, UX Research, UX Audits, Usability Testing, Enterprise UX, Dashboard Design,
+                                System Thinking</li>
+                            <li><strong>Design Systems & Frontend Collaboration:</strong> Scalable Design Systems,
+                                Component-Based Architecture, Design Tokens, UI Kits, Responsive Design, Accessibility
+                                (WCAG 2.1), Design Consistency, UX Governance</li>
+                            <li><strong>Frontend Technologies:</strong> HTML, CSS, JavaScript, Bootstrap, Tailwind CSS,
+                                Ant Design, DevExtreme (ASP.NET UI Framework)</li>
+                            <li><strong>Design & Prototyping Tools:</strong> Figma, Axure RP, Adobe XD, Photoshop</li>
+                            <li><strong>Prototyping Capabilities:</strong> High-fidelity prototyping, Interactive
+                                workflows, Rapid prototyping, Design validation</li>
+                            <li><strong>Collaboration Tools:</strong> Jira, Trello, Slack, Microsoft Teams, Microsoft
+                                365</li>
+                            <li><strong>AI & Automation (Exploratory):</strong> AI-assisted prototyping, AI design
+                                plugins, Design-to-code tools, Workflow automation</li>
+                        </ul>
+                    </div>
+
+                    <div class="resume-section">
+                        <h4>Professional Experience</h4>
+                        <strong>Lead UI/UX Designer</strong>
+                        <ul>
+                            <span class="resume-date">Ripple Operations (formerly ShipAdmin Philippines Inc., acquired
+                                via Adonis HR) |
+                                November 2022 - Present</span>
+                            <ul>
+                                <li>Sole UI/UX Designer responsible for enterprise maritime workforce and fleet
+                                    management platforms</li>
+                                <li>Lead end-to-end product design for complex workflow-based internal systems used for
+                                    operations and
+                                    administration</li>
+                                <li>Designed high-fidelity interactive prototypes using Axure, HTML, CSS, and JavaScript
+                                    to simulate real
+                                    system behavior before development</li>
+                                <li>Built responsive, developer-ready UI templates using Bootstrap and DevExtreme,
+                                    improving implementation
+                                    efficiency</li>
+                                <li>Established centralized design system and reusable UI component library to ensure
+                                    design consistency
+                                    across platforms</li>
+                                <li>Conducted UX audits and redesign initiatives for legacy enterprise modules,
+                                    improving usability and
+                                    workflow clarity</li>
+                                <li>Led UI modernization and rebranding initiatives following company acquisitions and
+                                    system integration
+                                </li>
+                                <li>Collaborated closely with Product Owners and Engineering teams to define workflows,
+                                    user interactions,
+                                    and system requirements</li>
+                            </ul>
+                            <br>
+                            <strong>Senior UI/UX Designer</strong>
+                            <ul>
+                                <span class="resume-date">Centralized Cloud Computing International Inc. | Feb 2017 -
+                                    Nov 2022</span>
+                                <li>Led end-to-end UI/UX design for enterprise systems across government, banking,
+                                    education, automotive,
+                                    and chatbot platforms</li>
+                                <li>Introduced interactive prototyping workflows using Axure, improving stakeholder
+                                    validation and reducing
+                                    design ambiguity</li>
+                                <li>Transitioned organization from static wireframes to high-fidelity UX prototypes and
+                                    collaborative design
+                                    systems using Figma</li>
+                                <li>Created proof-of-concept prototypes used for client presentations and early-stage
+                                    product validation
+                                </li>
+                                <li>Designed enterprise chatbot administration consoles and conversational UX systems
+                                    for global clients
+                                </li>
+                                <li>Delivered UI specifications, wireframes, and developer-ready assets for multiple
+                                    enterprise applications
+                                </li>
+                                <li>Participated in client workshops, requirements gathering, and solution presentations
+                                </li>
+                            </ul>
+                        </ul>
+                    </div>
+
+                    <div class="resume-section">
+                        <h4>Selected Domain Experience</h4>
+                        <ul>
+                            <li>Enterprise Maritime Platform</li>
+                            <li>Human Resource Information System (HRIS)</li>
+                            <li>Government Digital Services Platform</li>
+                            <li>Admin Portals & Data-Heavy Dashboards</li>
+                            <li>Enterprise Resource Planning (ERP) System</li>
+                            <li>Learning Management System (LMS)</li>
+                            <li>Enterprise Banking Chatbot</li>
+                            <li>Automotive Conversational Platform</li>
+                            <li>Transportation Booking Platform</li>
+                            <li>Healthcare Digital Services</li>
+                            <li>Social Networking & Marketplace Application</li>
+                        </ul>
+                    </div>
+
+                    <div class="resume-section">
+                        <h4>Additional Roles</h4>
+                        <ul>
+                            <li><strong>Project Coordinator:</strong> Managed project timelines, task tracking, and
+                                cross-functional coordination between design and development teams</li>
+                            <li><strong>Quality Assurance Tester:</strong> Performed functional and UX testing to reduce
+                                post-release issues and improve usability quality</li>
+                        </ul>
+                    </div>
+
+                    <div class="resume-section">
+                        <h4>Consulting Experience</h4>
+                        <ul>
+                            <strong>Consultant for Branding</strong><br>
+                            <span class="resume-date">FDA PHILIPPINES - OFFICE OF THE DIRECTOR GENERAL | Sep 2018 - May
+                                2019</span>
+                            <ul>
+                                <li>Provided brand and visual asset design support, including packaging, campaign
+                                    materials, and internal presentation kits</li>
+                            </ul>
+                        </ul>
+                    </div>
+
+                    <div class="resume-section">
+                        <h4>Education</h4>
+                        <ul>
+                            <li><strong>Bachelor of Science in Business Administration Major in Computer
+                                    Management</strong><br>Colegio de San Juan de Letran, 1998 - 2002</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="figma-status-bar" aria-hidden="true">
+            <div class="zoom-control"><span>◀</span><span class="zoom-percentage">100%</span><span>▶</span></div>
+            <span>Quiocho_Portfolio_v1.0.fig</span>
+            <span></span>
+        </footer>
+    </div>
+
+    <!-- Photo Modal -->
+    <div class="photo-modal" id="photo-modal" role="dialog" aria-modal="true" aria-labelledby="photo-modal-title">
+        <div class="modal-content">
+            <img src="ftq.jpg" alt="Franchezca Quiocho">
+            <h3 id="photo-modal-title">Franchezca Quiocho</h3>
+            <p>Senior UI/UX Designer</p>
+            <button class="close-modal" id="close-photo-modal">Close</button>
+        </div>
+    </div>
+
+    <div class="figma-cursor" id="figma-cursor" style="top:120px;left:300px;" aria-hidden="true">
+        <svg class="cursor-arrow" viewBox="0 0 14 14" fill="currentColor">
+            <path d="M0 0 L14 8 L8 10 L6 14 Z" />
+        </svg>
+        <span class="cursor-label">Franchezca</span>
+    </div>
+
+    <script>
+        (function () {
+            'use strict';
+
+            const projectData = {
+                maritime: {
+                    cardTitle: "Maritime Workforce Platform",
+                    cardDesc: "Legacy system redesign and UI standardization",
+                    cardMetric: "Legacy modernization",
+                    caseTag: "SYS_01 // MARITIME ERP",
+                    classification: "B2B · Enterprise · SaaS",
+                    title: "Enterprise Maritime Workforce Platform",
+                    context: "Fleet & Vessel Operations · Ripple Operations",
+                    overview: "Led the UI/UX redesign of a mature maritime workforce and fleet management platform. The legacy system had grown organically over the years with inconsistent UI patterns across modules. Focused on modernizing one module at a time while ensuring familiar workflows for existing users.",
+                    problem: "The platform was already mature when I joined, but lacked a design system. Different modules had been built by different people over the years, resulting in inconsistent UI and user experience. Users were accustomed to navigating legacy modules, so any redesign had to balance modernization with familiarity.",
+                    process: "Approached the redesign module by module. First understood existing workflows, aligned with the Product Owner on improvement priorities, then introduced reusable UI patterns for forms, tables, and buttons. Created live HTML templates that stakeholders could interact with instead of reviewing static screens. These same templates were used by developers during implementation, reducing back-and-forth and keeping the final product close to the approved design.",
+                    solution: "Introduced a consistent UI structure with reusable components while modernizing legacy modules. Live HTML prototypes served as both stakeholder validation tools and developer implementation references. Each module was redesigned to streamline workflows while maintaining familiar navigation patterns for existing users.",
+                    impact: "The platform became significantly more consistent and easier to maintain. Post-redesign feedback from crew and officers confirmed that streamlined workflows helped them complete daily tasks faster, demonstrating real operational impact.",
+                    tags: ["Enterprise", "Maritime", "Legacy Modernization", "UI/UX Design", "Design System"],
+                    shortDesc: "Legacy system modernization through module-by-module redesign and reusable UI patterns.",
+                    note: "Respect the familiar while introducing the better."
+                },
+                erp: {
+                    cardTitle: "University ERP Platform",
+                    cardDesc: "Education, HR, and LMS in one system",
+                    cardMetric: "Multi-module",
+                    caseTag: "SYS_02 // DIGITAL ERP",
+                    classification: "B2B · Enterprise · Multi-Module",
+                    title: "University Enterprise Resource Planning Platform",
+                    context: "Education + HR + LMS",
+                    overview: "Designed the UI and UX for a multi-module ERP system combining university, HR, and learning management into one platform supporting administrators, HR staff, faculty, and students.",
+                    problem: "Each department had its own workflows and user needs. This led to inconsistent flows, repeated processes, and a confusing experience when users moved between modules.",
+                    process: "Mapped user journeys for each role, created flowcharts and wireframes, reviewed with stakeholders, and translated these into UI structures that made each role's tasks easier to follow.",
+                    solution: "Designed a modular ERP with clear paths per user role while maintaining consistent UI patterns across all modules. Simplified navigation and reduced unnecessary steps.",
+                    impact: "Brought multiple systems into one platform, making it easier for users to complete tasks without switching between tools.",
+                    tags: ["Enterprise", "ERP", "Education", "HR", "LMS"],
+                    shortDesc: "Designing a multi-module ERP for education, HR, and LMS.",
+                    note: "One platform, many roles. Clarity for everyone.",
+                    // links: [{ label: "Live Demo", url: "#", type: "demo" }]
+                },
+                gov: {
+                    cardTitle: "Government EODB Platform",
+                    cardDesc: "Business permits and approvals digitized",
+                    cardMetric: "Dual-portal",
+                    caseTag: "SYS_03 // GOVERNMENT EODB",
+                    classification: "B2G · Public Sector · Dual-Portal",
+                    title: "Ease of Doing Business Platform",
+                    context: "Government Digital Services · Business Permits",
+                    overview: "Designed a digital system for business registration, renewal, and permit processing with citizen and admin portals for a local government unit.",
+                    problem: "The permit process was fully manual, involving multiple steps across different offices and hard to track.",
+                    process: "Reviewed end-to-end government workflows, mapped user interactions for applicants, evaluators, approvers, and payment officers, and validated with stakeholders.",
+                    solution: "Designed a two-part system: a citizen portal for applying, paying, and tracking permits, and an admin portal for reviewing and approving applications.",
+                    impact: "Moved the permit process from manual paperwork to a structured digital system, making it easier for applicants to track their applications.",
+                    tags: ["Government", "EODB", "Public Sector", "Workflow"],
+                    shortDesc: "Digitizing business permit applications and approvals.",
+                    note: "Clear processes build public trust."
+                },
+                hrPortal: {
+                    cardTitle: "HR & Property System",
+                    cardDesc: "HRIS and asset management unified",
+                    cardMetric: "Internal tool",
+                    caseTag: "SYS_04 // HRIS & ASSET",
+                    classification: "B2B · Enterprise · Internal Tool",
+                    title: "Human Resource & Property Information Management System",
+                    context: "Enterprise Systems · HRIS · Asset Management · UI/UX Design",
+                    overview: "Designed the UI and UX for a system that manages HR processes and property/asset tracking in one platform. It supports internal teams handling employee records, approvals, and asset management in day-to-day operations.",
+                    problem: "HR and property tracking were previously handled using separate tools and manual processes. This made it hard to keep data consistent, track requests, and monitor the status of approvals across departments.",
+                    process: "I reviewed how HR and property workflows were being handled, including employee records, asset tracking, and approval steps. I mapped out how different users like HR staff, admin teams, and approvers interact with the system, then translated these into flowcharts and UI structures.",
+                    solution: "Designed a unified system that brings HR and property management into one platform. It includes role-based dashboards, structured forms, and clear approval flows so users can easily track requests and updates.",
+                    impact: "Helped reduce scattered tracking by consolidating HR and property processes into a single system. It made it easier for teams to monitor requests, approvals, and asset status without switching between tools.",
+                    tags: ["Enterprise", "HRIS", "Property Management", "Workflow System", "UI/UX Design"],
+                    shortDesc: "Combining HR and asset management workflows into one structured internal system.",
+                    note: "Unified systems reduce scattered tracking."
+                },
+                ecommerce: {
+                    cardTitle: "Digital Commerce POC",
+                    cardDesc: "Dual-portal marketplace system",
+                    cardMetric: "Proof of concept",
+                    caseTag: "SAAS_01 // E-COMMERCE POC",
+                    classification: "B2C + B2B · Marketplace · POC",
+                    title: "Digital Commerce Platform (Proof of Concept)",
+                    context: "E-Commerce · Digital Platform · Marketplace UX",
+                    overview: "Designed the UI and UX for a proof-of-concept digital commerce platform that supports online selling and product browsing. The system includes a shopper-facing marketplace and an admin portal for managing products, sellers, and transactions.",
+                    problem: "Product listings and sales channels were scattered, making it hard for shoppers to find items and for sellers to manage their products in one place. There was no single system for handling listings, categories, and transactions.",
+                    process: "I looked at how the marketplace should work from both sides: shoppers and sellers. I mapped the full flow from browsing products to checkout, and also the backend processes for managing listings, categories, and orders. These were turned into structured flows and UI layouts that support both users and admins.",
+                    solution: "Designed a two part system: a shopper side for browsing and purchasing products, and an admin portal for managing listings, sellers, and transactions. Focused on keeping the shopping experience simple while making the admin side organized and easy to operate.",
+                    impact: "Created a clear structure for a digital marketplace that supports both selling and management. It helped define how products are discovered, managed, and processed in a single system.",
+                    tags: ["E-Commerce", "Marketplace", "Admin System", "UI/UX Design", "POC"],
+                    shortDesc: "Designing a dual-portal marketplace system for product browsing, selling, and management.",
+                    note: "Simplify the shopper, organize the seller."
+                },
+                rebranding: {
+                    cardTitle: "Rebranding Design System",
+                    cardDesc: "Company Brand unification",
+                    cardMetric: "Brand standardization",
+                    caseTag: "B2B+SAAS_01 // REBRANDING DS",
+                    classification: "B2B · Enterprise · Brand Integration",
+                    title: "Rebranding Design System",
+                    context: "Post-Acquisition · Design System · Brand Standardization",
+                    overview: "Led the design system and rebranding initiative following the acquisition of ShipAdmin Philippines Inc and Adonis HR by Ripple Operations. Standardized colors, typography, components, and branding across both platforms to create a unified visual identity.",
+                    problem: "After the acquisition, two separate products (ShipAdmin and Adonis HR) had inconsistent branding, different color schemes, conflicting UI patterns, and duplicated design efforts.",
+                    process: "Audited both platforms to identify design inconsistencies. Defined a unified color palette, typography scale, and component library that respected both brand legacies. Created design tokens and documented implementation guidelines for developers.",
+                    solution: "Built a centralized design system with standardized colors, typography, spacing, and reusable components. Applied the new branding consistently across both platforms while maintaining familiar workflows for existing users.",
+                    impact: "Reduced design duplication by 60%, accelerated feature delivery, and created a seamless visual experience across both products.",
+                    tags: ["Design System", "Rebranding", "Design Tokens", "Brand Standardization", "UI/UX Design"],
+                    shortDesc: "Standardizing branding and design systems across AdonisHR and ShipAdmin after acquisition.",
+                    note: "A unified brand builds trust across platforms."
+                }
+            };
+
+            const navLayers = document.getElementById('nav-layers');
+            const portfolioView = document.getElementById('portfolio-view');
+            const caseStudyView = document.getElementById('case-study-view');
+            const resumeView = document.getElementById('resume-view');
+            const caseBackBtn = document.getElementById('case-back-btn');
+            const caseTag = document.getElementById('case-tag');
+            const caseClassification = document.getElementById('case-classification');
+            const caseTitle = document.getElementById('case-title');
+            const caseRole = document.getElementById('case-role');
+            const caseNote = document.getElementById('case-note');
+            const caseOverview = document.getElementById('case-overview');
+            const caseProblem = document.getElementById('case-problem');
+            const caseProcess = document.getElementById('case-process');
+            const caseSolution = document.getElementById('case-solution');
+            const caseImpact = document.getElementById('case-impact');
+            const caseTags = document.getElementById('case-tags');
+            const projectGrid = document.getElementById('project-grid');
+            const tabDesign = document.getElementById('tab-design');
+            const tabInspect = document.getElementById('tab-inspect');
+            const panelDesignContent = document.getElementById('panel-design-content');
+            const panelInspectContent = document.getElementById('panel-inspect-content');
+            const downloadResume = document.getElementById('download-resume');
+            const downloadResumeMain = document.getElementById('download-resume-main');
+            const cursorToggle = document.getElementById('cursor-toggle');
+            const figmaCursor = document.getElementById('figma-cursor');
+            const themeToggle = document.getElementById('theme-toggle');
+            const workspace = document.getElementById('figma-workspace');
+            const canvas = document.querySelector('.figma-canvas');
+            const photoBtn = document.getElementById('photo-btn');
+            const photoModal = document.getElementById('photo-modal');
+            const closePhotoModal = document.getElementById('close-photo-modal');
+
+            let isCaseStudyView = false;
+            let cursorVisible = true;
+            let isDark = true;
+
+            function frameIcon() {
+                return `<svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M0 0h24v24H0z" fill="none"></path><path fill="none" stroke="currentColor" stroke-width="1.5" d="M2 6h20M2 18h20M6 22V2m12 20V2" stroke-linejoin="round"></path></svg>`;
+            }
+            function groupIcon() {
+                return `<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1"><rect x="1" y="1" width="8" height="8"/><rect x="5" y="5" width="8" height="8"/></svg>`;
+            }
+            function subIcon() {
+                return `<svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1"><rect x="0.5" y="0.5" width="9" height="9"/><path d="M2.5 0.5v9M0.5 2.5h9"/></svg>`;
+            }
+
+            function buildProjectCards() {
+                projectGrid.innerHTML = '';
+                Object.keys(projectData).forEach(pid => {
+                    const p = projectData[pid];
+                    const card = document.createElement('article');
+                    card.className = 'project-card';
+                    card.setAttribute('role', 'listitem');
+                    card.setAttribute('tabindex', '0');
+                    card.setAttribute('data-project', pid);
+                    card.setAttribute('aria-label', p.title + ' — open case study');
+                    card.innerHTML = '<span class="card-tag">' + p.caseTag + '</span><h3>' + (p.cardTitle || p.title) + '</h3><p>' + (p.cardDesc || p.shortDesc) + '</p><div class="card-meta"><span>' + (p.cardMetric || p.classification) + '</span><span class="arrow">→</span></div>';
+                    card.addEventListener('click', () => openCaseStudy(pid));
+                    card.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openCaseStudy(pid); } });
+                    projectGrid.appendChild(card);
+                });
+            }
+
+            function buildMainNav() {
+                navLayers.innerHTML = '';
+
+                // Parent: Portfolio Overview (non-clickable)
+                const parentDiv = document.createElement('div');
+                parentDiv.className = 'layer-group layer-parent';
+                parentDiv.innerHTML = '<span class="layer-name">Portfolio Overview</span>';
+                navLayers.appendChild(parentDiv);
+
+                // Children
+                const sections = [
+                    { id: 'work', label: 'Selected Work', type: 'group', target: 'section-work', children: Object.keys(projectData).map(pid => ({ id: pid, label: projectData[pid].title.length > 24 ? projectData[pid].title.substring(0, 22) + '...' : projectData[pid].title, project: pid })) },
+                    { id: 'skills', label: 'Toolbox', type: 'frame', target: 'section-skills' },
+                    { id: 'contact', label: 'Contact', type: 'frame', target: 'section-contact' },
+                    { id: 'resume', label: 'Resume', type: 'frame', target: 'resume-view' },
+                ];
+                sections.forEach(section => {
+                    const btn = document.createElement('a');
+                    btn.href = '#';
+                    btn.className = 'layer-group layer-indent-1';
+                    btn.setAttribute('data-target', section.target);
+                    btn.setAttribute('aria-label', section.label);
+                    btn.innerHTML = '<span class="layer-icon">' + (section.type === 'frame' ? frameIcon() : groupIcon()) + '</span><span class="layer-name">' + section.label + '</span>' + (section.children ? '<span class="layer-count">' + section.children.length + '</span>' : '');
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        if (section.id === 'resume') {
+                            switchTab('inspect');
+                            setActiveNav(section.target);
+                        } else {
+                            document.getElementById(section.target).scrollIntoView({ behavior: 'smooth' });
+                            setActiveNav(section.target);
+                        }
+                    });
+                    navLayers.appendChild(btn);
+                    if (section.children) {
+                        section.children.forEach(child => {
+                            const childBtn = document.createElement('a');
+                            childBtn.href = '#';
+                            childBtn.className = 'layer-group layer-indent-2';
+                            childBtn.setAttribute('data-project', child.project);
+                            childBtn.setAttribute('aria-label', 'Open ' + child.label);
+                            childBtn.innerHTML = '<span class="layer-icon">' + subIcon() + '</span><span class="layer-name">' + child.label + '</span>';
+                            childBtn.addEventListener('click', (e) => { e.preventDefault(); openCaseStudy(child.project); });
+                            navLayers.appendChild(childBtn);
+                        });
+                    }
+                });
+                isCaseStudyView = false;
+            }
+
+            function buildCaseNav(projectId) {
+                const data = projectData[projectId];
+                navLayers.innerHTML = '';
+
+                // Back to Portfolio button (top)
+                const backBtn = document.createElement('button');
+                backBtn.type = 'button';
+                backBtn.className = 'layer-group';
+                backBtn.setAttribute('aria-label', 'Back to Portfolio');
+                backBtn.innerHTML = '<span class="layer-icon">←</span><span class="layer-name">Back to Portfolio</span>';
+                backBtn.addEventListener('click', closeCaseStudy);
+                navLayers.appendChild(backBtn);
+
+                // Project title (parent)
+                const parentBtn = document.createElement('div');
+                parentBtn.className = 'layer-group layer-parent';
+                parentBtn.innerHTML = '<span class="layer-icon">' + frameIcon() + '</span><span class="layer-name">' + (data.title.length > 24 ? data.title.substring(0, 22) + '...' : data.title) + '</span>';
+                navLayers.appendChild(parentBtn);
+
+                // Submodules
+                const submodules = [
+                    { id: 'overview', label: 'Overview' },
+                    { id: 'problem', label: 'Problem' },
+                    { id: 'process', label: 'Process' },
+                    { id: 'solution', label: 'Solution' },
+                    { id: 'impact', label: 'Impact' },
+                ];
+                submodules.forEach(sub => {
+                    const btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = 'layer-group layer-indent-1';
+                    btn.setAttribute('aria-label', sub.label);
+                    btn.innerHTML = '<span class="layer-icon">' + subIcon() + '</span><span class="layer-name">' + sub.label + '</span>';
+                    btn.addEventListener('click', () => { const el = document.querySelector('[data-section="' + sub.id + '"]'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+                    navLayers.appendChild(btn);
+                });
+                isCaseStudyView = true;
+            }
+
+            function setActiveNav(targetId) {
+                document.querySelectorAll('.layer-group').forEach(el => {
+                    el.classList.remove('active');
+                    if (el.getAttribute('data-target') === targetId) el.classList.add('active');
+                });
+            }
+
+            function openCaseStudy(projectId) {
+                const data = projectData[projectId];
+                if (!data) return;
+                isCaseStudyView = true;
+                portfolioView.style.display = 'none';
+                resumeView.style.display = 'none';
+                caseStudyView.classList.add('active');
+                caseStudyView.style.display = 'block';
+                caseTag.textContent = data.caseTag;
+                caseClassification.textContent = data.classification;
+                caseTitle.textContent = data.title;
+                caseRole.textContent = data.context;
+                caseNote.textContent = data.note || '';
+                caseOverview.textContent = data.overview;
+                caseProblem.textContent = data.problem;
+                caseProcess.textContent = data.process;
+                caseSolution.textContent = data.solution;
+                caseImpact.textContent = data.impact;
+                caseTags.innerHTML = data.tags.map(tag => '<span class="tag">' + tag + '</span>').join('');
+                const linksContainer = document.getElementById('project-links');
+                if (data.links && data.links.length > 0) {
+                                linksContainer.innerHTML = data.links.map(link =>
+                                    '<a href="' + link.url + '" target="_blank" rel="noopener noreferrer" class="project-link-btn ' +
+                                    (link.type === 'github' ? 'project-link-btn--github' : '') + '">' +
+                                    link.label + ' ↗</a>'
+                                ).join('');
+                                linksContainer.style.display = 'flex';
+                            } else {
+                                linksContainer.style.display = 'none';
+                            }
+                document.getElementById('case-overview').setAttribute('data-section', 'overview');
+                document.getElementById('case-problem').setAttribute('data-section', 'problem');
+                document.getElementById('case-process').setAttribute('data-section', 'process');
+                document.getElementById('case-solution').setAttribute('data-section', 'solution');
+                document.getElementById('case-impact').setAttribute('data-section', 'impact');
+                buildCaseNav(projectId);
+                canvas.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            function closeCaseStudy() {
+                portfolioView.style.display = 'block';
+                resumeView.style.display = 'none';
+                caseStudyView.classList.remove('active');
+                caseStudyView.style.display = 'none';
+                buildMainNav();
+                setActiveNav('section-work');
+                canvas.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            function switchTab(tab) {
+                if (tab === 'design') {
+                    tabDesign.classList.add('active'); tabInspect.classList.remove('active');
+                    panelDesignContent.style.display = 'block'; panelInspectContent.style.display = 'none';
+                    resumeView.style.display = 'none'; resumeView.classList.remove('active');
+                    if (!isCaseStudyView) { portfolioView.style.display = 'block'; } else { caseStudyView.style.display = 'block'; }
+                } else if (tab === 'inspect') {
+                    tabInspect.classList.add('active'); tabDesign.classList.remove('active');
+                    panelDesignContent.style.display = 'none'; panelInspectContent.style.display = 'block';
+                    portfolioView.style.display = 'none'; caseStudyView.style.display = 'none';
+                    resumeView.classList.add('active'); resumeView.style.display = 'block';
+                    canvas.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            }
+
+            tabDesign.addEventListener('click', () => switchTab('design'));
+            tabDesign.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); switchTab('design'); } });
+            tabInspect.addEventListener('click', () => switchTab('inspect'));
+            tabInspect.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); switchTab('inspect'); } });
+
+            function triggerDownload() {
+                const link = document.createElement('a');
+                link.href = 'ftq-resume-2026.pdf';
+                link.download = 'Franchezca-Quiocho-Resume.pdf'; 
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+            downloadResume.addEventListener('click', triggerDownload);
+            downloadResumeMain.addEventListener('click', triggerDownload);
+
+            themeToggle.addEventListener('click', () => {
+                isDark = !isDark;
+                if (isDark) {
+                    workspace.classList.remove('workspace-light');
+                    themeToggle.innerHTML = '<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1"><circle cx="6" cy="6" r="2"/><path d="M6 1V3M6 9V11M11 6H9M3 6H1M9.5 2.5L8 4M4 8L2.5 9.5M9.5 9.5L8 8M4 4L2.5 2.5"/></svg><span>Light</span>';
+                } else {
+                    workspace.classList.add('workspace-light');
+                    themeToggle.innerHTML = '<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1"><circle cx="6" cy="6" r="2"/><path d="M6 1V3M6 9V11M11 6H9M3 6H1M9.5 2.5L8 4M4 8L2.5 9.5M9.5 9.5L8 8M4 4L2.5 2.5"/></svg><span>Dark</span>';
+                }
+            });
+
+            cursorToggle.addEventListener('click', () => {
+                cursorVisible = !cursorVisible;
+                if (cursorVisible) {
+                    figmaCursor.classList.remove('cursor-hidden');
+                    cursorToggle.classList.remove('active');
+                    cursorToggle.setAttribute('data-tooltip', 'Hide cursor');
+                    cursorToggle.setAttribute('aria-label', 'Hide floating cursor');
+                } else {
+                    figmaCursor.classList.add('cursor-hidden');
+                    cursorToggle.classList.add('active');
+                    cursorToggle.setAttribute('data-tooltip', 'Show cursor');
+                    cursorToggle.setAttribute('aria-label', 'Show floating cursor');
+                }
+            });
+
+            photoBtn.addEventListener('click', () => {
+                photoModal.classList.add('active');
+            });
+            closePhotoModal.addEventListener('click', () => {
+                photoModal.classList.remove('active');
+            });
+            photoModal.addEventListener('click', (e) => {
+                if (e.target === photoModal) photoModal.classList.remove('active');
+            });
+
+            caseBackBtn.addEventListener('click', closeCaseStudy);
+
+            window.addEventListener('keydown', (e) => { if (e.key === 'Escape' && isCaseStudyView) closeCaseStudy(); });
+
+            let scrollSpyTimeout;
+            canvas.addEventListener('scroll', function () {
+                clearTimeout(scrollSpyTimeout);
+                scrollSpyTimeout = setTimeout(function () {
+                    if (isCaseStudyView) return;
+                    const sections = ['section-work', 'section-skills', 'section-contact'];
+                    let currentSection = 'portfolio-header';
+                    sections.forEach(sectionId => {
+                        const el = document.getElementById(sectionId);
+                        if (el) { const rect = el.getBoundingClientRect(); const canvasRect = canvas.getBoundingClientRect(); if (rect.top < canvasRect.top + 120) { currentSection = sectionId; } }
+                    });
+                    if (currentSection === 'section-work' || currentSection === 'section-skills' || currentSection === 'section-contact') { setActiveNav(currentSection); } else { setActiveNav('portfolio-header'); }
+                }, 100);
+            });
+
+            buildProjectCards();
+            buildMainNav();
+            setActiveNav('portfolio-header');
+        })();
+    </script>
+</body>
+
+</html>
