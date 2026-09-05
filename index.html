@@ -143,9 +143,9 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
 /* Case Study */
 .case-study-view{display:none}
 .case-study-view.active{display:block}
-.case-study-view .back-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-mono);font-size:11px;color:var(--accent-dark);cursor:pointer;margin-bottom:16px;background:none;border:none;font-weight:600;transition:color 0.15s}
+.case-study-view .back-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-mono);font-size:11px;color:var(--accent-dark);cursor:pointer;margin-bottom:16px;background:none;border:none;font-weight:600;transition:color 0.15s;float:right}
 .case-study-view .back-link:hover{color:var(--accent)}
-.case-study-view .case-tag{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--accent-dark);font-weight:600;margin-bottom:4px}
+.case-study-view .case-tag{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--accent-dark);font-weight:600;margin-bottom:4px;clear:both}
 .case-study-view .case-classification{font-family:var(--font-mono);font-size:9px;text-transform:uppercase;letter-spacing:0.04em;color:var(--canvas-text-muted);margin-bottom:12px}
 .case-study-view h2{font-size:1.6rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:8px}
 .case-study-view .case-role{font-family:var(--font-mono);font-size:11px;color:var(--canvas-text-muted);margin-bottom:16px}
@@ -713,7 +713,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
                 // },
                 {
                     target:'tab-inspect',
-                    title:'Inspect Tab — View My Resume',
+                    title:'Inspect Tab: View My Resume',
                     body:'Click this tab to view my career highlights and download my resume PDF.',
                     position:'left'
                 },
@@ -787,14 +787,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
                 tutorialActive = true;
             }
 
-            function hideTutorial() {
-                tutorialTooltip.hidden = true;
-                tutorialOverlay.classList.remove('active');
-                tutorialSkip.style.display = 'none';
-                document.querySelectorAll('.tutorial-highlight').forEach(el => el.classList.remove('tutorial-highlight'));
-                tutorialActive = false;
-                currentStep = 0;
-            }
+            function hideTutorial(){ tutorialTooltip.hidden=true; tutorialOverlay.classList.remove('active'); tutorialSkip.style.display='none'; document.querySelectorAll('.tutorial-highlight').forEach(el=>el.classList.remove('tutorial-highlight')); tutorialActive=false; currentStep=0; sessionStorage.setItem('tutorialShown','true'); }
 
             function startTutorial() {
                 currentStep = 0;
@@ -811,7 +804,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
             tutorialSkip.addEventListener('click', hideTutorial);
             tutorialOverlay.addEventListener('click', hideTutorial);
             // Auto-start tutorial for first-time visitors (desktop only)
-            window.addEventListener('load',function(){if(window.innerWidth>768){setTimeout(startTutorial,1500);}});
+            window.addEventListener('load',function(){ if(window.innerWidth>768){ const tutorialShown=sessionStorage.getItem('tutorialShown'); if(!tutorialShown){ setTimeout(startTutorial,1500); sessionStorage.setItem('tutorialShown','true'); } } });
             window.addEventListener('resize',function(){if(window.innerWidth<=768&&tutorialActive){hideTutorial();}}); //close when the screen is small
 
             function buildProjectCards() {
