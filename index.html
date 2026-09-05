@@ -200,6 +200,11 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
 @media(max-width:1024px){:root{--panel-width:180px}.portfolio-content,.case-study-view,.resume-view{max-width:600px}}
 @media(max-width:768px){.figma-toolbar,.figma-left-panel,.figma-right-panel,.figma-status-bar,.figma-cursor{display:none!important}.figma-canvas{margin:0!important;top:0;bottom:0;left:0;right:0;background:var(--canvas-bg)}.portfolio-content,.case-study-view,.resume-view{margin:0;border-radius:0;max-width:100%;box-shadow:none}.portfolio-content .portfolio-inner,.case-study-view .case-study-inner,.resume-view .resume-inner{padding:20px 16px 32px}.project-grid{grid-template-columns:1fr}.section-note{display:none}.standard-download{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:var(--accent);color:var(--accent-contrast);border:none;border-radius:6px;font-family:var(--font-resume);font-size:0.85rem;font-weight:600;cursor:pointer;transition:background 0.15s;margin-top:12px}.standard-download:hover{background:var(--accent-dark);color:#fff}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important}}
+/* Mobile Banner */
+.mobile-banner{display:none;position:fixed;top:0;left:0;right:0;z-index:500;background: var(--canvas-text); color: var(--canvas-surface);padding:12px 40px 12px 16px;font-family:var(--font-resume);font-size:0.8rem;line-height:1.5;box-shadow:0 2px 8px rgba(0,0,0,0.2)}
+.mobile-banner .banner-close{position:absolute;top:8px;right:12px;background:none;border:none;font-size:18px;cursor:pointer;color:var(--accent-surface);font-family:var(--font-mono);padding:4px}
+.mobile-banner .banner-close:hover{opacity:0.7}
+@media(max-width:768px){.mobile-banner{display:block}}
 /* Tutorial Guide */
 .tutorial-overlay{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,0.6);display:none;align-items:center;justify-content:center;pointer-events:auto}
 .tutorial-overlay.active{display:flex}
@@ -217,6 +222,11 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
 </head>
 <body>
     <a href="#portfolio-main" class="skip-link">Skip to portfolio content</a>
+    <!-- Mobile Banner -->
+    <div class="mobile-banner" id="mobile-banner" role="alert" aria-live="polite">
+        <button class="banner-close" id="banner-close" aria-label="Close banner">×</button>
+        For the best experience, please view this portfolio on a screen larger than 768px. On mobile, the interface is simplified for easier browsing.
+    </div>
 
     <div class="figma-workspace" id="figma-workspace">
         <header class="figma-toolbar" aria-label="Portfolio toolbar">
@@ -250,19 +260,20 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
                     </svg>
                 </button>
 
-                <button class="tutorial-trigger" id="tutorial-trigger" aria-label="Show tutorial guide"
-                    data-tooltip="Tutorial">
-                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1">
-                        <circle cx="6" cy="6" r="5" />
-                        <path d="M6 4v5M6 2v1" />
-                    </svg>
-                </button>
                 <button class="theme-toggle" id="theme-toggle" aria-label="Toggle workspace theme">
                     <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1">
                         <circle cx="6" cy="6" r="2" />
                         <path d="M6 1V3M6 9V11M11 6H9M3 6H1M9.5 2.5L8 4M4 8L2.5 9.5M9.5 9.5L8 8M4 4L2.5 2.5" />
                     </svg>
                     <span>Light</span>
+                </button>
+
+                 <button class="tutorial-trigger" id="tutorial-trigger" aria-label="Show tutorial guide"
+                    data-tooltip="Tutorial">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1">
+                        <circle cx="6" cy="6" r="5" />
+                        <path d="M6 4v5M6 2v1" />
+                    </svg>
                 </button>
             </div>
         </header>
@@ -640,6 +651,15 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
             const currentViewLabel = document.getElementById('current-view-label');
             const standardDownloadBtn = document.getElementById('standard-download-btn');
 
+            // Mobile banner close
+            const mobileBanner=document.getElementById('mobile-banner');
+            const bannerClose=document.getElementById('banner-close');
+            if(bannerClose&&mobileBanner){
+                bannerClose.addEventListener('click',()=>{
+                    mobileBanner.style.display='none';
+                });
+            }
+
             let isCaseStudyView = false;
             let cursorVisible = true;
             let isDark = true;
@@ -790,11 +810,9 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
             tutorialClose.addEventListener('click', hideTutorial);
             tutorialSkip.addEventListener('click', hideTutorial);
             tutorialOverlay.addEventListener('click', hideTutorial);
-            // Auto-start tutorial for first-time visitors
-            window.addEventListener('load', function () {
-                setTimeout(startTutorial, 1500);
-            });
-
+            // Auto-start tutorial for first-time visitors (desktop only)
+            window.addEventListener('load',function(){if(window.innerWidth>768){setTimeout(startTutorial,1500);}});
+            window.addEventListener('resize',function(){if(window.innerWidth<=768&&tutorialActive){hideTutorial();}}); //close when the screen is small
 
             function buildProjectCards() {
                 projectGrid.innerHTML = '';
@@ -1037,7 +1055,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
             photoModal.addEventListener('click', (e) => { if (e.target === photoModal) photoModal.classList.remove('active') });
             caseBackBtn.addEventListener('click', closeCaseStudy);
 
-            window.addEventListener('keydown', (e) => { if (e.key === 'Escape' && isCaseStudyView) closeCaseStudy() });
+            window.addEventListener('keydown',(e)=>{if(e.key==='Escape'){if(isCaseStudyView){closeCaseStudy();}if(tutorialActive){hideTutorial();}if(photoModal.classList.contains('active')){photoModal.classList.remove('active');}}});
 
             let scrollSpyTimeout;
             canvas.addEventListener('scroll', function () {
