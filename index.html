@@ -238,7 +238,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
                 </div>
             </div>
             <div class="toolbar-right">
-                <div class="avatar-group">
+                <div class="avatar-group" id="avatar-group">
                     <a href="https://linkedin.com/in/franchezca-q-a82b32251" target="_blank" rel="noopener noreferrer"
                         class="avatar avatar--2" aria-label="LinkedIn profile" title="LinkedIn">LI</a>
                     <a href="mailto:iamftq@gmail.com" class="avatar avatar--3" aria-label="Email" title="Email">@</a>
@@ -666,50 +666,75 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
                 tutorialRestart.addEventListener('click', startTutorial);
             }
 
-            const tutorialSteps = [
+            const tutorialSteps=[
                 {
-                    target: 'view-toggle',
-                    title: 'Welcome to My Portfolio',
-                    body: 'This is the Designer Mode view (Figma workspace). If you\'re not familiar with Figma, I recommend switching to Standard Mode for a simpler, cleaner view.',
-                    position: 'bottom'
+                    target:'view-toggle',
+                    title:'Welcome to My Portfolio',
+                    body:'This is the Designer Mode view (Figma workspace). If you\'re not familiar with Figma, I recommend switching to Standard Mode for a simpler, cleaner view.',
+                    position:'bottom'
                 },
                 {
-                    target: 'cursor-toggle',
-                    title: 'Decorative Cursor',
-                    body: 'This is a decorative cursor that mimics Figma\'s multiplayer feature. You can hide it by clicking this button.',
-                    position: 'bottom'
+                    target:'cursor-toggle',
+                    title:'Decorative Cursor',
+                    body:'This is a decorative cursor that mimics Figma\'s multiplayer feature. You can hide it by clicking this button.',
+                    position:'bottom'
                 },
                 {
-                    target: 'theme-toggle',
-                    title: 'Dark & Light Theme',
-                    body: 'Use this button to switch between dark and light themes. Choose whichever is easier on your eyes.',
-                    position: 'bottom'
+                    target:'theme-toggle',
+                    title:'Dark & Light Theme',
+                    body:'Use this button to switch between dark and light themes. Choose whichever is easier on your eyes.',
+                    position:'bottom'
+                },
+                // {
+                //     target:'tab-design',
+                //     title:'Design Tab',
+                //     body:'This tab shows the portfolio canvas properties. It\'s decorative and reflects the Figma workspace.',
+                //     position:'left'
+                // },
+                {
+                    target:'tab-inspect',
+                    title:'Inspect Tab — View My Resume',
+                    body:'Click this tab to view my career highlights and download my resume PDF.',
+                    position:'left'
                 },
                 {
-                    target: 'tab-inspect',
-                    title: 'View My Resume',
-                    body: 'Click this "Inspect" tab to view my career highlights and download my resume PDF.',
-                    position: 'left'
+                    target:'nav-layers',
+                    title:'Navigate My Work',
+                    body:'Use this sidebar to explore my portfolio. Click "Selected Work" to see my projects, then click any project to view its case study.',
+                    position:'right'
                 },
                 {
-                    target: 'nav-layers',
-                    title: 'Navigate My Work',
-                    body: 'Use this sidebar to explore my portfolio. Click "Selected Work" to see my projects, then click any project to view its case study.',
-                    position: 'right'
+                    target:'photo-btn',
+                    title:'My Photo',
+                    body:'Click this to view my photo and contact details.',
+                    position:'bottom'
+                },
+                {
+                    target:'avatar-group',
+                    title:'Connect With Me',
+                    body:'Use these buttons to visit my LinkedIn profile or send me an email directly.',
+                    position:'bottom'
                 }
             ];
 
             let currentStep = 0;
             let tutorialActive = false;
 
-            function showTutorialStep(index) {
-                if (index >= tutorialSteps.length) {
+            function showTutorialStep(index){
+                if(index>=tutorialSteps.length){
                     hideTutorial();
                     return;
                 }
-                const step = tutorialSteps[index];
-                const targetEl = document.getElementById(step.target);
-                if (!targetEl || targetEl.offsetParent === null) {
+                const step=tutorialSteps[index];
+                const targetEl=document.getElementById(step.target);
+                if(!targetEl){
+                    currentStep++;
+                    showTutorialStep(currentStep);
+                    return;
+                }
+                // Check if element is visible, but allow flex containers
+                const style=window.getComputedStyle(targetEl);
+                if(style.display==='none'||style.visibility==='hidden'){
                     currentStep++;
                     showTutorialStep(currentStep);
                     return;
