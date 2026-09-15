@@ -51,12 +51,6 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
 .photo-badge{width:28px;height:28px;border-radius:100px;object-fit:cover;display:block}
 .figma-toolbar .file-name{font-weight:600;font-size:12px;color:var(--figma-text);letter-spacing:-0.01em;transition:color 0.3s}
 .figma-toolbar .divider{width:1px;height:20px;background:var(--figma-border);margin:0 4px;transition:background 0.3s}
-.figma-toolbar .theme-toggle,.figma-toolbar .cursor-toggle{padding:4px 12px;background:var(--accent);color:var(--accent-contrast);border:none;border-radius:4px;font-weight:600;font-size:10px;cursor:pointer;transition:background 0.15s;display:flex;align-items:center;gap:4px;position:relative}
-.figma-toolbar .theme-toggle:hover,.figma-toolbar .cursor-toggle:hover{background:var(--accent-dark);color:#fff}
-.figma-toolbar .cursor-toggle.active{background:var(--figma-blue);color:#fff}
-.figma-toolbar .cursor-toggle:hover::after{content:attr(data-tooltip);position:absolute;bottom:-28px;left:50%;transform:translateX(-50%);background:#1a1a1a;color:#fff;padding:4px 10px;border-radius:4px;font-size:9px;white-space:nowrap;pointer-events:none;z-index:100;font-family:var(--font-mono)}
-.figma-right-panel .panel-header .tab[data-tooltip]{position:relative}
-.figma-right-panel .panel-header .tab[data-tooltip]:hover::after{content:attr(data-tooltip);position:absolute;bottom:-28px;left:50%;transform:translateX(-50%);background:#1a1a1a;color:#fff;padding:4px 10px;border-radius:4px;font-size:9px;white-space:nowrap;pointer-events:none;z-index:100;font-family:var(--font-mono)}
 .figma-toolbar .avatar-group{display:flex;gap:2px}
 .figma-toolbar .avatar{width:24px;height:24px;border-radius:50%;border:2px solid var(--figma-panel);display:inline-flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:#fff;text-decoration:none;transition:transform 0.15s,border-color 0.3s;cursor:pointer}
 .figma-toolbar .avatar:hover{transform:scale(1.15)}
@@ -101,6 +95,22 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
 .figma-right-panel .prop-color-swatch{width:20px;height:20px;border-radius:3px;border:1px solid var(--figma-border)}
 .figma-right-panel .download-btn{padding:10px 20px;background:var(--accent);color:var(--accent-contrast);border:none;border-radius:6px;font-family:var(--font-mono);font-size:10px;font-weight:600;cursor:pointer;transition:background 0.15s;display:flex;align-items:center;gap:6px;width:100%;justify-content:center;pointer-events:auto;margin-top:8px}
 .figma-right-panel .download-btn:hover{background:var(--accent-dark);color:#fff}
+
+/* Design Panel — Cursor Checkbox */
+.figma-right-panel .prop-checkbox{display:flex;align-items:center;gap:8px;padding:3px 0;cursor:pointer;pointer-events:auto;font-size:10px;color:var(--figma-text);user-select:none;-webkit-user-select:none;font-family:var(--font-mono)}
+.figma-right-panel .prop-checkbox input[type="checkbox"]{position:absolute;opacity:0;width:0;height:0;pointer-events:none}
+.figma-right-panel .prop-checkbox .checkbox-mark{width:14px;height:14px;border:1px solid var(--figma-border);border-radius:3px;background:var(--figma-bg);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.15s,border-color 0.15s;position:relative}
+.figma-right-panel .prop-checkbox:hover .checkbox-mark{border-color:var(--accent)}
+.figma-right-panel .prop-checkbox input[type="checkbox"]:checked + .checkbox-mark{background:var(--figma-blue);border-color:var(--figma-blue)}
+.figma-right-panel .prop-checkbox input[type="checkbox"]:checked + .checkbox-mark::after{content:'';width:3px;height:6px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.figma-right-panel .prop-checkbox input[type="checkbox"]:focus-visible + .checkbox-mark{outline:2px solid var(--focus-ring);outline-offset:2px}
+
+/* Design Panel — Theme Icon Buttons */
+.figma-right-panel .theme-toggle-group{display:flex;gap:4px;pointer-events:auto}
+.figma-right-panel .theme-toggle-group .theme-btn{flex:1;height:26px;background:var(--figma-bg);border:1px solid var(--figma-border);border-radius:3px;color:var(--figma-text-secondary);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:background 0.15s,border-color 0.15s,color 0.15s;padding:0}
+.figma-right-panel .theme-toggle-group .theme-btn:hover{color:var(--figma-text);border-color:var(--accent)}
+.figma-right-panel .theme-toggle-group .theme-btn.active{background:var(--accent);border-color:var(--accent);color:var(--accent-contrast)}
+.figma-right-panel .theme-toggle-group .theme-btn:focus-visible{outline:2px solid var(--focus-ring);outline-offset:2px}
 
 /* Status Bar */
 .figma-status-bar{position:fixed;bottom:0;left:0;right:0;height:var(--status-height);background:var(--figma-panel);border-top:1px solid var(--figma-border);z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 12px;font-family:var(--font-mono);font-size:10px;color:var(--figma-text-secondary);user-select:none;-webkit-user-select:none;pointer-events:none}
@@ -255,22 +265,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
                         class="avatar avatar--2" aria-label="LinkedIn profile" title="LinkedIn">LI</a>
                     <a href="mailto:iamftq@gmail.com" class="avatar avatar--3" aria-label="Email" title="Email">@</a>
                 </div>
-                <button class="cursor-toggle" id="cursor-toggle" aria-label="Toggle floating cursor visibility"
-                    data-tooltip="Hide cursor">
-                    <svg width="12" height="12" viewBox="0 0 14 14" fill="currentColor">
-                        <path d="M0 0 L14 8 L8 10 L6 14 Z" />
-                    </svg>
-                </button>
-
-                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle workspace theme">
-                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1">
-                        <circle cx="6" cy="6" r="2" />
-                        <path d="M6 1V3M6 9V11M11 6H9M3 6H1M9.5 2.5L8 4M4 8L2.5 9.5M9.5 9.5L8 8M4 4L2.5 2.5" />
-                    </svg>
-                    <span>Light</span>
-                </button>
-
-                 <button class="tutorial-trigger" id="tutorial-trigger" aria-label="Show tutorial guide"
+                <button class="tutorial-trigger" id="tutorial-trigger" aria-label="Show tutorial guide"
                     data-tooltip="Tutorial">
                     <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1">
                         <circle cx="6" cy="6" r="5" />
@@ -308,6 +303,30 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
                     <div class="prop-row">
                         <div class="prop-color-swatch" style="background:#81d8d0;"></div><span
                             class="prop-input">#81D8D0</span>
+                    </div>
+                </div>
+                <div class="prop-group" id="cursor-control">
+                    <div class="prop-label">Cursor</div>
+                    <label class="prop-checkbox">
+                        <input type="checkbox" id="cursor-toggle" checked aria-label="Show floating cursor">
+                        <span class="checkbox-mark" aria-hidden="true"></span>
+                        <span>Show floating cursor</span>
+                    </label>
+                </div>
+                <div class="prop-group" id="theme-control">
+                    <div class="prop-label">Theme</div>
+                    <div class="theme-toggle-group" id="theme-toggle" role="group" aria-label="Workspace theme">
+                        <button type="button" class="theme-btn active" data-theme="dark" aria-label="Dark theme" title="Dark">
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2">
+                                <path d="M10 7.5A4.5 4.5 0 1 1 4.5 2a4.5 4.5 0 0 0 5.5 5.5Z" />
+                            </svg>
+                        </button>
+                        <button type="button" class="theme-btn" data-theme="light" aria-label="Light theme" title="Light">
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2">
+                                <circle cx="6" cy="6" r="2" />
+                                <path d="M6 1V3M6 9V11M11 6H9M3 6H1M9.5 2.5L8 4M4 8L2.5 9.5M9.5 9.5L8 8M4 4L2.5 2.5" />
+                            </svg>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -609,7 +628,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
 
             const projectData = {
                 maritime: { cardTitle: "Maritime Workforce Platform", cardDesc: "Legacy system redesign and UI standardization", cardMetric: "Legacy modernization", caseTag: "SYS_01 // MARITIME ERP", classification: "B2B · Enterprise · SaaS", title: "Enterprise Maritime Workforce Platform", context: "Fleet & Vessel Operations · Ripple Operations", overview: "Led the UI/UX redesign of a mature maritime workforce and fleet management platform. The legacy system had grown organically over the years with inconsistent UI patterns across modules. Focused on modernizing one module at a time while ensuring familiar workflows for existing users.", problem: "The platform was already mature when I joined, but lacked a design system. Different modules had been built by different people over the years, resulting in inconsistent UI and user experience. Users were accustomed to navigating legacy modules, so any redesign had to balance modernization with familiarity.", process: "Approached the redesign module by module. First understood existing workflows, aligned with the Product Owner on improvement priorities, then introduced reusable UI patterns for forms, tables, and buttons. Created live HTML templates that stakeholders could interact with instead of reviewing static screens. These same templates were used by developers during implementation, reducing back-and-forth and keeping the final product close to the approved design.", solution: "Introduced a consistent UI structure with reusable components while modernizing legacy modules. Live HTML prototypes served as both stakeholder validation tools and developer implementation references. Each module was redesigned to streamline workflows while maintaining familiar navigation patterns for existing users.", impact: "The platform became significantly more consistent and easier to maintain. Post-redesign feedback from crew and officers confirmed that streamlined workflows helped them complete daily tasks faster, demonstrating real operational impact.", tags: ["Enterprise", "Maritime", "Legacy Modernization", "UI/UX Design", "Design System"], shortDesc: "Legacy system modernization through module-by-module redesign and reusable UI patterns.", note: "Respect the familiar while introducing the better." },
-                erp: { cardTitle: "University ERP Platform", cardDesc: "Education, HR, and LMS in one system", cardMetric: "Multi-module", caseTag: "SYS_02 // DIGITAL ERP", classification: "B2B · Enterprise · Multi-Module", title: "University Enterprise Resource Planning Platform", context: "Education + HR + LMS", overview: "Designed the UI and UX for a multi-module ERP system combining university, HR, and learning management into one platform supporting administrators, HR staff, faculty, and students.", problem: "Each department had its own workflows and user needs. This led to inconsistent flows, repeated processes, and a confusing experience when users moved between modules.", process: "Mapped user journeys for each role, created flowcharts and wireframes, reviewed with stakeholders, and translated these into UI structures that made each role's tasks easier to follow.", solution: "Designed a modular ERP with clear paths per user role while maintaining consistent UI patterns across all modules. Simplified navigation and reduced unnecessary steps.", impact: "Brought multiple systems into one platform, making it easier for users to complete tasks without switching between tools.", tags: ["Enterprise", "ERP", "Education", "HR", "LMS"], shortDesc: "Designing a multi-module ERP for education, HR, and LMS.", note: "One platform, many roles. Clarity for everyone.", links: [{ label: "Live Demo", url: "https://ftquiocho.github.io/university-erp/", type: "demo" }] },
+                erp: { cardTitle: "University ERP Platform", cardDesc: "Education, HR, and LMS in one system", cardMetric: "Multi-module", caseTag: "SYS_02 // DIGITAL ERP", classification: "B2B · Enterprise · Multi-Module", title: "University Enterprise Resource Planning Platform", context: "Education + HR + LMS", overview: "Designed the UI and UX for a multi-module ERP system combining university, HR, and learning management into one platform supporting administrators, HR staff, faculty, and students.", problem: "Each department had its own workflows and user needs. This led to inconsistent flows, repeated processes, and a confusing experience when users moved between modules.", process: "Mapped user journeys for each role, created flowcharts and wireframes, reviewed with stakeholders, and translated these into UI structures that made each role's tasks easier to follow.", solution: "Designed a modular ERP with clear paths per user role while maintaining consistent UI patterns across all modules. Simplified navigation and reduced unnecessary steps.", impact: "Brought multiple systems into one platform, making it easier for users to complete tasks without switching between tools.", tags: ["Enterprise", "ERP", "Education", "HR", "LMS"], shortDesc: "Designing a multi-module ERP for education, HR, and LMS.", note: "One platform, many roles. Clarity for everyone."},
                 gov: { cardTitle: "Government EODB Platform", cardDesc: "Business permits and approvals digitized", cardMetric: "Dual-portal", caseTag: "SYS_03 // GOVERNMENT EODB", classification: "B2G · Public Sector · Dual-Portal", title: "Ease of Doing Business Platform", context: "Government Digital Services · Business Permits", overview: "Designed a digital system for business registration, renewal, and permit processing with citizen and admin portals for a local government unit.", problem: "The permit process was fully manual, involving multiple steps across different offices and hard to track.", process: "Reviewed end-to-end government workflows, mapped user interactions for applicants, evaluators, approvers, and payment officers, and validated with stakeholders.", solution: "Designed a two-part system: a citizen portal for applying, paying, and tracking permits, and an admin portal for reviewing and approving applications.", impact: "Moved the permit process from manual paperwork to a structured digital system, making it easier for applicants to track their applications.", tags: ["Government", "EODB", "Public Sector", "Workflow"], shortDesc: "Digitizing business permit applications and approvals.", note: "Clear processes build public trust." },
                 hrPortal: { cardTitle: "HR & Property System", cardDesc: "HRIS and asset management unified", cardMetric: "Internal tool", caseTag: "SYS_04 // HRIS & ASSET", classification: "B2B · Enterprise · Internal Tool", title: "Human Resource & Property Information Management System", context: "Enterprise Systems · HRIS · Asset Management · UI/UX Design", overview: "Designed the UI and UX for a system that manages HR processes and property/asset tracking in one platform. It supports internal teams handling employee records, approvals, and asset management in day-to-day operations.", problem: "HR and property tracking were previously handled using separate tools and manual processes. This made it hard to keep data consistent, track requests, and monitor the status of approvals across departments.", process: "I reviewed how HR and property workflows were being handled, including employee records, asset tracking, and approval steps. I mapped out how different users like HR staff, admin teams, and approvers interact with the system, then translated these into flowcharts and UI structures.", solution: "Designed a unified system that brings HR and property management into one platform. It includes role-based dashboards, structured forms, and clear approval flows so users can easily track requests and updates.", impact: "Helped reduce scattered tracking by consolidating HR and property processes into a single system. It made it easier for teams to monitor requests, approvals, and asset status without switching between tools.", tags: ["Enterprise", "HRIS", "Property Management", "Workflow System", "UI/UX Design"], shortDesc: "Combining HR and asset management workflows into one structured internal system.", note: "Unified systems reduce scattered tracking." },
                 ecommerce: { cardTitle: "Digital Commerce POC", cardDesc: "Dual-portal marketplace system", cardMetric: "Proof of concept", caseTag: "SAAS_01 // E-COMMERCE POC", classification: "B2C + B2B · Marketplace · POC", title: "Digital Commerce Platform (Proof of Concept)", context: "E-Commerce · Digital Platform · Marketplace UX", overview: "Designed the UI and UX for a proof-of-concept digital commerce platform that supports online selling and product browsing. The system includes a shopper-facing marketplace and an admin portal for managing products, sellers, and transactions.", problem: "Product listings and sales channels were scattered, making it hard for shoppers to find items and for sellers to manage their products in one place. There was no single system for handling listings, categories, and transactions.", process: "I looked at how the marketplace should work from both sides: shoppers and sellers. I mapped the full flow from browsing products to checkout, and also the backend processes for managing listings, categories, and orders. These were turned into structured flows and UI layouts that support both users and admins.", solution: "Designed a two part system: a shopper side for browsing and purchasing products, and an admin portal for managing listings, sellers, and transactions. Focused on keeping the shopping experience simple while making the admin side organized and easy to operate.", impact: "Created a clear structure for a digital marketplace that supports both selling and management. It helped define how products are discovered, managed, and processed in a single system.", tags: ["E-Commerce", "Marketplace", "Admin System", "UI/UX Design", "POC"], shortDesc: "Designing a dual-portal marketplace system for product browsing, selling, and management.", note: "Simplify the shopper, organize the seller." },
@@ -642,7 +661,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
             const downloadResumeMain = document.getElementById('download-resume-main');
             const cursorToggle = document.getElementById('cursor-toggle');
             const figmaCursor = document.getElementById('figma-cursor');
-            const themeToggle = document.getElementById('theme-toggle');
+            const themeToggleGroup = document.getElementById('theme-toggle');
             const workspace = document.getElementById('figma-workspace');
             const canvas = document.querySelector('.figma-canvas');
             const photoBtn = document.getElementById('photo-btn');
@@ -663,7 +682,6 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
             }
 
             let isCaseStudyView = false;
-            let cursorVisible = true;
             let isDark = true;
             let currentMode = 'designer';
 
@@ -696,16 +714,16 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
                     position:'bottom'
                 },
                 {
-                    target:'cursor-toggle',
+                    target:'cursor-control',
                     title:'Decorative Cursor',
-                    body:'This is a decorative cursor that mimics Figma\'s multiplayer feature. You can hide it by clicking this button.',
-                    position:'bottom'
+                    body:'This is a decorative cursor that mimics Figma\'s multiplayer feature. Toggle this checkbox to show or hide it.',
+                    position:'left'
                 },
                 {
-                    target:'theme-toggle',
+                    target:'theme-control',
                     title:'Dark & Light Theme',
-                    body:'Use this button to switch between dark and light themes. Choose whichever is easier on your eyes.',
-                    position:'bottom'
+                    body:'Use these buttons to switch between dark and light themes. Choose whichever is easier on your eyes.',
+                    position:'left'
                 },
                 // {
                 //     target:'tab-design',
@@ -995,7 +1013,12 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
                     currentViewLabel.textContent = 'Designer Mode';
                     document.querySelectorAll('.view-menu button').forEach(b => b.classList.remove('active'));
                     document.querySelector('[data-view="designer"]').classList.add('active');
-                    figmaCursor.classList.remove('cursor-hidden');
+                    // Respect the user's cursor checkbox preference
+                    if (cursorToggle.checked) {
+                        figmaCursor.classList.remove('cursor-hidden');
+                    } else {
+                        figmaCursor.classList.add('cursor-hidden');
+                    }
                 } else {
                     workspace.classList.add('standard-mode');
                     currentViewLabel.textContent = 'Standard Mode';
@@ -1009,9 +1032,9 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
             }
 
             viewToggle.addEventListener('click', () => {
-                const isHidden = viewMenu.hidden;
-                viewMenu.hidden = !isHidden;
-                viewToggle.setAttribute('aria-expanded', String(!isHidden));
+                const willOpen = viewMenu.hidden;
+                viewMenu.hidden = !willOpen;
+                viewToggle.setAttribute('aria-expanded', String(willOpen));
             });
 
             document.querySelectorAll('.view-menu button').forEach(btn => {
@@ -1045,29 +1068,31 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
             downloadResume.addEventListener('click', triggerDownload);
             downloadResumeMain.addEventListener('click', triggerDownload);
 
-            themeToggle.addEventListener('click', () => {
-                isDark = !isDark;
+            /* Theme toggle — segmented icon buttons in Design panel */
+            function applyTheme(theme) {
+                isDark = (theme === 'dark');
                 if (isDark) {
                     workspace.classList.remove('workspace-light');
-                    themeToggle.innerHTML = '<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1"><circle cx="6" cy="6" r="2"/><path d="M6 1V3M6 9V11M11 6H9M3 6H1M9.5 2.5L8 4M4 8L2.5 9.5M9.5 9.5L8 8M4 4L2.5 2.5"/></svg><span>Light</span>';
                 } else {
                     workspace.classList.add('workspace-light');
-                    themeToggle.innerHTML = '<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1"><circle cx="6" cy="6" r="2"/><path d="M6 1V3M6 9V11M11 6H9M3 6H1M9.5 2.5L8 4M4 8L2.5 9.5M9.5 9.5L8 8M4 4L2.5 2.5"/></svg><span>Dark</span>';
                 }
+                themeToggleGroup.querySelectorAll('.theme-btn').forEach(b => {
+                    b.classList.toggle('active', b.getAttribute('data-theme') === theme);
+                });
+            }
+
+            themeToggleGroup.querySelectorAll('.theme-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    applyTheme(btn.getAttribute('data-theme'));
+                });
             });
 
-            cursorToggle.addEventListener('click', () => {
-                cursorVisible = !cursorVisible;
-                if (cursorVisible) {
+            /* Cursor toggle — checkbox in Design panel */
+            cursorToggle.addEventListener('change', () => {
+                if (cursorToggle.checked) {
                     figmaCursor.classList.remove('cursor-hidden');
-                    cursorToggle.classList.remove('active');
-                    cursorToggle.setAttribute('data-tooltip', 'Hide cursor');
-                    cursorToggle.setAttribute('aria-label', 'Hide floating cursor');
                 } else {
                     figmaCursor.classList.add('cursor-hidden');
-                    cursorToggle.classList.add('active');
-                    cursorToggle.setAttribute('data-tooltip', 'Show cursor');
-                    cursorToggle.setAttribute('aria-label', 'Show floating cursor');
                 }
             });
 
@@ -1076,7 +1101,13 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
             photoModal.addEventListener('click', (e) => { if (e.target === photoModal) photoModal.classList.remove('active') });
             caseBackBtn.addEventListener('click', closeCaseStudy);
 
-            window.addEventListener('keydown',(e)=>{if(e.key==='Escape'){if(isCaseStudyView){closeCaseStudy();}if(tutorialActive){hideTutorial();}if(photoModal.classList.contains('active')){photoModal.classList.remove('active');}}});
+            window.addEventListener('keydown',(e)=>{
+                if(e.key==='Escape'){
+                    if(isCaseStudyView){closeCaseStudy();}
+                    if(tutorialActive){hideTutorial();}
+                    if(photoModal.classList.contains('active')){photoModal.classList.remove('active');}
+                }
+            });
 
             let scrollSpyTimeout;
             canvas.addEventListener('scroll', function () {
