@@ -65,6 +65,23 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
 .view-menu button:hover{background:var(--accent);color:var(--accent-contrast)}
 .view-menu button.active{background:var(--accent);color:var(--accent-contrast);font-weight:600}
 
+/* Present Control */
+.present-control{position:relative;display:inline-flex;align-items:stretch;background:var(--accent);border-radius:4px;margin-left:2px}
+.present-btn{display:inline-flex;align-items:center;gap:5px;padding:5px 10px;background:transparent;border:none;border-radius:4px 0 0 4px;color:var(--accent-contrast);font-family:var(--font-mono);font-size:10px;font-weight:600;cursor:pointer;transition:background 0.15s;letter-spacing:0.02em}
+.present-btn:hover{background:var(--accent-dark);color:#fff}
+.present-btn svg{width:9px;height:9px;flex-shrink:0}
+.present-caret{display:inline-flex;align-items:center;justify-content:center;padding:5px 7px;background:transparent;border:none;border-left:1px solid rgba(26,58,55,0.28);border-radius:0 4px 4px 0;color:var(--accent-contrast);cursor:pointer;transition:background 0.15s}
+.present-caret:hover{background:var(--accent-dark);color:#fff}
+.present-caret svg{width:8px;height:5px;flex-shrink:0}
+.present-menu{position:absolute;top:calc(100% + 8px);right:0;min-width:230px;background:var(--figma-panel);border:1px solid var(--figma-border);border-radius:6px;box-shadow:0 12px 32px rgba(0,0,0,0.35);z-index:120;overflow:hidden}
+.present-menu-label{padding:9px 14px 7px;font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--figma-text-secondary);border-bottom:1px solid var(--figma-border)}
+.present-menu button{display:block;width:100%;padding:10px 14px;background:none;border:none;color:var(--figma-text);font-family:var(--font-mono);font-size:10px;cursor:pointer;text-align:left;transition:background 0.15s}
+.present-menu button + button{border-top:1px solid var(--figma-border)}
+.present-menu button:hover{background:var(--accent);color:var(--accent-contrast)}
+.present-menu-name{display:block;font-weight:600;font-size:11px;letter-spacing:-0.01em}
+.present-menu-sub{display:block;font-size:9px;color:var(--figma-text-secondary);margin-top:3px;opacity:0.85}
+.present-menu button:hover .present-menu-sub{color:var(--accent-contrast);opacity:0.9}
+
 /* Left Panel */
 .figma-left-panel{position:fixed;top:var(--toolbar-height);left:0;bottom:var(--status-height);width:var(--panel-width);background:var(--figma-panel);border-right:1px solid var(--figma-border);z-index:40;display:flex;flex-direction:column;overflow-y:auto;font-family:var(--font-mono);font-size:11px;color:var(--figma-text-secondary);transition:background 0.3s,border-color 0.3s,color 0.3s}
 .figma-left-panel .panel-header{padding:8px 12px;border-bottom:1px solid var(--figma-border);font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:0.08em;color:var(--figma-text-secondary);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;transition:border-color 0.3s,color 0.3s}
@@ -237,7 +254,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
     <!-- Mobile Banner -->
     <div class="mobile-banner" id="mobile-banner" role="alert" aria-live="polite">
         <button class="banner-close" id="banner-close" aria-label="Close banner">×</button>
-        For the best experience, please view this portfolio on a screen larger than 768px. On mobile, the interface is simplified for easier browsing.
+        For the best experience, please view this portfolio on a screen larger than 768px. On mobile, the interface is simplified for easier browsing, and the live UI preview feature is not available.
     </div>
 
     <div class="figma-workspace" id="figma-workspace">
@@ -272,6 +289,27 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
                         <path d="M6 4v5M6 2v1" />
                     </svg>
                 </button>
+                <div class="present-control" id="present-control">
+                    <button class="present-btn" id="present-btn" aria-label="Present live UI">
+                        <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 1.5 L10 6 L3 10.5 Z" fill="currentColor"/></svg>
+                        <span>Present</span>
+                    </button>
+                    <button class="present-caret" id="present-caret" aria-label="Choose a live UI to present"
+                        aria-haspopup="true" aria-expanded="false">
+                        <svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1 L5 5 L9 1" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <div class="present-menu" id="present-menu" role="menu" hidden>
+                        <div class="present-menu-label">Live UI</div>
+                        <button role="menuitem" data-prototype="maritime">
+                            <span class="present-menu-name">Maritime ERP</span>
+                            <span class="present-menu-sub">Enterprise · Fleet Operations</span>
+                        </button>
+                        <button role="menuitem" data-prototype="education">
+                            <span class="present-menu-name">Higher Education ERP</span>
+                            <span class="present-menu-sub">UIS · HRIS · LMS</span>
+                        </button>
+                    </div>
+                </div>
             </div>
         </header>
 
@@ -635,6 +673,22 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
                 rebranding: { cardTitle: "Rebranding Design System", cardDesc: "Company brand unification", cardMetric: "Brand standardization", caseTag: "B2B+SAAS_01 // REBRANDING DS", classification: "B2B · Enterprise · Brand Integration", title: "Rebranding Design System", context: "Post-Acquisition · Design System · Brand Standardization", overview: "Led the design system and rebranding initiative following the acquisition of ShipAdmin Philippines Inc. and Adonis HR by Ripple Operations. Standardized colors, typography, components, and branding across both platforms to create a unified visual identity.", problem: "After the acquisition, two separate products (ShipAdmin and Adonis HR) had inconsistent branding, different color schemes, conflicting UI patterns, and duplicated design efforts.", process: "Audited both platforms to identify design inconsistencies. Defined a unified color palette, typography scale, and component library that respected both brand legacies. Created design tokens and documented implementation guidelines for developers.", solution: "Built a centralized design system with standardized colors, typography, spacing, and reusable components. Applied the new branding consistently across both platforms while maintaining familiar workflows for existing users.", impact: "Reduced design duplication by 60%, accelerated feature delivery, and created a seamless visual experience across both products.", tags: ["Design System", "Rebranding", "Design Tokens", "Brand Standardization", "UI/UX Design"], shortDesc: "Standardizing branding and design systems across AdonisHR and ShipAdmin after acquisition.", note: "A unified brand builds trust across platforms." }
             };
 
+            /* Live prototypes available via the Present button.*/
+            const livePrototypes = {
+                maritime: {
+                    name: 'Maritime ERP',
+                    subtitle: 'Enterprise · Fleet Operations'
+                },
+                education: {
+                    name: 'Higher Education ERP',
+                    subtitle: 'Education · HR · LMS'
+                }
+            };
+            const PRESENT_BASE_URL = 'https://ditto-projects.vercel.app';
+
+            const presentOrder = ['maritime', 'education'];
+            const PRESENT_STORAGE_KEY = 'presentPrototypeKey';
+
             const navLayers = document.getElementById('nav-layers');
             const portfolioView = document.getElementById('portfolio-view');
             const caseStudyView = document.getElementById('case-study-view');
@@ -671,6 +725,9 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
             const viewMenu = document.getElementById('view-menu');
             const currentViewLabel = document.getElementById('current-view-label');
             const standardDownloadBtn = document.getElementById('standard-download-btn');
+            const presentBtn = document.getElementById('present-btn');
+            const presentCaret = document.getElementById('present-caret');
+            const presentMenu = document.getElementById('present-menu');
 
             // Mobile banner close
             const mobileBanner=document.getElementById('mobile-banner');
@@ -711,6 +768,12 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
                     target:'view-toggle',
                     title:'Welcome to My Portfolio',
                     body:'This is the Designer Mode view (Figma workspace). If you\'re not familiar with Figma, I recommend switching to Standard Mode for a simpler, cleaner view.',
+                    position:'bottom'
+                },
+                {
+                    target:'present-control',
+                    title:'Present Live UI',
+                    body:'Click Present to open a live UI of my selected work in a new window. Use the arrow to pick between the Maritime ERP and Higher Education ERP demos',
                     position:'bottom'
                 },
                 {
@@ -1035,6 +1098,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
                 const willOpen = viewMenu.hidden;
                 viewMenu.hidden = !willOpen;
                 viewToggle.setAttribute('aria-expanded', String(willOpen));
+                if (willOpen) closePresentMenu();
             });
 
             document.querySelectorAll('.view-menu button').forEach(btn => {
@@ -1047,6 +1111,9 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
                 if (!e.target.closest('.view-dropdown')) {
                     viewMenu.hidden = true;
                     viewToggle.setAttribute('aria-expanded', 'false');
+                }
+                if (!e.target.closest('.present-control')) {
+                    closePresentMenu();
                 }
             });
 
@@ -1096,6 +1163,70 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
                 }
             });
 
+            /* ============================================================
+               PRESENT — opens a live prototype in a new window with the
+               portfolio header chrome (no side panels), a prototype
+               switcher dropdown, and a Close button.
+               ============================================================ */
+
+            function openPresentMenu() {
+                presentMenu.hidden = false;
+                presentCaret.setAttribute('aria-expanded', 'true');
+                // Mutually exclusive with view menu
+                viewMenu.hidden = true;
+                viewToggle.setAttribute('aria-expanded', 'false');
+            }
+
+            function closePresentMenu() {
+                presentMenu.hidden = true;
+                presentCaret.setAttribute('aria-expanded', 'false');
+            }
+
+            /* Reads the last-used prototype key from localStorage, with a
+               fallback to the first prototype in presentOrder. */
+            function getStoredPresentKey() {
+                let stored = null;
+                try { stored = localStorage.getItem(PRESENT_STORAGE_KEY); } catch (e) { stored = null; }
+                if (stored && livePrototypes[stored]) return stored;
+                return presentOrder[0];
+            }
+
+            function openPresent(key, autoOpenDrawer) {
+                const resolvedKey = (key && livePrototypes[key]) ? key : getStoredPresentKey();
+                try { localStorage.setItem(PRESENT_STORAGE_KEY, resolvedKey); } catch (e) { /* noop */ }
+
+                let url = PRESENT_BASE_URL + '/?p=' + encodeURIComponent(resolvedKey);
+                if (autoOpenDrawer) url += '&cs=1';
+
+                const win = window.open(url, '_blank', 'popup=yes,width=1440,height=900,menubar=no,toolbar=no,location=yes');
+                if (!win) {
+                    alert('Pop-up blocked. Please allow pop-ups for this site so the live UI can open in a new window.');
+                }
+}
+
+            presentBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                closePresentMenu();
+                openPresent(getStoredPresentKey(), false);
+            });
+
+            presentCaret.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (presentMenu.hidden) {
+                    openPresentMenu();
+                } else {
+                    closePresentMenu();
+                }
+            });
+
+            document.querySelectorAll('#present-menu button').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const key = btn.getAttribute('data-prototype');
+                    closePresentMenu();
+                    openPresent(key, false);
+                });
+            });
+
             photoBtn.addEventListener('click', () => { photoModal.classList.add('active') });
             closePhotoModal.addEventListener('click', () => { photoModal.classList.remove('active') });
             photoModal.addEventListener('click', (e) => { if (e.target === photoModal) photoModal.classList.remove('active') });
@@ -1106,6 +1237,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
                     if(isCaseStudyView){closeCaseStudy();}
                     if(tutorialActive){hideTutorial();}
                     if(photoModal.classList.contains('active')){photoModal.classList.remove('active');}
+                    closePresentMenu();
                 }
             });
 
