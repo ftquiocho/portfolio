@@ -7,3 +7,5 @@ indexbkup1.html
 indexbkup2.html
 md/
 backup/
+.vercel
+.env*
