@@ -239,6 +239,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
 .tutorial-tooltip .tutorial-title{font-weight:700;font-size:0.9rem;margin-bottom:4px;color:var(--accent-contrast)}
 .tutorial-tooltip .tutorial-close{position:absolute;top:8px;right:12px;background:none;border:none;font-size:18px;cursor:pointer;color:var(--canvas-text-muted);font-family:var(--font-mono)}
 .tutorial-tooltip .tutorial-close:hover{color:var(--canvas-text)}
+/* .tutorial-tooltip::before{ content:''; position:absolute; width:10px;height:10px; background:var(--canvas-surface); transform:rotate(45deg); z-index:-1; }
+.tutorial-tooltip[data-pos="bottom"]::before{ top:-5px;left:50%;margin-left:-5px; box-shadow:-2px -2px 4px rgba(0,0,0,0.06); }
+.tutorial-tooltip[data-pos="left"]::before{ right:-5px;top:50%;margin-top:-5px; box-shadow:2px -2px 4px rgba(0,0,0,0.06); }
+.tutorial-tooltip[data-pos="right"]::before{ left:-5px;top:50%;margin-top:-5px; box-shadow:-2px 2px 4px rgba(0,0,0,0.06); } */
 .tutorial-next{display:inline-block;margin-top:12px;padding:6px 16px;background:var(--accent);color:var(--accent-contrast);border:none;border-radius:4px;font-size:0.8rem;font-weight:600;cursor:pointer;font-family:var(--font-resume)}
 .tutorial-next:hover{background:var(--accent-dark);color:#fff}
 .tutorial-skip{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:302;padding:8px 20px;background:var(--canvas-text);color:var(--canvas-surface);border:none;border-radius:20px;font-size:0.8rem;font-weight:600;cursor:pointer;font-family:var(--font-resume)}
@@ -634,11 +638,21 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
     </div>
 
     <!-- Photo Modal -->
-    <div class="photo-modal" id="photo-modal" role="dialog" aria-modal="true" aria-labelledby="photo-modal-title">
+     <div class="photo-modal" id="photo-modal" role="dialog" aria-modal="true" aria-labelledby="photo-modal-title">
         <div class="modal-content">
             <img src="ftq.jpg" alt="Franchezca Quiocho">
             <h3 id="photo-modal-title">Franchezca Quiocho</h3>
-            <p>Senior UI/UX Designer <br>iamftq@gmail.com | Philippines | Open to Remote (Global)</p>
+            <p style="margin-bottom: 0;">Senior UI/UX Designer <br>iamftq@gmail.com | Philippines | Open to Remote (Global)</p>
+            <div class="modal-links" style="margin-bottom: 10px;">
+                <a href="https://linkedin.com/in/franchezca-q-a82b32251" target="_blank" rel="noopener noreferrer" class="modal-link" style="font-size: 12px; color: #555;">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+                    LinkedIn
+                </a>
+                <a href="mailto:iamftq@gmail.com" class="modal-link" style="font-size: 12px; color: #555">
+                   <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4.24-7.47 4.67a1 1 0 0 1-1.06 0L4 8.24V6.4l8 5 8-5v1.84z"/></svg>
+                    Email
+                </a>
+            </div>
             <button class="close-modal" id="close-photo-modal">Close</button>
         </div>
     </div>
@@ -836,14 +850,27 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
                     return;
                 }
                 // Check if element is visible, but allow flex containers
-                const style=window.getComputedStyle(targetEl);
-                if(style.display==='none'||style.visibility==='hidden'){
-                    currentStep++;
-                    showTutorialStep(currentStep);
-                    return;
-                }
+// Check if the element OR any ancestor is hidden
+function isHidden(el){
+    while(el && el !== document.body){
+        const s = window.getComputedStyle(el);
+        if(s.display === 'none' || s.visibility === 'hidden') return true;
+        el = el.parentElement;
+    }
+    return false;
+}
+if(isHidden(targetEl)){
+    currentStep++;
+    showTutorialStep(currentStep);
+    return;
+}
                 tutorialTitle.textContent = step.title;
-                tutorialBody.textContent = step.body;
+let bodyText = step.body;
+if (step.target === 'view-toggle' && workspace.classList.contains('standard-mode')) {
+    bodyText = 'You\'re currently viewing Standard Mode. A clean, ATS-friendly layout. Use this dropdown if you ever want to switch to Designer Mode, which shows the full Figma workspace experience.';
+}
+tutorialBody.textContent = bodyText;
+                // tutorialTooltip.setAttribute('data-pos', step.position);
                 tutorialNext.textContent = index === tutorialSteps.length - 1 ? 'Finish' : 'Next';
                 tutorialTooltip.hidden = false;
                 tutorialOverlay.classList.add('active');
