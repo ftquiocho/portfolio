@@ -312,6 +312,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
                             <span class="present-menu-name">Higher Education ERP</span>
                             <span class="present-menu-sub">UIS · HRIS · LMS</span>
                         </button>
+                        <button role="menuitem" data-prototype="government">
+                            <span class="present-menu-name">Government EODB</span>
+                            <span class="present-menu-sub">Public Sector · Business Permits</span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -696,11 +700,15 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
                 education: {
                     name: 'Higher Education ERP',
                     subtitle: 'Education · HR · LMS'
+                },
+                government: {
+                    name: 'Government EODB',
+                    subtitle: 'Public Sector · Business Permits'
                 }
             };
             const PRESENT_BASE_URL = 'https://ditto-projects.vercel.app';
 
-            const presentOrder = ['maritime', 'education'];
+            const presentOrder = ['maritime', 'education', 'government'];
             const PRESENT_STORAGE_KEY = 'presentPrototypeKey';
 
             const navLayers = document.getElementById('nav-layers');
