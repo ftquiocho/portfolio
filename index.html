@@ -999,7 +999,7 @@ tutorialBody.textContent = bodyText;
                 backBtn.type = 'button';
                 backBtn.className = 'layer-group';
                 backBtn.setAttribute('aria-label', 'Back to Portfolio');
-                backBtn.innerHTML = '<span class="layer-icon">←</span><span class="layer-name">Back to Portfolio</span>';
+                backBtn.innerHTML = '<span class="layer-icon" style="color:var(--accent);">←</span><span class="layer-name" style="color:var(--accent);">Back to Portfolio</span>';
                 backBtn.addEventListener('click', closeCaseStudy);
                 navLayers.appendChild(backBtn);
                 const parentBtn = document.createElement('div');
