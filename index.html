@@ -261,7 +261,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
         For the best experience, please view this portfolio on a screen larger than 768px. On mobile, the interface is simplified for easier browsing, and the live UI preview feature is not available.
     </div>
 
-    <div class="figma-workspace" id="figma-workspace">
+    <div class="figma-workspace standard-mode" id="figma-workspace">
         <header class="figma-toolbar" aria-label="Portfolio toolbar">
             <div class="toolbar-left">
                 <button class="photo-placeholder" id="photo-btn" aria-label="View photo preview">
@@ -271,12 +271,19 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
             </div>
             <div class="toolbar-center">
                 <div class="view-dropdown">
-                    <button class="view-toggle" id="view-toggle" aria-haspopup="true" aria-expanded="false">
+                    <!-- <button class="view-toggle" id="view-toggle" aria-haspopup="true" aria-expanded="false">
                         View: <span id="current-view-label">Designer Mode</span> ▾
                     </button>
                     <div class="view-menu" id="view-menu" role="menu" hidden>
                         <button role="menuitem" data-view="designer" class="active">Designer Mode</button>
                         <button role="menuitem" data-view="standard">Standard Mode</button>
+                    </div> -->
+                    <button class="view-toggle" id="view-toggle" aria-haspopup="true" aria-expanded="false">
+                        View: <span id="current-view-label">Standard Mode</span> ▾
+                    </button>
+                    <div class="view-menu" id="view-menu" role="menu" hidden>
+                        <button role="menuitem" data-view="designer">Designer Mode</button>
+                        <button role="menuitem" data-view="standard" class="active">Standard Mode</button>
                     </div>
                 </div>
             </div>
@@ -762,7 +769,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
 
             let isCaseStudyView = false;
             let isDark = true;
-            let currentMode = 'designer';
+           // let currentMode = 'designer';
+            let currentMode = 'standard';
 
             function frameIcon() { return `<svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M0 0h24v24H0z" fill="none"></path><path fill="none" stroke="currentColor" stroke-width="1.5" d="M2 6h20M2 18h20M6 22V2m12 20V2" stroke-linejoin="round"></path></svg>` }
             function groupIcon() { return `<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1"><rect x="1" y="1" width="8" height="8"/><rect x="5" y="5" width="8" height="8"/></svg>` }
@@ -1123,6 +1131,8 @@ tutorialBody.textContent = bodyText;
                     document.querySelectorAll('.view-menu button').forEach(b => b.classList.remove('active'));
                     document.querySelector('[data-view="standard"]').classList.add('active');
                     figmaCursor.classList.add('cursor-hidden');
+                    cursorToggle.checked = false;   
+
                 }
                 viewMenu.hidden = true;
                 viewToggle.setAttribute('aria-expanded', 'false');
@@ -1291,7 +1301,8 @@ tutorialBody.textContent = bodyText;
                     if (currentSection === 'section-work' || currentSection === 'section-skills' || currentSection === 'section-contact') { setActiveNav(currentSection) } else { setActiveNav('portfolio-header') }
                 }, 100);
             });
-
+            
+            switchViewMode('standard');
             buildProjectCards();
             buildMainNav();
             setActiveNav('portfolio-header');
