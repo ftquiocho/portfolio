@@ -8,25 +8,15 @@
     <meta name="description" content="Portfolio of Franchezca Quiocho, Senior UI/UX Designer with 9+ years of experience in enterprise-grade digital products.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anaheim:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Anaheim:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-    :root{
-    --figma-bg:#1e1e1e;--figma-panel:#2d2d2d;--figma-border:#3e3e42;--figma-text:#ccc;--figma-text-secondary:#9d9d9d;
-    --figma-blue:#0d99ff;--figma-selection:#0d99ff;--figma-cursor:#0d99ff;--figma-canvas-dots:#3e3e42;
-    --accent:#81d8d0;--accent-dark:#4fb3aa;--accent-text:#26766e;--accent-light:#d4f4f1;--accent-contrast:#1a3a37;
-    --focus-ring:#0d99ff;
-    --canvas-bg:#f5f5f5;--canvas-surface:#fff;--canvas-text:#1a1a1a;--canvas-text-secondary:#555;--canvas-text-muted:#666;--canvas-border:#e0e0e0;
-    --canvas-shadow:0 8px 32px rgba(0,0,0,0.3);
-    --toolbar-height:44px;--panel-width:220px;--status-height:28px;
-    --font-sans:'Anaheim','Inter',sans-serif;--font-mono:'JetBrains Mono','SF Mono',monospace;--font-hand:'Caveat',cursive;--font-resume:'Anaheim','Inter',sans-serif
-}
+:root{--figma-bg:#1e1e1e;--figma-panel:#2d2d2d;--figma-border:#3e3e42;--figma-text:#ccc;--figma-text-secondary:#9d9d9d;--figma-blue:#0d99ff;--figma-selection:#0d99ff;--figma-cursor:#0d99ff;--figma-canvas-dots:#3e3e42;--accent:#81d8d0;--accent-dark:#4fb3aa;--accent-light:#d4f4f1;--accent-contrast:#1a3a37;--focus-ring:#0d99ff;--canvas-bg:#f5f5f5;--canvas-surface:#fff;--canvas-text:#1a1a1a;--canvas-text-secondary:#555;--canvas-text-muted:#666;--canvas-border:#e0e0e0;--canvas-shadow:0 8px 32px rgba(0,0,0,0.3);--toolbar-height:44px;--panel-width:220px;--status-height:28px;--font-sans:'Anaheim','Inter',sans-serif;--font-mono:'JetBrains Mono','SF Mono',monospace;--font-hand:'Caveat',cursive;--font-resume:'Anaheim','Inter',sans-serif}
 .workspace-light{--figma-bg:#f5f5f5;--figma-panel:#fff;--figma-border:#d0d0d0;--figma-text:#333;--figma-text-secondary:#666;--figma-blue:#0d99ff;--figma-selection:#0d99ff;--figma-cursor:#0d99ff;--figma-canvas-dots:#d0d0d0}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{font-family:var(--font-sans);font-size:16px;line-height:1.7;color:var(--canvas-text);background:var(--figma-bg);min-height:100vh;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow:hidden;transition:background 0.3s}
-a{color:var(--accent-text);text-decoration:none;transition:color 0.15s}
-a:hover{color:var(--accent-dark)}
+a{color:var(--accent-dark);text-decoration:none;transition:color 0.15s}
+a:hover{color:var(--accent)}
 a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline-offset:3px;border-radius:2px}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .skip-link{position:fixed;top:-60px;left:16px;z-index:9999;background:var(--figma-blue);color:#fff;padding:10px 18px;border-radius:4px;font-weight:600;font-size:14px;transition:top 0.25s}
@@ -46,7 +36,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
 .standard-mode .portfolio-header .header-text{flex:1;min-width:200px}
 .standard-mode .portfolio-header .header-download{flex-shrink:0}
 .standard-mode .standard-download{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:var(--accent);color:var(--accent-contrast);border:none;border-radius:6px;font-family:var(--font-resume);font-size:0.85rem;font-weight:600;cursor:pointer;transition:background 0.15s}
-.standard-mode .standard-download:hover{background:var(--accent-dark);color:var(--accent-contrast)}
+.standard-mode .standard-download:hover{background:var(--accent-dark);color:#fff}
 .standard-nav{display:none}
 .standard-mode .standard-nav{display:none}
 .standard-download{display:none}
@@ -62,7 +52,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
 .figma-toolbar .file-name{font-weight:600;font-size:12px;color:var(--figma-text);letter-spacing:-0.01em;transition:color 0.3s}
 .figma-toolbar .divider{width:1px;height:20px;background:var(--figma-border);margin:0 4px;transition:background 0.3s}
 .figma-toolbar .avatar-group{display:flex;gap:2px}
-.figma-toolbar .avatar{width:24px;height:24px;border-radius:50%;border:2px solid var(--figma-panel);display:inline-flex;align-items:center;justify-content:center;font-size:8px;font-weight:600;color:#fff;text-decoration:none;transition:transform 0.15s,border-color 0.3s;cursor:pointer} /* fw: 700 → 600 */
+.figma-toolbar .avatar{width:24px;height:24px;border-radius:50%;border:2px solid var(--figma-panel);display:inline-flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:#fff;text-decoration:none;transition:transform 0.15s,border-color 0.3s;cursor:pointer}
 .figma-toolbar .avatar:hover{transform:scale(1.15)}
 .avatar--1{background:#0d99ff}.avatar--2{background:#e86f51}.avatar--3{background:#f7d05c;color:#1a1a1a}
 
@@ -78,18 +68,18 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
 /* Present Control */
 .present-control{position:relative;display:inline-flex;align-items:stretch;background:var(--accent);border-radius:4px;margin-left:2px}
 .present-btn{display:inline-flex;align-items:center;gap:5px;padding:5px 10px;background:transparent;border:none;border-radius:4px 0 0 4px;color:var(--accent-contrast);font-family:var(--font-mono);font-size:10px;font-weight:600;cursor:pointer;transition:background 0.15s;letter-spacing:0.02em}
-.present-btn:hover{background:var(--accent-dark);color:var(--accent-contrast)}
+.present-btn:hover{background:var(--accent-dark);color:#fff}
 .present-btn svg{width:9px;height:9px;flex-shrink:0}
 .present-caret{display:inline-flex;align-items:center;justify-content:center;padding:5px 7px;background:transparent;border:none;border-left:1px solid rgba(26,58,55,0.28);border-radius:0 4px 4px 0;color:var(--accent-contrast);cursor:pointer;transition:background 0.15s}
-.present-caret:hover{background:var(--accent-dark);color:var(--accent-contrast)}
+.present-caret:hover{background:var(--accent-dark);color:#fff}
 .present-caret svg{width:8px;height:5px;flex-shrink:0}
 .present-menu{position:absolute;top:calc(100% + 8px);right:0;min-width:230px;background:var(--figma-panel);border:1px solid var(--figma-border);border-radius:6px;box-shadow:0 12px 32px rgba(0,0,0,0.35);z-index:120;overflow:hidden}
-.present-menu-label{padding:9px 14px 7px;font-size:10px;text-transform:uppercase;letter-spacing:0.08em;color:var(--figma-text-secondary);border-bottom:1px solid var(--figma-border)}
-.present-menu button{display:block;width:100%;padding:10px 14px;background:none;border:none;color:var(--figma-text);font-family:var(--font-mono);font-size:11px;cursor:pointer;text-align:left;transition:background 0.15s}
+.present-menu-label{padding:9px 14px 7px;font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--figma-text-secondary);border-bottom:1px solid var(--figma-border)}
+.present-menu button{display:block;width:100%;padding:10px 14px;background:none;border:none;color:var(--figma-text);font-family:var(--font-mono);font-size:10px;cursor:pointer;text-align:left;transition:background 0.15s}
 .present-menu button + button{border-top:1px solid var(--figma-border)}
 .present-menu button:hover{background:var(--accent);color:var(--accent-contrast)}
 .present-menu-name{display:block;font-weight:600;font-size:11px;letter-spacing:-0.01em}
-.present-menu-sub{display:block;font-size:10px;color:var(--figma-text-secondary);margin-top:3px;opacity:0.85}
+.present-menu-sub{display:block;font-size:9px;color:var(--figma-text-secondary);margin-top:3px;opacity:0.85}
 .present-menu button:hover .present-menu-sub{color:var(--accent-contrast);opacity:0.9}
 
 /* Left Panel */
@@ -102,27 +92,26 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
 .figma-left-panel .layer-group:focus-visible{outline:2px solid var(--focus-ring);outline-offset:-2px}
 .figma-left-panel .layer-group .layer-icon{width:16px;height:16px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
 .figma-left-panel .layer-group .layer-name{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.figma-left-panel .layer-group .layer-count{font-size:9px;background:var(--figma-border);padding:1px 5px;border-radius:8px;color:var(--figma-text-secondary)}
+.figma-left-panel .layer-group .layer-count{font-size:8px;background:var(--figma-border);padding:1px 5px;border-radius:8px;color:var(--figma-text-secondary)}
 .figma-left-panel .layer-group.layer-indent-1{padding-left:28px}
 .figma-left-panel .layer-group.layer-indent-2{padding-left:44px}
 .figma-left-panel .layer-group.layer-parent{font-weight:600;color:var(--figma-text);cursor:default;pointer-events:none}
-.figma-left-panel .layer-subgroup{padding:9px 12px 3px 28px;font-family:var(--font-mono);font-size:9px;text-transform:uppercase;letter-spacing:0.1em;color:var(--figma-text-secondary);opacity:0.55;font-weight:600;pointer-events:none;user-select:none}
 .figma-left-panel .back-btn{padding:10px 12px;margin:8px;background:var(--accent);color:var(--accent-contrast);border:none;border-radius:4px;font-family:var(--font-mono);font-size:10px;font-weight:600;cursor:pointer;text-align:center;display:flex;align-items:center;gap:6px;justify-content:center;transition:background 0.15s;flex-shrink:0;pointer-events:auto;z-index:41}
-.figma-left-panel .back-btn:hover{background:var(--accent-dark);color:var(--accent-contrast)}
+.figma-left-panel .back-btn:hover{background:var(--accent-dark);color:#fff}
 
 /* Right Panel */
 .figma-right-panel{position:fixed;top:var(--toolbar-height);right:0;bottom:var(--status-height);width:var(--panel-width);background:var(--figma-panel);border-left:1px solid var(--figma-border);z-index:40;display:flex;flex-direction:column;overflow-y:auto;font-family:var(--font-mono);font-size:11px;color:var(--figma-text-secondary);transition:background 0.3s,border-color 0.3s,color 0.3s}
 .figma-right-panel .panel-header{padding:8px 12px;border-bottom:1px solid var(--figma-border);font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:0.08em;display:flex;gap:6px;align-items:center;flex-shrink:0;transition:border-color 0.3s}
-.figma-right-panel .panel-header .tab{padding:4px 8px;border-radius:3px;font-size:10px;text-transform:none;letter-spacing:0;cursor:pointer;pointer-events:auto;transition:background 0.15s}
+.figma-right-panel .panel-header .tab{padding:4px 8px;border-radius:3px;font-size:9px;text-transform:none;letter-spacing:0;cursor:pointer;pointer-events:auto;transition:background 0.15s}
 .figma-right-panel .panel-header .tab.active{background:var(--accent);color:var(--accent-contrast);font-weight:600}
 .figma-right-panel .panel-content{padding:12px;flex:1;pointer-events:none}
 .figma-right-panel .prop-group{margin-bottom:16px}
-.figma-right-panel .prop-label{font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--figma-text-secondary);margin-bottom:6px;opacity:0.75}
+.figma-right-panel .prop-label{font-size:9px;text-transform:uppercase;letter-spacing:0.06em;color:var(--figma-text-secondary);margin-bottom:6px;opacity:0.7}
 .figma-right-panel .prop-row{display:flex;align-items:center;gap:6px;padding:3px 0}
 .figma-right-panel .prop-input{flex:1;height:24px;background:var(--figma-bg);border:1px solid var(--figma-border);border-radius:3px;display:flex;align-items:center;padding:0 6px;font-size:10px;color:var(--figma-text)}
 .figma-right-panel .prop-color-swatch{width:20px;height:20px;border-radius:3px;border:1px solid var(--figma-border)}
 .figma-right-panel .download-btn{padding:10px 20px;background:var(--accent);color:var(--accent-contrast);border:none;border-radius:6px;font-family:var(--font-mono);font-size:10px;font-weight:600;cursor:pointer;transition:background 0.15s;display:flex;align-items:center;gap:6px;width:100%;justify-content:center;pointer-events:auto;margin-top:8px}
-.figma-right-panel .download-btn:hover{background:var(--accent-dark);color:var(--accent-contrast)}
+.figma-right-panel .download-btn:hover{background:var(--accent-dark);color:#fff}
 
 /* Design Panel — Cursor Checkbox */
 .figma-right-panel .prop-checkbox{display:flex;align-items:center;gap:8px;padding:3px 0;cursor:pointer;pointer-events:auto;font-size:10px;color:var(--figma-text);user-select:none;-webkit-user-select:none;font-family:var(--font-mono)}
@@ -140,14 +129,6 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
 .figma-right-panel .theme-toggle-group .theme-btn.active{background:var(--accent);border-color:var(--accent);color:var(--accent-contrast)}
 .figma-right-panel .theme-toggle-group .theme-btn:focus-visible{outline:2px solid var(--focus-ring);outline-offset:2px}
 
-/* Right Panel — Live Selection Block */
-.figma-right-panel .selection-block{background:var(--figma-bg);border:1px solid var(--figma-border);border-left:2px solid var(--figma-border);border-radius:3px;padding:9px 10px;transition:border-color 0.2s,background 0.2s;min-height:96px}
-.figma-right-panel .selection-block.active{border-left-color:var(--accent);background:rgba(129,216,208,0.07)}
-.figma-right-panel .selection-title{font-size:10px;font-weight:600;color:var(--figma-text);letter-spacing:-0.01em;line-height:1.35;margin-bottom:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.figma-right-panel .selection-row{display:flex;justify-content:space-between;gap:8px;padding:2px 0;font-size:10px;line-height:1.4}
-.figma-right-panel .selection-key{color:var(--figma-text-secondary);opacity:0.75;flex-shrink:0;text-transform:uppercase;letter-spacing:0.05em}
-.figma-right-panel .selection-val{color:var(--figma-text);text-align:right;font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:130px}
-
 /* Status Bar */
 .figma-status-bar{position:fixed;bottom:0;left:0;right:0;height:var(--status-height);background:var(--figma-panel);border-top:1px solid var(--figma-border);z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 12px;font-family:var(--font-mono);font-size:10px;color:var(--figma-text-secondary);user-select:none;-webkit-user-select:none;pointer-events:none}
 .figma-status-bar .zoom-control{display:flex;align-items:center;gap:8px}
@@ -158,61 +139,54 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
 
 /* Portfolio Content */
 .portfolio-content,.case-study-view,.resume-view{max-width:720px;margin:30px auto;padding:0 16px;position:relative;z-index:2;background:var(--canvas-surface);border-radius:12px;box-shadow:var(--canvas-shadow);overflow:hidden;color:var(--canvas-text)}
-.portfolio-content .portfolio-inner,.case-study-view .case-study-inner,.resume-view .resume-inner{padding:40px 36px 48px}
-.portfolio-header{text-align:left;margin-bottom:36px;padding-bottom:24px;border-bottom:1px solid var(--canvas-border)}
-.portfolio-header h1{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:600;letter-spacing:-0.03em;line-height:1.2;margin-bottom:8px}
-.portfolio-header .positioning-line{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent-text);font-weight:600;display:block;margin-bottom:6px}
-.standard-mode .portfolio-header .positioning-line{font-size:12px;letter-spacing:0.1em}
-.portfolio-header .subtitle{font-family:var(--font-hand);font-size:1.3rem;font-weight:400;color:var(--accent-text);margin-bottom:12px;transform:rotate(-0.5deg);display:inline-block} /* fw: explicit 400 */
-.portfolio-header .description{font-size:0.95rem;color:var(--canvas-text-secondary);max-width:550px;line-height:1.7}
-.portfolio-section{margin-bottom:44px;position:relative}
-.portfolio-section:last-child{margin-bottom:0}
-.portfolio-section .section-heading{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:22px;padding-bottom:12px;border-bottom:2px dashed var(--canvas-border)}
+.portfolio-content .portfolio-inner,.case-study-view .case-study-inner,.resume-view .resume-inner{padding:32px 28px 40px}
+.portfolio-header{text-align:left;margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--canvas-border)}
+.portfolio-header h1{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;letter-spacing:-0.03em;line-height:1.2;margin-bottom:8px}
+.portfolio-header .subtitle{font-family:var(--font-hand);font-size:1.3rem;color:var(--accent-dark);margin-bottom:12px;transform:rotate(-0.5deg);display:inline-block}
+.portfolio-header .description{font-size:0.9rem;color:var(--canvas-text-secondary);max-width:550px;line-height:1.7}
+.portfolio-section{margin-bottom:32px}
+.portfolio-section .section-heading{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:16px;padding-bottom:8px;border-bottom:2px dashed var(--canvas-border)}
 .portfolio-section .section-heading h2{font-size:1.2rem;font-weight:700;letter-spacing:-0.02em}
 .portfolio-section .section-heading .section-tag{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.08em;color:var(--canvas-text-muted)}
-.portfolio-section .section-heading .section-note{font-family:var(--font-hand);font-size:1.1rem;font-weight:400;color:var(--accent-text);margin-left:auto;transform:rotate(-1deg)} /* fw: explicit 400 */
-.project-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px}
-.project-card{background:var(--canvas-surface);border:1px solid var(--canvas-border);border-radius:10px;padding:24px 22px;cursor:pointer;transition:all 0.25s;box-shadow:0 1px 3px rgba(0,0,0,0.04);position:relative;display:flex;flex-direction:column;gap:14px;text-align:left}
-.project-card:hover{box-shadow:0 6px 20px rgba(0,0,0,0.09);border-color:var(--accent);transform:translateY(-2px)}
-.project-card .card-tag{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--accent-text);font-weight:500}
-.project-card h3{font-size:1.05rem;font-weight:600;letter-spacing:-0.01em;line-height:1.3}
-.project-card p{font-size:0.9rem;color:var(--canvas-text-secondary);line-height:1.65;flex:1;margin:0}
-.project-card .card-thesis{font-family:var(--font-hand);font-size:1.05rem;font-weight:600;color:var(--accent-text);line-height:1.3;letter-spacing:0.01em;transform:rotate(-0.4deg);margin-top:-2px}
-.project-card .card-scope{font-family:var(--font-mono);font-size:11px;color:var(--canvas-text-secondary);letter-spacing:0.02em;display:flex;align-items:center;gap:6px;margin-top:-2px}
-.project-card .card-scope::before{content:'◦';color:var(--accent-text);font-size:12px;line-height:1}
-.project-card .card-meta{display:flex;justify-content:space-between;align-items:center;font-family:var(--font-mono);font-size:10px;color:var(--canvas-text-muted);border-top:1px solid var(--canvas-border);padding-top:14px;margin-top:4px}
-.project-card .card-meta .arrow{color:var(--accent-text);font-size:12px;font-weight:600;transition:transform 0.15s}
+.portfolio-section .section-heading .section-note{font-family:var(--font-hand);font-size:1.1rem;color:var(--accent-dark);margin-left:auto;transform:rotate(-1deg)}
+.project-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+.project-card{background:var(--canvas-surface);border:1px solid var(--canvas-border);border-radius:8px;padding:16px;cursor:pointer;transition:all 0.25s;box-shadow:0 1px 3px rgba(0,0,0,0.04);position:relative;display:flex;flex-direction:column;gap:8px;text-align:left}
+.project-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.08);border-color:var(--accent);transform:translateY(-2px)}
+.project-card .card-tag{font-family:var(--font-mono);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;color:var(--accent-dark);font-weight:600}
+.project-card h3{font-size:1rem;font-weight:600;letter-spacing:-0.01em}
+.project-card p{font-size:0.8rem;color:var(--canvas-text-secondary);line-height:1.6;flex:1}
+.project-card .card-meta{display:flex;justify-content:space-between;align-items:center;font-family:var(--font-mono);font-size:9px;color:var(--canvas-text-muted);border-top:1px solid var(--canvas-border);padding-top:8px}
+.project-card .card-meta .arrow{color:var(--accent-dark);font-size:12px;font-weight:700;transition:transform 0.15s}
 .project-card:hover .card-meta .arrow{transform:translateX(4px)}
 .skills-tags{display:flex;flex-wrap:wrap;gap:6px}
-.skill-tag{font-family:var(--font-mono);font-size:11px;padding:4px 10px;background:var(--accent-light);color:var(--accent-contrast);border-radius:4px;font-weight:500;transition:all 0.15s}
-.skill-tag:hover{background:var(--accent);color:var(--accent-contrast)}
-.contact-box{background:var(--canvas-bg);border:1px solid var(--canvas-border);border-radius:8px;padding:20px 24px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;box-shadow:0 2px 8px rgba(0,0,0,0.04)}
-.contact-box .contact-info{flex:1;min-width:220px}
-.contact-box h3{font-size:0.95rem;font-weight:600;letter-spacing:-0.01em;margin-bottom:3px}
-.contact-box p{font-size:0.85rem;color:var(--canvas-text-secondary);margin:0;line-height:1.5}
-.contact-box .contact-btn{display:inline-block;padding:11px 24px;background:var(--accent);color:var(--accent-contrast);font-weight:600;font-size:0.9rem;border-radius:6px;text-decoration:none;transition:all 0.15s;box-shadow:0 2px 6px rgba(129,216,208,0.4);white-space:nowrap;flex-shrink:0}
-.contact-box .contact-btn:hover{background:var(--accent-dark);color:var(--accent-contrast);box-shadow:0 4px 12px rgba(129,216,208,0.5);transform:translateY(-2px)}
+.skill-tag{font-family:var(--font-mono);font-size:10px;padding:4px 10px;background:var(--accent-light);color:var(--accent-contrast);border-radius:4px;font-weight:500;transition:all 0.15s}
+.skill-tag:hover{background:var(--accent);color:#fff}
+.contact-box{background:var(--canvas-bg);border:1px solid var(--canvas-border);border-radius:8px;padding:20px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.05)}
+.contact-box h3{font-size:1rem;font-weight:600;margin-bottom:8px}
+.contact-box p{font-size:0.85rem;color:var(--canvas-text-secondary);margin-bottom:16px}
+.contact-box .contact-btn{display:inline-block;padding:10px 22px;background:var(--accent);color:var(--accent-contrast);font-weight:600;font-size:0.85rem;border-radius:6px;text-decoration:none;transition:all 0.15s;box-shadow:0 2px 6px rgba(129,216,208,0.4)}
+.contact-box .contact-btn:hover{background:var(--accent-dark);color:#fff;box-shadow:0 4px 12px rgba(129,216,208,0.5);transform:translateY(-2px)}
 
 /* Case Study */
 .case-study-view{display:none}
 .case-study-view.active{display:block}
-.case-study-view .back-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-mono);font-size:11px;color:var(--accent-text);cursor:pointer;margin-bottom:16px;background:none;border:none;font-weight:600;transition:color 0.15s;float:right}
-.case-study-view .back-link:hover{color:var(--accent-dark)}
-.case-study-view .case-tag{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--accent-text);font-weight:500;margin-bottom:4px;clear:both}
-.case-study-view .case-classification{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.04em;color:var(--canvas-text-muted);margin-bottom:12px}
+.case-study-view .back-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-mono);font-size:11px;color:var(--accent-dark);cursor:pointer;margin-bottom:16px;background:none;border:none;font-weight:600;transition:color 0.15s;float:right}
+.case-study-view .back-link:hover{color:var(--accent)}
+.case-study-view .case-tag{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--accent-dark);font-weight:600;margin-bottom:4px;clear:both}
+.case-study-view .case-classification{font-family:var(--font-mono);font-size:9px;text-transform:uppercase;letter-spacing:0.04em;color:var(--canvas-text-muted);margin-bottom:12px}
 .case-study-view h2{font-size:1.6rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:8px}
-.case-study-view .case-role{font-family:var(--font-mono);font-size:11px;color:var(--canvas-text-secondary);margin-bottom:16px}
-.case-study-view .case-note{font-family:var(--font-hand);font-size:1.1rem;font-weight:400;background:var(--accent-light);padding:12px 16px;border-radius:4px 12px 4px 12px;margin:16px 0;color:var(--accent-contrast);transform:rotate(-0.5deg);white-space:pre-wrap} /* fw: explicit 400 */
-.case-study-view .case-section{margin:22px 0}
-.case-study-view .case-section p{font-size:0.95rem;font-weight:400;color:var(--canvas-text-secondary);line-height:1.8;white-space:pre-wrap}
-.case-study-view .case-section h3{font-family:var(--font-mono);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.08em;color:var(--canvas-text-secondary);margin-bottom:6px;border-bottom:1px solid var(--canvas-border);padding-bottom:4px} /* fw: explicit 500 */
+.case-study-view .case-role{font-family:var(--font-mono);font-size:11px;color:var(--canvas-text-muted);margin-bottom:16px}
+.case-study-view .case-note{font-family:var(--font-hand);font-size:1.1rem;background:var(--accent-light);padding:12px 16px;border-radius:4px 12px 4px 12px;margin:16px 0;color:var(--accent-contrast);transform:rotate(-0.5deg)}
+.case-study-view .case-section{margin:16px 0}
+.case-study-view .case-section h3{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--canvas-text-muted);margin-bottom:6px;border-bottom:1px solid var(--canvas-border);padding-bottom:4px}
+.case-study-view .case-section p{font-size:0.85rem;color:var(--canvas-text-secondary);line-height:1.7}
 .case-study-view .case-tags{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0}
-.case-study-view .case-tags .tag{font-family:var(--font-mono);font-size:11px;padding:4px 10px;background:var(--accent-light);color:var(--accent-contrast);border-radius:4px;font-weight:500}
+.case-study-view .case-tags .tag{font-family:var(--font-mono);font-size:9px;padding:4px 10px;background:var(--accent-light);color:var(--accent-contrast);border-radius:4px;font-weight:500}
 
 /* Project Links */
 .project-links{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;padding-top:16px;border-top:1px solid var(--canvas-border)}
-.project-link-btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:var(--accent);color:var(--accent-contrast);border-radius:6px;font-weight:600;font-size:0.9rem;text-decoration:none;transition:all 0.15s;box-shadow:0 2px 6px rgba(129,216,208,0.4)}
-.project-link-btn:hover{background:var(--accent-dark);color:var(--accent-contrast);box-shadow:0 4px 12px rgba(129,216,208,0.5);transform:translateY(-2px)}
+.project-link-btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:var(--accent);color:var(--accent-contrast);border-radius:6px;font-weight:600;font-size:0.85rem;text-decoration:none;transition:all 0.15s;box-shadow:0 2px 6px rgba(129,216,208,0.4)}
+.project-link-btn:hover{background:var(--accent-dark);color:#fff;box-shadow:0 4px 12px rgba(129,216,208,0.5);transform:translateY(-2px)}
 
 /* Resume */
 .resume-view{display:none}
@@ -221,22 +195,22 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
 .resume-view .resume-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--canvas-border);flex-wrap:wrap;gap:8px}
 .resume-view .resume-header h2{font-size:1.5rem;font-weight:700;letter-spacing:-0.02em;color:var(--canvas-text)}
 .resume-view .download-btn{padding:10px 20px;background:var(--accent);color:var(--accent-contrast);border:none;border-radius:6px;font-family:var(--font-mono);font-size:10px;font-weight:600;cursor:pointer;transition:background 0.15s;display:flex;align-items:center;gap:6px}
-.resume-view .download-btn:hover{background:var(--accent-dark);color:var(--accent-contrast)}
-.resume-view .resume-contact{font-family:var(--font-mono);font-size:0.85rem;color:var(--canvas-text-secondary);margin-bottom:20px;border-bottom:1px solid var(--canvas-border);padding-bottom:8px}
-.resume-view .resume-section{margin-bottom:26px}
-.resume-view .resume-section h3{font-size:0.95rem;font-weight:600;color:var(--canvas-text);margin-bottom:6px;letter-spacing:-0.01em} /* fw: 700 → 600 */
-.resume-view .resume-section h4{font-family:var(--font-mono);font-size:0.8rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--canvas-text-secondary);margin-bottom:4px;border-bottom:1px solid var(--canvas-border);padding-bottom:2px} /* fw: 400 → 600 */
+.resume-view .download-btn:hover{background:var(--accent-dark);color:#fff}
+.resume-view .resume-contact{font-family:var(--font-mono);font-size:0.8rem;color:var(--canvas-text-secondary);margin-bottom:20px;border-bottom:1px solid var(--canvas-border);padding-bottom:8px}
+.resume-view .resume-section{margin-bottom:20px}
+.resume-view .resume-section h3{font-size:0.9rem;font-weight:700;color:var(--canvas-text);margin-bottom:6px;letter-spacing:-0.01em}
+.resume-view .resume-section h4{font-family:var(--font-mono);font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--canvas-text-muted);margin-bottom:4px;border-bottom:1px solid var(--canvas-border);padding-bottom:2px}
 .resume-view .resume-section ul{list-style:none;padding:0}
-.resume-view .resume-section li{font-size:0.875rem;color:var(--canvas-text-secondary);line-height:1.65;margin-bottom:4px;padding-left:14px;position:relative;list-style:none}
-.resume-view .resume-section li::before{content:'•';position:absolute;left:0;color:var(--accent-text);font-weight:600} /* fw: 700 → 600 */
+.resume-view .resume-section li{font-size:0.8rem;color:var(--canvas-text-secondary);line-height:1.6;margin-bottom:4px;padding-left:14px;position:relative;list-style:none}
+.resume-view .resume-section li::before{content:'•';position:absolute;left:0;color:var(--accent-dark);font-weight:700}
 .resume-view .resume-section li strong{color:var(--canvas-text);font-weight:600}
-.resume-view .resume-date{font-family:var(--font-mono);font-size:0.8rem;color:var(--accent-text)}
+.resume-view .resume-date{font-family:var(--font-mono);font-size:0.7rem;color:var(--accent-dark)}
 
 /* Cursor */
 .figma-cursor{position:fixed;pointer-events:none;z-index:60;user-select:none;-webkit-user-select:none;font-family:var(--font-mono);font-size:10px;display:flex;align-items:flex-start;gap:2px;animation:cursor-glide 20s ease-in-out infinite;color:var(--figma-cursor)}
 .figma-cursor.cursor-hidden{display:none}
 .figma-cursor .cursor-arrow{width:14px;height:14px;fill:currentColor;flex-shrink:0}
-.figma-cursor .cursor-label{padding:2px 6px;border-radius:2px;font-size:10px;font-weight:600;white-space:nowrap;background:var(--figma-cursor);color:#fff}
+.figma-cursor .cursor-label{padding:2px 6px;border-radius:2px;font-size:9px;font-weight:600;white-space:nowrap;background:var(--figma-cursor);color:#fff}
 @keyframes cursor-glide{0%{transform:translate(0,0)}20%{transform:translate(180px,100px)}40%{transform:translate(320px,45px)}60%{transform:translate(200px,180px)}80%{transform:translate(80px,60px)}100%{transform:translate(0,0)}}
 
 /* Photo Modal */
@@ -244,42 +218,39 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
 .photo-modal.active{display:flex}
 .photo-modal .modal-content{background:var(--canvas-surface);padding:20px;border-radius:12px;max-width:400px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.5)}
 .photo-modal .modal-content img{width:200px;height:200px;border-radius:50%;object-fit:cover;margin:0 auto 16px;background:var(--figma-border);display:block}
-.photo-modal .modal-content h3{font-size:1.2rem;font-weight:600;margin-bottom:4px} /* fw: 700 → 600 */
-.photo-modal .modal-content p{font-size:0.9rem;color:var(--canvas-text-secondary);margin-bottom:16px}
-.photo-modal .close-modal{background:var(--accent);color:var(--accent-contrast);border:none;padding:8px 20px;border-radius:6px;font-weight:600;cursor:pointer;font-size:0.9rem;font-family:var(--font-resume)}
-.photo-modal .close-modal:hover{background:var(--accent-dark);color:var(--accent-contrast)}
+.photo-modal .modal-content h3{font-size:1.2rem;font-weight:700;margin-bottom:4px}
+.photo-modal .modal-content p{font-size:0.85rem;color:var(--canvas-text-secondary);margin-bottom:16px}
+.photo-modal .close-modal{background:var(--accent);color:var(--accent-contrast);border:none;padding:8px 20px;border-radius:6px;font-weight:600;cursor:pointer;font-size:0.85rem;font-family:var(--font-resume)}
+.photo-modal .close-modal:hover{background:var(--accent-dark);color:#fff}
 
 /* Responsive */
 @media(max-width:1024px){:root{--panel-width:180px}.portfolio-content,.case-study-view,.resume-view{max-width:600px}}
-@media(max-width:768px){.figma-toolbar,.figma-left-panel,.figma-right-panel,.figma-status-bar,.figma-cursor{display:none!important}.figma-canvas{margin:0!important;top:0;bottom:0;left:0;right:0;background:var(--canvas-bg)}.portfolio-content,.case-study-view,.resume-view{margin:0;border-radius:0;max-width:100%;box-shadow:none}.portfolio-content .portfolio-inner,.case-study-view .case-study-inner,.resume-view .resume-inner{padding:24px 20px 36px}.project-grid{grid-template-columns:1fr;gap:16px}.section-note{display:none}.contact-box{flex-direction:column;align-items:stretch;text-align:center;padding:20px 18px;gap:14px}.contact-box .contact-info{min-width:0}.contact-box .contact-btn{width:100%;text-align:center}.standard-download{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:var(--accent);color:var(--accent-contrast);border:none;border-radius:6px;font-family:var(--font-resume);font-size:0.9rem;font-weight:600;cursor:pointer;transition:background 0.15s;margin-top:12px}.standard-download:hover{background:var(--accent-dark);color:var(--accent-contrast)}}
+@media(max-width:768px){.figma-toolbar,.figma-left-panel,.figma-right-panel,.figma-status-bar,.figma-cursor{display:none!important}.figma-canvas{margin:0!important;top:0;bottom:0;left:0;right:0;background:var(--canvas-bg)}.portfolio-content,.case-study-view,.resume-view{margin:0;border-radius:0;max-width:100%;box-shadow:none}.portfolio-content .portfolio-inner,.case-study-view .case-study-inner,.resume-view .resume-inner{padding:20px 16px 32px}.project-grid{grid-template-columns:1fr}.section-note{display:none}.standard-download{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:var(--accent);color:var(--accent-contrast);border:none;border-radius:6px;font-family:var(--font-resume);font-size:0.85rem;font-weight:600;cursor:pointer;transition:background 0.15s;margin-top:12px}.standard-download:hover{background:var(--accent-dark);color:#fff}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important}}
-
 /* Mobile Banner */
-.mobile-banner{display:none;position:fixed;top:0;left:0;right:0;z-index:500;background:var(--canvas-text);color:var(--canvas-surface);padding:12px 40px 12px 16px;font-family:var(--font-resume);font-size:0.85rem;line-height:1.5;box-shadow:0 2px 8px rgba(0,0,0,0.2)}
-.mobile-banner .banner-close{position:absolute;top:8px;right:12px;background:none;border:none;font-size:18px;cursor:pointer;color:var(--canvas-surface);font-family:var(--font-mono);padding:4px}
+.mobile-banner{display:none;position:fixed;top:0;left:0;right:0;z-index:500;background: var(--canvas-text); color: var(--canvas-surface);padding:12px 40px 12px 16px;font-family:var(--font-resume);font-size:0.8rem;line-height:1.5;box-shadow:0 2px 8px rgba(0,0,0,0.2)}
+.mobile-banner .banner-close{position:absolute;top:8px;right:12px;background:none;border:none;font-size:18px;cursor:pointer;color:var(--accent-surface);font-family:var(--font-mono);padding:4px}
 .mobile-banner .banner-close:hover{opacity:0.7}
 @media(max-width:768px){.mobile-banner{display:block}}
-
 /* Tutorial Guide */
 .tutorial-overlay{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,0.6);display:none;align-items:center;justify-content:center;pointer-events:auto}
 .tutorial-overlay.active{display:flex}
-.tutorial-tooltip{position:fixed;z-index:301;background:var(--canvas-surface);color:var(--canvas-text);border-radius:8px;padding:16px 20px;max-width:280px;box-shadow:0 12px 40px rgba(0,0,0,0.4);font-family:var(--font-resume);font-size:0.9rem;line-height:1.6}
-.tutorial-tooltip .tutorial-title{font-weight:600;font-size:0.95rem;margin-bottom:4px;color:var(--accent-contrast)} /* fw: 700 → 600 */
+.tutorial-tooltip{position:fixed;z-index:301;background:var(--canvas-surface);color:var(--canvas-text);border-radius:8px;padding:16px 20px;max-width:280px;box-shadow:0 12px 40px rgba(0,0,0,0.4);font-family:var(--font-resume);font-size:0.85rem;line-height:1.6}
+.tutorial-tooltip .tutorial-title{font-weight:700;font-size:0.9rem;margin-bottom:4px;color:var(--accent-contrast)}
 .tutorial-tooltip .tutorial-close{position:absolute;top:8px;right:12px;background:none;border:none;font-size:18px;cursor:pointer;color:var(--canvas-text-muted);font-family:var(--font-mono)}
 .tutorial-tooltip .tutorial-close:hover{color:var(--canvas-text)}
-.tutorial-next{display:inline-block;margin-top:12px;padding:6px 16px;background:var(--accent);color:var(--accent-contrast);border:none;border-radius:4px;font-size:0.85rem;font-weight:600;cursor:pointer;font-family:var(--font-resume)}
-.tutorial-next:hover{background:var(--accent-dark);color:var(--accent-contrast)}
-.tutorial-skip{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:302;padding:8px 20px;background:var(--canvas-text);color:var(--canvas-surface);border:none;border-radius:20px;font-size:0.85rem;font-weight:600;cursor:pointer;font-family:var(--font-resume)}
+/* .tutorial-tooltip::before{ content:''; position:absolute; width:10px;height:10px; background:var(--canvas-surface); transform:rotate(45deg); z-index:-1; }
+.tutorial-tooltip[data-pos="bottom"]::before{ top:-5px;left:50%;margin-left:-5px; box-shadow:-2px -2px 4px rgba(0,0,0,0.06); }
+.tutorial-tooltip[data-pos="left"]::before{ right:-5px;top:50%;margin-top:-5px; box-shadow:2px -2px 4px rgba(0,0,0,0.06); }
+.tutorial-tooltip[data-pos="right"]::before{ left:-5px;top:50%;margin-top:-5px; box-shadow:-2px 2px 4px rgba(0,0,0,0.06); } */
+.tutorial-next{display:inline-block;margin-top:12px;padding:6px 16px;background:var(--accent);color:var(--accent-contrast);border:none;border-radius:4px;font-size:0.8rem;font-weight:600;cursor:pointer;font-family:var(--font-resume)}
+.tutorial-next:hover{background:var(--accent-dark);color:#fff}
+.tutorial-skip{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:302;padding:8px 20px;background:var(--canvas-text);color:var(--canvas-surface);border:none;border-radius:20px;font-size:0.8rem;font-weight:600;cursor:pointer;font-family:var(--font-resume)}
 .tutorial-highlight{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px;transition:outline 0.3s}
 .tutorial-trigger{padding:4px 12px;background:var(--figma-border);color:var(--figma-text);border:none;border-radius:4px;font-size:10px;cursor:pointer;font-family:var(--font-mono);display:flex;align-items:center;gap:4px}
 .tutorial-trigger:hover{background:var(--accent);color:var(--accent-contrast)}
-
-/* Figma-style section selection */
-.portfolio-section.highlighted::before{content:'';position:absolute;top:-4px;left:-8px;right:-8px;bottom:-4px;border:2px solid var(--accent);border-radius:2px;pointer-events:none;z-index:1;animation:figma-selection 1.5s ease-out forwards}
-@keyframes figma-selection{0%{opacity:1}70%{opacity:1}100%{opacity:0}}
-
-/* AI-assisted card badge */
-.project-card .card-badge{position:absolute;top:12px;right:12px;font-family:var(--font-mono);font-size:9px;text-transform:uppercase;letter-spacing:0.08em;font-weight:600;padding:2px 7px;border-radius:3px;background:var(--accent-light);color:var(--accent-contrast);border:1px solid var(--accent)}
+/* Figma-style section selection */ 
+.portfolio-section { position: relative; } .portfolio-section.highlighted::before { content: ''; position: absolute; top: -4px; left: -8px; right: -8px; bottom: -4px; border: 2px solid var(--accent); border-radius: 2px; pointer-events: none; z-index: 1; animation: figma-selection 1.5s ease-out forwards; } @keyframes figma-selection { 0% { opacity: 1; } 70% { opacity: 1; } 100% { opacity: 0; } }
 </style>
 </head>
 <body>
@@ -369,18 +340,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
                     data-tooltip="Resume preview + download">Inspect</span>
             </div>
             <div class="panel-content" id="panel-design-content">
-<div class="prop-group">
-    <div class="prop-label">Selection</div>
-    <div class="selection-block" id="selection-block">
-        <div class="selection-title" id="selection-title">Portfolio Overview</div>
-        <div class="selection-row"><span class="selection-key">Items</span><span class="selection-val">6 projects</span></div>
-        <div class="selection-row"><span class="selection-key">Focus</span><span class="selection-val">Enterprise UX</span></div>
-    </div>
-</div>
-<div class="prop-group">
-    <div class="prop-label">Canvas</div>
-    <div class="prop-row"><span>W</span><span class="prop-input">720</span></div>
-</div>
+                <div class="prop-group">
+                    <div class="prop-label">Canvas</div>
+                    <div class="prop-row"><span>W</span><span class="prop-input">720</span></div>
+                </div>
                 <div class="prop-group">
                     <div class="prop-label">Fill</div>
                     <div class="prop-row">
@@ -454,14 +417,13 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
                     <header class="portfolio-header">
                         <div class="header-text">
                             <h1>Franchezca Quiocho</h1>
-                            <span class="positioning-line">Enterprise UX · Design Systems · AI-Assisted Builds</span>
-                            <span class="subtitle">mapping flows with Figma, AI, and code</span>
+                            <span class="subtitle">Senior UI/UX Designer · mapping flows with Figma, AI, and code</span>
                             <p class="description">
-                                Senior UI/UX Designer with 9+ years in enterprise-grade digital products across
-                                maritime, government, HR, education, banking, and commerce. I turn complex,
-                                multi-role workflows into clear, accessible, developer-ready interfaces, and I
-                                build the design systems that keep them consistent. Currently exploring
-                                AI-assisted product builds.
+                                I design enterprise-grade digital products that feel effortless. With over 9 years
+                                of experience across maritime, government, HR, banking, education, and chatbot
+                                ecosystems,
+                                I turn complex workflows into clear, accessible, and developer-ready interfaces.
+                                I'm currently exploring AI-enabled product design and AI-assisted workflows.
                             </p>
                         </div>
                         <div class="header-download">
@@ -473,7 +435,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
                         <div class="section-heading">
                             <h2>Selected Work</h2>
                             <span class="section-tag">[enterprise_ux]</span>
-                            <span class="section-note">click any card to open case study</span>
+                            <span class="section-note">click to open case study</span>
                         </div>
                         <div class="project-grid" id="project-grid" role="list"></div>
                     </section>
@@ -505,13 +467,11 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
                             <h2>Let's Connect</h2>
                             <span class="section-tag">[open_to_remote]</span>
                         </div>
-                       <div class="contact-box">
-    <div class="contact-info">
-        <h3>Philippines · Open to Remote (Global)</h3>
-        <p>Direct email, no intake forms.</p>
-    </div>
-    <a href="mailto:iamftq@gmail.com" class="contact-btn">iamftq@gmail.com</a>
-</div>
+                        <div class="contact-box">
+                            <h3>Location: Philippines · Open to Remote (Global)</h3>
+                            <p>Direct email. No intake forms.</p>
+                            <a href="mailto:iamftq@gmail.com" class="contact-btn">iamftq@gmail.com</a>
+                        </div>
                     </section>
                 </div>
             </div>
@@ -729,153 +689,15 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
         (function () {
             'use strict';
 
- const projectData = {
-    maritime: {
-        cardTitle: "Maritime Workforce Platform",
-        cardDesc: "Legacy system redesign and UI standardization",
-        cardMetric: "Legacy modernization",
-        cardScope: "Multi-module · Fleet & vessel ops",
-        caseTag: "SYS_01 // MARITIME ERP",
-        classification: "B2B · Enterprise · SaaS",
-        title: "Enterprise Maritime Workforce Platform",
-        context: "Fleet & Vessel Operations · Ripple Operations",
-        selectionRole: "Lead UI/UX Designer",
-        selectionScope: "Multi-module · Fleet & vessel ops",
-        selectionMethods: "Modernization · Design System",
-        overview: "Led the UI/UX redesign of a mature maritime workforce and fleet management platform. The legacy system had grown organically over the years with inconsistent UI patterns across modules. Focused on modernizing one module at a time while ensuring familiar workflows for existing users.",
-        problem: "The platform was already mature when I joined, but lacked a design system. Different modules had been built by different people over the years, resulting in inconsistent UI and user experience. Users were accustomed to navigating legacy modules, so any redesign had to balance modernization with familiarity.",
-        process: "Approached the redesign module by module. First understood existing workflows, aligned with the Product Owner on improvement priorities, then introduced reusable UI patterns for forms, tables, and buttons. Created live HTML templates that stakeholders could interact with instead of reviewing static screens. These same templates were used by developers during implementation, reducing back-and-forth and keeping the final product close to the approved design.",
-        solution: "Introduced a consistent UI structure with reusable components while modernizing legacy modules. Live HTML prototypes served as both stakeholder validation tools and developer implementation references. Each module was redesigned to streamline workflows while maintaining familiar navigation patterns for existing users.",
-        impact: "The platform became significantly more consistent and easier to maintain. Post-redesign feedback from crew and officers confirmed that streamlined workflows helped them complete daily tasks faster, demonstrating real operational impact.",
-        tags: ["Enterprise", "Maritime", "Legacy Modernization", "UI/UX Design", "Design System"],
-        shortDesc: "Legacy system modernization through module-by-module redesign and reusable UI patterns.",
-        note: "Respect the familiar while introducing the better.",
-        links: [
-            { label: "Open Live UI (credentials required)", url: "https://ditto-projects.vercel.app/?p=maritime", type: "demo" }
-        ]
-    },
+            const projectData = {
+                maritime: { cardTitle: "Maritime Workforce Platform", cardDesc: "Legacy system redesign and UI standardization", cardMetric: "Legacy modernization", caseTag: "SYS_01 // MARITIME ERP", classification: "B2B · Enterprise · SaaS", title: "Enterprise Maritime Workforce Platform", context: "Fleet & Vessel Operations · Ripple Operations", overview: "Led the UI/UX redesign of a mature maritime workforce and fleet management platform. The legacy system had grown organically over the years with inconsistent UI patterns across modules. Focused on modernizing one module at a time while ensuring familiar workflows for existing users.", problem: "The platform was already mature when I joined, but lacked a design system. Different modules had been built by different people over the years, resulting in inconsistent UI and user experience. Users were accustomed to navigating legacy modules, so any redesign had to balance modernization with familiarity.", process: "Approached the redesign module by module. First understood existing workflows, aligned with the Product Owner on improvement priorities, then introduced reusable UI patterns for forms, tables, and buttons. Created live HTML templates that stakeholders could interact with instead of reviewing static screens. These same templates were used by developers during implementation, reducing back-and-forth and keeping the final product close to the approved design.", solution: "Introduced a consistent UI structure with reusable components while modernizing legacy modules. Live HTML prototypes served as both stakeholder validation tools and developer implementation references. Each module was redesigned to streamline workflows while maintaining familiar navigation patterns for existing users.", impact: "The platform became significantly more consistent and easier to maintain. Post-redesign feedback from crew and officers confirmed that streamlined workflows helped them complete daily tasks faster, demonstrating real operational impact.", tags: ["Enterprise", "Maritime", "Legacy Modernization", "UI/UX Design", "Design System"], shortDesc: "Legacy system modernization through module-by-module redesign and reusable UI patterns.", note: "Respect the familiar while introducing the better." },
+                erp: { cardTitle: "University ERP Platform", cardDesc: "Education, HR, and LMS in one system", cardMetric: "Multi-module", caseTag: "SYS_02 // DIGITAL ERP", classification: "B2B · Enterprise · Multi-Module", title: "University Enterprise Resource Planning Platform", context: "Education + HR + LMS", overview: "Designed the UI and UX for a multi-module ERP system combining university, HR, and learning management into one platform supporting administrators, HR staff, faculty, and students.", problem: "Each department had its own workflows and user needs. This led to inconsistent flows, repeated processes, and a confusing experience when users moved between modules.", process: "Mapped user journeys for each role, created flowcharts and wireframes, reviewed with stakeholders, and translated these into UI structures that made each role's tasks easier to follow.", solution: "Designed a modular ERP with clear paths per user role while maintaining consistent UI patterns across all modules. Simplified navigation and reduced unnecessary steps.", impact: "Brought multiple systems into one platform, making it easier for users to complete tasks without switching between tools.", tags: ["Enterprise", "ERP", "Education", "HR", "LMS"], shortDesc: "Designing a multi-module ERP for education, HR, and LMS.", note: "One platform, many roles. Clarity for everyone."},
+                gov: { cardTitle: "Government EODB Platform", cardDesc: "Business permits and approvals digitized", cardMetric: "Dual-portal", caseTag: "SYS_03 // GOVERNMENT EODB", classification: "B2G · Public Sector · Dual-Portal", title: "Ease of Doing Business Platform", context: "Government Digital Services · Business Permits", overview: "Designed a digital system for business registration, renewal, and permit processing with citizen and admin portals for a local government unit.", problem: "The permit process was fully manual, involving multiple steps across different offices and hard to track.", process: "Reviewed end-to-end government workflows, mapped user interactions for applicants, evaluators, approvers, and payment officers, and validated with stakeholders.", solution: "Designed a two-part system: a citizen portal for applying, paying, and tracking permits, and an admin portal for reviewing and approving applications.", impact: "Moved the permit process from manual paperwork to a structured digital system, making it easier for applicants to track their applications.", tags: ["Government", "EODB", "Public Sector", "Workflow"], shortDesc: "Digitizing business permit applications and approvals.", note: "Clear processes build public trust." },
+                hrPortal: { cardTitle: "HR & Property System", cardDesc: "HRIS and asset management unified", cardMetric: "Internal tool", caseTag: "SYS_04 // HRIS & ASSET", classification: "B2B · Enterprise · Internal Tool", title: "Human Resource & Property Information Management System", context: "Enterprise Systems · HRIS · Asset Management · UI/UX Design", overview: "Designed the UI and UX for a system that manages HR processes and property/asset tracking in one platform. It supports internal teams handling employee records, approvals, and asset management in day-to-day operations.", problem: "HR and property tracking were previously handled using separate tools and manual processes. This made it hard to keep data consistent, track requests, and monitor the status of approvals across departments.", process: "I reviewed how HR and property workflows were being handled, including employee records, asset tracking, and approval steps. I mapped out how different users like HR staff, admin teams, and approvers interact with the system, then translated these into flowcharts and UI structures.", solution: "Designed a unified system that brings HR and property management into one platform. It includes role-based dashboards, structured forms, and clear approval flows so users can easily track requests and updates.", impact: "Helped reduce scattered tracking by consolidating HR and property processes into a single system. It made it easier for teams to monitor requests, approvals, and asset status without switching between tools.", tags: ["Enterprise", "HRIS", "Property Management", "Workflow System", "UI/UX Design"], shortDesc: "Combining HR and asset management workflows into one structured internal system.", note: "Unified systems reduce scattered tracking." },
+                ecommerce: { cardTitle: "Digital Commerce POC", cardDesc: "Dual-portal marketplace system", cardMetric: "Proof of concept", caseTag: "SAAS_01 // E-COMMERCE POC", classification: "B2C + B2B · Marketplace · POC", title: "Digital Commerce Platform (Proof of Concept)", context: "E-Commerce · Digital Platform · Marketplace UX", overview: "Designed the UI and UX for a proof-of-concept digital commerce platform that supports online selling and product browsing. The system includes a shopper-facing marketplace and an admin portal for managing products, sellers, and transactions.", problem: "Product listings and sales channels were scattered, making it hard for shoppers to find items and for sellers to manage their products in one place. There was no single system for handling listings, categories, and transactions.", process: "I looked at how the marketplace should work from both sides: shoppers and sellers. I mapped the full flow from browsing products to checkout, and also the backend processes for managing listings, categories, and orders. These were turned into structured flows and UI layouts that support both users and admins.", solution: "Designed a two part system: a shopper side for browsing and purchasing products, and an admin portal for managing listings, sellers, and transactions. Focused on keeping the shopping experience simple while making the admin side organized and easy to operate.", impact: "Created a clear structure for a digital marketplace that supports both selling and management. It helped define how products are discovered, managed, and processed in a single system.", tags: ["E-Commerce", "Marketplace", "Admin System", "UI/UX Design", "POC"], shortDesc: "Designing a dual-portal marketplace system for product browsing, selling, and management.", note: "Simplify the shopper, organize the seller." },
+                rebranding: { cardTitle: "Rebranding Design System", cardDesc: "Company brand unification", cardMetric: "Brand standardization", caseTag: "B2B+SAAS_01 // REBRANDING DS", classification: "B2B · Enterprise · Brand Integration", title: "Rebranding Design System", context: "Post-Acquisition · Design System · Brand Standardization", overview: "Led the design system and rebranding initiative following the acquisition of ShipAdmin Philippines Inc. and Adonis HR by Ripple Operations. Standardized colors, typography, components, and branding across both platforms to create a unified visual identity.", problem: "After the acquisition, two separate products (ShipAdmin and Adonis HR) had inconsistent branding, different color schemes, conflicting UI patterns, and duplicated design efforts.", process: "Audited both platforms to identify design inconsistencies. Defined a unified color palette, typography scale, and component library that respected both brand legacies. Created design tokens and documented implementation guidelines for developers.", solution: "Built a centralized design system with standardized colors, typography, spacing, and reusable components. Applied the new branding consistently across both platforms while maintaining familiar workflows for existing users.", impact: "Reduced design duplication by 60%, accelerated feature delivery, and created a seamless visual experience across both products.", tags: ["Design System", "Rebranding", "Design Tokens", "Brand Standardization", "UI/UX Design"], shortDesc: "Standardizing branding and design systems across AdonisHR and ShipAdmin after acquisition.", note: "A unified brand builds trust across platforms." }
+            };
 
-    erp: {
-        cardTitle: "University ERP Platform",
-        cardDesc: "Education, HR, and LMS in one system",
-        cardMetric: "Multi-module",
-        cardScope: "12 modules · 4 roles · 2 portals",
-        caseTag: "SYS_02 // DIGITAL ERP",
-        classification: "B2B · Enterprise · Multi-Module",
-        title: "University Enterprise Resource Planning Platform",
-        context: "Education + HR + LMS",
-        selectionRole: "UI/UX Designer",
-        selectionScope: "12 modules · 4 roles · 2 portals",
-        selectionMethods: "IA · Workflow Design · Multi-role UX",
-        overview: "Designed the UI and UX for a multi-module ERP system combining university, HR, and learning management into one platform supporting administrators, HR staff, faculty, and students.",
-        problem: "Each department had its own workflows and user needs. This led to inconsistent flows, repeated processes, and a confusing experience when users moved between modules.",
-        process: "Mapped user journeys for each role, created flowcharts and wireframes, reviewed with stakeholders, and translated these into UI structures that made each role's tasks easier to follow.",
-        solution: "Designed a modular ERP with clear paths per user role while maintaining consistent UI patterns across all modules. Simplified navigation and reduced unnecessary steps.",
-        impact: "Brought multiple systems into one platform, making it easier for users to complete tasks without switching between tools.",
-        tags: ["Enterprise", "ERP", "Education", "HR", "LMS"],
-        shortDesc: "Designing a multi-module ERP for education, HR, and LMS.",
-        note: "One platform, many roles. Clarity for everyone.",
-        links: [
-            { label: "Open Live UI (auth required)", url: "https://ditto-projects.vercel.app/?p=education", type: "demo" }
-        ]
-    },
-
-    gov: {
-        cardTitle: "Government EODB Platform",
-        cardDesc: "Business permits and approvals digitized",
-        cardMetric: "Dual-portal",
-        cardScope: "2 portals · 4 roles",
-        caseTag: "SYS_03 // GOVERNMENT EODB",
-        classification: "B2G · Public Sector · Dual-Portal",
-        title: "Ease of Doing Business Platform",
-        context: "Government Digital Services · Business Permits",
-        selectionRole: "UI/UX Designer",
-        selectionScope: "2 connected portals · 4 roles",
-        selectionMethods: "Workflow Design · Citizen UX · Admin UX",
-        overview: "Designed a digital system for business registration, renewal, and permit processing with citizen and admin portals for a local government unit.",
-        problem: "The permit process was fully manual, involving multiple steps across different offices and hard to track.",
-        process: "Reviewed end-to-end government workflows, mapped user interactions for applicants, evaluators, approvers, and payment officers, and validated with stakeholders.",
-        solution: "Designed a two-part system: a citizen portal for applying, paying, and tracking permits, and an admin portal for reviewing and approving applications.",
-        impact: "Moved the permit process from manual paperwork to a structured digital system, making it easier for applicants to track their applications.",
-        tags: ["Government", "EODB", "Public Sector", "Workflow"],
-        shortDesc: "Digitizing business permit applications and approvals.",
-        note: "Clear processes build public trust.",
-        links: [
-            { label: "Open Live UI (auth required)", url: "https://ditto-projects.vercel.app/?p=government", type: "demo" }
-        ]
-    },
-
-    hrPortal: {
-        cardTitle: "HR & Property System",
-        cardDesc: "HRIS and asset management unified",
-        cardMetric: "Internal tool",
-        cardScope: "HRIS · Asset management",
-        caseTag: "SYS_04 // HRIS & ASSET",
-        classification: "B2B · Enterprise · Internal Tool",
-        title: "Human Resource & Property Information Management System",
-        context: "Enterprise Systems · HRIS · Asset Management · UI/UX Design",
-        selectionRole: "UI/UX Designer",
-        selectionScope: "HRIS + Property in one system",
-        selectionMethods: "Workflow Design · Role-based UX",
-        overview: "Designed the UI and UX for a system that manages HR processes and property/asset tracking in one platform. It supports internal teams handling employee records, approvals, and asset management in day-to-day operations.",
-        problem: "HR and property tracking were previously handled using separate tools and manual processes. This made it hard to keep data consistent, track requests, and monitor the status of approvals across departments.",
-        process: "I reviewed how HR and property workflows were being handled, including employee records, asset tracking, and approval steps. I mapped out how different users like HR staff, admin teams, and approvers interact with the system, then translated these into flowcharts and UI structures.",
-        solution: "Designed a unified system that brings HR and property management into one platform. It includes role-based dashboards, structured forms, and clear approval flows so users can easily track requests and updates.",
-        impact: "Helped reduce scattered tracking by consolidating HR and property processes into a single system. It made it easier for teams to monitor requests, approvals, and asset status without switching between tools.",
-        tags: ["Enterprise", "HRIS", "Property Management", "Workflow System", "UI/UX Design"],
-        shortDesc: "Combining HR and asset management workflows into one structured internal system.",
-        note: "Unified systems reduce scattered tracking.",
-        links: []
-    },
-
-
-    tahananKamay: {
-    cardTitle: "Community Commerce Prototype",
-    cardDesc: "POC to working prototype in 2 days.",
-    cardMetric: "1 day to functional prototype",
-    cardScope: "AI-assisted · Human in the loop",
-    caseTag: "AIUX_01 // AI-ASSISTED BUILD",
-    classification: "Community · Commerce · AI-Assisted",
-    title: "Tahanan Kamay: AI-Assisted Product Build",
-    context: "Solo · Product Designer & AI-Assisted Developer · Lovable",
-    selectionRole: "Product Designer & AI-Assisted Developer",
-    selectionScope: "End-to-end working prototype",
-    selectionMethods: "AI-Assisted Build · Product Design",
-    overview: "Back in 2022, I worked on a proof of concept for a community commerce product that never shipped. The experience stayed with me. In 2026, I rebuilt the idea as Tahanan Kamay with fictional branding and data, to answer a different question. How fast can an experienced product designer take a concept and direct an AI-assisted build into something people can actually use?",
-    problem: "AI can spin up a screen in seconds. That is not the same as building a product. The real question was whether an AI-assisted workflow could handle the messy parts. Discovery. Category navigation. Filtering. Cart flows. Availability states. Responsive behavior. And whether a designer could keep steering the build instead of accepting whatever came out.",
-    process: "I treated Lovable as an AI-assisted development environment, not a website generator. The loop was simple. Define, prompt, inspect, test, refine, re-test. Structure and information architecture came first. Prompts read like development briefs with context, intent, constraints, and acceptance criteria. Every result got checked against real UX criteria before the next change went in. Corrections were targeted, not full regenerations.\n\nThe split was clear the whole way. AI generated screens. I decided which ones were worth keeping. AI implemented features. I decided which features actually served the workflow. AI produced a working UI. I found where the UX was quietly broken. Every decision that made the prototype usable was a design decision.",
-    solution: "A working prototype covering category navigation, product discovery, filtering, availability states, cart and order flows, and responsive layouts. Reusable UI patterns, realistic application states. Every screen was reviewed and adjusted before it was kept.",
-    impact: "Functional prototype in one day. Day two went to refinement and QA.The experiment confirmed something the AI conversation often skips. AI can produce a working interface fast. What it cannot do is tell you which screens matter, which interactions feel wrong, or where the experience breaks. That part is still the designer's job. AI moved the build. Design judgment decided what shipped.",
-    tags: ["AI-Assisted Development", "Product Design", "Rapid Prototyping", "Lovable"],
-    shortDesc: "An AI-assisted build experiment: from POC to working prototype in two days, with a human in the loop throughout.",
-    note: "AI generates. Designers decide.",
-    links: [
-        { label: "Open Live Prototype", url: "https://tahanan-kamay.lovable.app/", type: "demo" }
-    ]
-},
-    
-    jurisDesk: {
-    cardTitle: "Legal Practice Platform",
-    cardDesc: "Manual legal workflows, automated for a PH law office.",
-    cardMetric: "Manual to automated",
-    cardScope: "POC · 62 features · 6 RBAC roles",
-    caseTag: "AIUX_02 // AI-ASSISTED BUILD",
-    classification: "B2B · Enterprise · Legal Practice · POC",
-    title: "Juris Desk+ Legal Practice Platform (POC)",
-    context: "Proof of Concept · Philippine Law Office · Built 2025 · AI-Assisted Development",
-    selectionRole: "Product Designer & AI-Assisted Developer",
-    selectionScope: "POC · 62 features · 6 RBAC roles",
-    selectionMethods: "Manual to Automated · RBAC · Regulated Workflows",
-    overview: "Late 2025, a Philippine law firm wanted to move off paper. Intake forms, conflict checks, time sheets, billing, trust accounting. All of it lived in spreadsheets, folders, and handwritten forms. Juris Desk+ was built as a proof of concept to show what that same work could look like as a single platform. Built with AI-assisted development, directed by a designer making every product, compliance, and design call.",
-    problem: "AI can generate a screen in seconds. That is not the same as building a product. The real question was whether an AI-assisted workflow could handle everything a real product needs. Navigation users can follow. Flows that make sense from start to finish. States for when things are empty, loading, or broken. Layouts that hold up on any screen. And whether a designer could keep steering the build, instead of just accepting whatever the AI produced.",
-    process: "I designed the platform around the firm's workflow, not a feature list. Intake, conflict check, matter lifecycle, time and expenses, invoices, trust accounting, reporting. Every regulated rule became a design constraint, not an add-on feature. The AI split was the same as Tahanan. AI implemented the code. I decided what the code should do. The RBAC model that shapes what six different roles see. The compliance mapping that turns CPRA rules into interface decisions. The semantic token system that keeps both light and dark themes passing WCAG AA. The workflow structure that mirrors how the firm actually operates.\n\nSix roles shaped the whole product. Managing Partner, Attorney, Paralegal, Secretary, Billing Officer, System Admin. Each sees a different sidebar and dashboard. Items a role cannot access are dimmed rather than hidden, so users understand the full system exists and where their permissions stop.",
-    solution: "A mobile-first React app built with TypeScript, TailwindCSS, and Zustand. 62 features across six domains. Intake and conflicts, with the client engagement memorandum and a conflict check that runs against clients, contacts, and matters. Matter workspace with tabbed detail, document versioning, and template-based drafting. Billing and trust center with invoice generation, three-way reconciliation, and aging receivables reporting. Admin and compliance with RBAC, audit log, and a Rule 22 deadline calculator with Philippine holidays built in.",
-    impact: "The POC showed that a paper-heavy legal practice could be modeled as one automated platform without losing the workflow logic that made it work. Compliance stopped being invisible. Trust accounting moved from month-end surprise to real-time visibility. It also showed what sustained AI-assisted development looks like when a designer stays in the driver's seat. Tahanan proved AI could move fast. Juris Desk+ proved the same approach could hold across 62 features, six roles, and a compliance-heavy domain. AI generated the platform. I decided what the platform should be.\n\nThis is not publicly deployed yet. The live build is available for a walkthrough on request, usually during interviews.",
-    tags: ["Legal Practice", "POC", "Manual to Automated", "AI-Assisted Development", "RBAC", "Regulatory UX", "Design System"],
-    shortDesc: "A PH law office POC: replacing manual, paper-based legal workflows with an automated platform, AI-assisted from start to finish.",
-    note: "AI can generate a platform. It cannot decide what the platform should be."
-}
-};
             /* Live prototypes available via the Present button.*/
             const livePrototypes = {
                 maritime: {
