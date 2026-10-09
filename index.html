@@ -150,11 +150,14 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
 
 /* Status Bar */
 .figma-status-bar{position:fixed;bottom:0;left:0;right:0;height:var(--status-height);background:var(--figma-panel);border-top:1px solid var(--figma-border);z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 12px;font-family:var(--font-mono);font-size:10px;color:var(--figma-text-secondary);user-select:none;-webkit-user-select:none;pointer-events:none}
-.figma-status-bar .zoom-control{display:flex;align-items:center;gap:8px}
-.figma-status-bar .zoom-percentage{font-weight:600;color:var(--figma-text)}
+.figma-status-bar .zoom-control{display:flex;align-items:center;gap:4px;pointer-events:auto}
+.figma-status-bar .zoom-btn{background:none;border:none;color:var(--figma-text-secondary);cursor:pointer;font-size:10px;padding:2px 6px;border-radius:3px;font-family:var(--font-mono);transition:background 0.15s,color 0.15s;line-height:1}
+.figma-status-bar .zoom-btn:hover:not(:disabled){background:var(--figma-border);color:var(--figma-text)}
+.figma-status-bar .zoom-btn:disabled{opacity:0.35;cursor:not-allowed}
+.figma-status-bar .zoom-percentage{font-weight:600;color:var(--figma-text);min-width:38px;text-align:center;font-variant-numeric:tabular-nums}
 
 /* Canvas */
-.figma-canvas{position:fixed;top:var(--toolbar-height);left:var(--panel-width);right:var(--panel-width);bottom:var(--status-height);overflow-y:auto;overflow-x:hidden;background-color:var(--figma-bg);background-image:radial-gradient(circle,var(--figma-canvas-dots) 1px,transparent 1px),radial-gradient(circle,var(--figma-canvas-dots) 1px,transparent 1px);background-size:24px 24px,4px 4px;background-position:0 0,12px 12px;z-index:1;transition:background-color 0.3s}
+.figma-canvas{position:fixed;top:var(--toolbar-height);left:var(--panel-width);right:var(--panel-width);bottom:var(--status-height);overflow-y:auto;overflow-x:auto;background-color:var(--figma-bg);background-image:radial-gradient(circle,var(--figma-canvas-dots) 1px,transparent 1px),radial-gradient(circle,var(--figma-canvas-dots) 1px,transparent 1px);background-size:24px 24px,4px 4px;background-position:0 0,12px 12px;z-index:1;transition:background-color 0.3s}
 
 /* Portfolio Content */
 .portfolio-content,.case-study-view,.resume-view{max-width:720px;margin:30px auto;padding:0 16px;position:relative;z-index:2;background:var(--canvas-surface);border-radius:12px;box-shadow:var(--canvas-shadow);overflow:hidden;color:var(--canvas-text)}
@@ -171,7 +174,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
 .portfolio-section .section-heading h2{font-size:1.2rem;font-weight:700;letter-spacing:-0.02em}
 .portfolio-section .section-heading .section-tag{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.08em;color:var(--canvas-text-muted)}
 .portfolio-section .section-heading .section-note{font-family:var(--font-hand);font-size:1.1rem;font-weight:400;color:var(--accent-text);margin-left:auto;transform:rotate(-1deg)} /* fw: explicit 400 */
-.project-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px}
+.project-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:20px}
 .project-card{background:var(--canvas-surface);border:1px solid var(--canvas-border);border-radius:10px;padding:24px 22px;cursor:pointer;transition:all 0.25s;box-shadow:0 1px 3px rgba(0,0,0,0.04);position:relative;display:flex;flex-direction:column;gap:14px;text-align:left}
 .project-card:hover{box-shadow:0 6px 20px rgba(0,0,0,0.09);border-color:var(--accent);transform:translateY(-2px)}
 .project-card .card-tag{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--accent-text);font-weight:500}
@@ -681,10 +684,14 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
             </div>
         </main>
 
-        <footer class="figma-status-bar" aria-hidden="true">
-            <div class="zoom-control"><span>◀</span><span class="zoom-percentage">100%</span><span>▶</span></div>
-            <span>quiocho_portfolio_v1.0.fig</span>
-            <span></span>
+        <footer class="figma-status-bar">
+            <div class="zoom-control">
+                <button type="button" class="zoom-btn" id="zoom-out" aria-label="Zoom out">◀</button>
+                <span class="zoom-percentage" id="zoom-percentage" aria-live="polite">100%</span>
+                <button type="button" class="zoom-btn" id="zoom-in" aria-label="Zoom in">▶</button>
+            </div>
+            <span aria-hidden="true">quiocho_portfolio_v1.0.fig</span>
+            <span aria-hidden="true"></span>
         </footer>
     </div>
 
@@ -819,7 +826,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
         selectionMethods: "AI-Assisted Build · Product Design",
         overview: "Back in 2022, I worked on a proof of concept for a community commerce product that never shipped. The experience stayed with me. In 2026, I rebuilt the idea as Tahanan Kamay with fictional branding and data, to answer a different question. How fast can an experienced product designer take a concept and direct an AI-assisted build into something people can actually use?",
         problem: "AI can spin up a screen in seconds. That is not the same as building a product. The real question was whether an AI-assisted workflow could handle the messy parts. Discovery. Category navigation. Filtering. Cart flows. Availability states. Responsive behavior. And whether a designer could keep steering the build instead of accepting whatever came out.",
-        process: "I treated Lovable as an AI-assisted development environment, not a website generator. The loop was simple. Define, prompt, inspect, test, refine, re-test. Structure and information architecture came first. Prompts read like development briefs with context, intent, constraints, and acceptance criteria. Every result got checked against real UX criteria before the next change went in. Corrections were targeted, not full regenerations.\n\nThe split was clear the whole way. AI generated screens. I decided which ones were worth keeping. AI implemented features. I decided which features actually served the workflow. AI produced a working UI. I found where the UX was quietly broken. Every decision that made the prototype usable was a design decision.",
+        process: "I treated Lovable as an AI-assisted development environment, not a website generator. The loop was simple. Define, prompt, inspect, test, refine, re-test. Structure and information architecture came first. Prompts read like development briefs with context, intent, constraints, and acceptance criteria. Every result got checked against real UX criteria before the next change went in. Corrections were targeted, not full regenerations. The split was clear the whole way. AI generated screens. I decided which ones were worth keeping. AI implemented features. I decided which features actually served the workflow. AI produced a working UI. I found where the UX was quietly broken. Every decision that made the prototype usable was a design decision.",
         solution: "A working prototype covering category navigation, product discovery, filtering, availability states, cart and order flows, and responsive layouts. Reusable UI patterns, realistic application states. Every screen was reviewed and adjusted before it was kept.",
         impact: "Functional prototype in one day. Day two went to refinement and QA.The experiment confirmed something the AI conversation often skips. AI can produce a working interface fast. What it cannot do is tell you which screens matter, which interactions feel wrong, or where the experience breaks. That part is still the designer's job. AI moved the build. Design judgment decided what shipped.",
         tags: ["AI-Assisted Development", "Product Design", "Rapid Prototyping", "Lovable"],
@@ -830,27 +837,27 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
     ]
 },
    
-    jurisDesk: {
-        cardTitle: "Legal Practice Platform",
-        cardDesc: "Manual legal workflows, automated for a PH law office.",
-        cardMetric: "Manual to automated",
-        cardScope: "POC · 62 features · 6 RBAC roles",
-        caseTag: "AIUX_02 // AI-ASSISTED BUILD",
-        classification: "B2B · Enterprise · Legal Practice · POC",
-        title: "Juris Desk+ Legal Practice Platform (POC)",
-        context: "Proof of Concept · Philippine Law Office · Built 2025 · AI-Assisted Development",
-        selectionRole: "Product Designer & AI-Assisted Developer",
-        selectionScope: "POC · 62 features · 6 RBAC roles",
-        selectionMethods: "Manual to Automated · RBAC · Regulated Workflows",
-        overview: "Late 2025, a Philippine law firm wanted to move off paper. Intake forms, conflict checks, time sheets, billing, trust accounting. All of it lived in spreadsheets, folders, and handwritten forms. Juris Desk+ was built as a proof of concept to show what that same work could look like as a single platform. Built with AI-assisted development, directed by a designer making every product, compliance, and design call.",
-        problem: "AI can generate a screen in seconds. That is not the same as building a product. The real question was whether an AI-assisted workflow could handle everything a real product needs. Navigation users can follow. Flows that make sense from start to finish. States for when things are empty, loading, or broken. Layouts that hold up on any screen. And whether a designer could keep steering the build, instead of just accepting whatever the AI produced.",
-        process: "I designed the platform around the firm's workflow, not a feature list. Intake, conflict check, matter lifecycle, time and expenses, invoices, trust accounting, reporting. Every regulated rule became a design constraint, not an add-on feature. The AI split was the same as Tahanan. AI implemented the code. I decided what the code should do. The RBAC model that shapes what six different roles see. The compliance mapping that turns CPRA rules into interface decisions. The semantic token system that keeps both light and dark themes passing WCAG AA. The workflow structure that mirrors how the firm actually operates.\n\nSix roles shaped the whole product. Managing Partner, Attorney, Paralegal, Secretary, Billing Officer, System Admin. Each sees a different sidebar and dashboard. Items a role cannot access are dimmed rather than hidden, so users understand the full system exists and where their permissions stop.",
-        solution: "A mobile-first React app built with TypeScript, TailwindCSS, and Zustand. 62 features across six domains. Intake and conflicts, with the client engagement memorandum and a conflict check that runs against clients, contacts, and matters. Matter workspace with tabbed detail, document versioning, and template-based drafting. Billing and trust center with invoice generation, three-way reconciliation, and aging receivables reporting. Admin and compliance with RBAC, audit log, and a Rule 22 deadline calculator with Philippine holidays built in.",
-        impact: "The POC showed that a paper-heavy legal practice could be modeled as one automated platform without losing the workflow logic that made it work. Compliance stopped being invisible. Trust accounting moved from month-end surprise to real-time visibility. It also showed what sustained AI-assisted development looks like when a designer stays in the driver's seat. Tahanan proved AI could move fast. Juris Desk+ proved the same approach could hold across 62 features, six roles, and a compliance-heavy domain. AI generated the platform. I decided what the platform should be.\n\nThis is not publicly deployed yet. The live build is available for a walkthrough on request, usually during interviews.",
-        tags: ["Legal Practice", "POC", "Manual to Automated", "AI-Assisted Development", "RBAC", "Regulatory UX", "Design System"],
-        shortDesc: "A PH law office POC: replacing manual, paper-based legal workflows with an automated platform, AI-assisted from start to finish.",
-        note: "AI can generate a platform. It cannot decide what the platform should be."
-    },
+   jurisDesk: {
+    cardTitle: "Legal Practice Platform",
+    cardDesc: "Bringing manual legal workflows into one digital platform.",
+    cardMetric: "Manual to automated",
+    cardScope: "POC · 62 features · 6 RBAC roles",
+    caseTag: "AIUX_02 // AI-ASSISTED BUILD",
+    classification: "B2B · Enterprise · Legal Practice · POC",
+    title: "Juris Desk+ Legal Practice Platform (POC)",
+    context: "Proof of Concept · Philippine Law Office · Built 2025 · AI-Assisted Development",
+    selectionRole: "Product Designer & AI-Assisted Developer",
+    selectionScope: "POC · 62 features · 6 RBAC roles",
+    selectionMethods: "Workflow Design · RBAC · AI-Assisted Development",
+    overview: "In late 2025, a Philippine law office approached me to explore a digital solution for its manual, paper-based processes. Client intake, conflict checks, timesheets, billing, and trust accounting were handled through spreadsheets, folders, and handwritten forms. I developed Juris Desk+ as a proof of concept to bring these workflows into one connected platform using AI-assisted development.",
+    problem: "The challenge was more than turning paper forms into digital screens. The firm's workflows involved connected tasks, sensitive information, different user roles, and legal requirements. The platform needed to make everyday work easier to manage without losing the important steps and rules behind it.",
+    process: "I mapped the firm's workflows and explored how six roles would use the platform, each with their own dashboard and permissions. AI can generate a screen in seconds, but building a product means thinking about the whole experience, from navigation and connected flows to loading, empty, and error states. I used AI to help build the interface, then reviewed and refined the output to keep the experience clear, consistent, and usable across screen sizes.",
+    solution: "Juris Desk+ brings 62 features into one mobile-first web application, covering client intake, conflict checks, matter management, documents, billing, trust accounting, reporting, and compliance. Key features include document versioning, invoice generation, three-way trust reconciliation, role-based access, audit logs, and a Rule 22 deadline calculator with Philippine holidays. The focus was on making the different workflows work together as one product, not just generating individual screens.",
+    impact: "The proof of concept explored how paper-heavy legal workflows could become a more connected digital experience, with clearer processes and better visibility into billing and compliance. It also pushed my AI-assisted workflow beyond individual screens, testing how it could support a larger product with 62 features and six user roles. The platform is not publicly deployed, but the live build is available for a walkthrough on request, including during interviews.",
+    tags: ["Legal Practice", "POC", "Workflow Automation", "AI-Assisted Development", "RBAC", "Regulatory UX", "Design System"],
+    shortDesc: "A proof of concept exploring how a Philippine law office could move from paper-based processes to one connected digital platform, built with AI-assisted development.",
+    note: "AI can help build the product. Deciding what the product should do is still the designer's job."
+},
     fauxder: {
         cardTitle: "The Delivery App That Never Arrives",
         cardDesc: "The ritual of ordering, without the transaction.",
@@ -1310,7 +1317,8 @@ tutorialBody.textContent = bodyText;
                     document.querySelectorAll('.view-menu button').forEach(b => b.classList.remove('active'));
                     document.querySelector('[data-view="standard"]').classList.add('active');
                     figmaCursor.classList.add('cursor-hidden');
-                    cursorToggle.checked = false;   
+                    cursorToggle.checked = false;
+                    resetZoom();
 
                 }
                 viewMenu.hidden = true;
@@ -1481,6 +1489,49 @@ tutorialBody.textContent = bodyText;
                 }, 100);
             });
             
+            /* ============================================================
+               ZOOM — adjusts only the portfolio canvas content.
+               Uses CSS `zoom` on the visible content wrappers.
+               Only active in Designer Mode (status bar is hidden in Standard).
+               ============================================================ */
+            const zoomInBtn = document.getElementById('zoom-in');
+            const zoomOutBtn = document.getElementById('zoom-out');
+            const zoomPercentageEl = document.getElementById('zoom-percentage');
+
+            const ZOOM_MIN = 50;
+            const ZOOM_MAX = 150;
+            const ZOOM_STEP = 10;
+            let zoomLevel = 100;
+
+            function applyZoom() {
+                [portfolioView, caseStudyView, resumeView].forEach(el => {
+                    if (el) el.style.zoom = String(zoomLevel / 100);
+                });
+                if (zoomPercentageEl) zoomPercentageEl.textContent = zoomLevel + '%';
+                if (zoomOutBtn) zoomOutBtn.disabled = (zoomLevel <= ZOOM_MIN);
+                if (zoomInBtn) zoomInBtn.disabled = (zoomLevel >= ZOOM_MAX);
+            }
+
+            function resetZoom() {
+                zoomLevel = 100;
+                applyZoom();
+            }
+
+            if (zoomInBtn) {
+                zoomInBtn.addEventListener('click', () => {
+                    zoomLevel = Math.min(ZOOM_MAX, zoomLevel + ZOOM_STEP);
+                    applyZoom();
+                });
+            }
+            if (zoomOutBtn) {
+                zoomOutBtn.addEventListener('click', () => {
+                    zoomLevel = Math.max(ZOOM_MIN, zoomLevel - ZOOM_STEP);
+                    applyZoom();
+                });
+            }
+
+            applyZoom();
+
             switchViewMode('standard');
             buildProjectCards();
             buildMainNav();
