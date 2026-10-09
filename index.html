@@ -277,9 +277,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
 .tutorial-trigger{padding:4px 12px;background:var(--figma-border);color:var(--figma-text);border:none;border-radius:4px;font-size:10px;cursor:pointer;font-family:var(--font-mono);display:flex;align-items:center;gap:4px}
 .tutorial-trigger:hover{background:var(--accent);color:var(--accent-contrast)}
 
-/* Figma-style section selection */
-.portfolio-section.highlighted::before{content:'';position:absolute;top:-4px;left:-8px;right:-8px;bottom:-4px;border:2px solid var(--accent);border-radius:2px;pointer-events:none;z-index:1;animation:figma-selection 1.5s ease-out forwards}
-@keyframes figma-selection{0%{opacity:1}70%{opacity:1}100%{opacity:0}}
+/* Figma-style section selection — border + 4 corner handles */ .portfolio-section.highlighted::before{ content:''; position:absolute; top:-8px;left:-8px;right:-8px;bottom:-8px; border:2px solid var(--accent); border-radius:2px; pointer-events:none; z-index:1; animation:figma-selection 1.5s ease-out forwards } .portfolio-section.highlighted::after{ content:''; position:absolute; top:-14px;left:-14px;right:-14px;bottom:-14px; pointer-events:none; z-index:2; animation:figma-selection 1.5s ease-out forwards; background-image: linear-gradient(var(--accent),var(--accent)), linear-gradient(var(--accent),var(--accent)), linear-gradient(var(--accent),var(--accent)), linear-gradient(var(--accent),var(--accent)), linear-gradient(#fff,#fff), linear-gradient(#fff,#fff), linear-gradient(#fff,#fff), linear-gradient(#fff,#fff); background-size: 10px 10px,10px 10px,10px 10px,10px 10px, 6px 6px,6px 6px,6px 6px,6px 6px; background-position: left 1px top 1px, right 1px top 1px, left 1px bottom 1px, right 1px bottom 1px, left 3px top 3px, right 3px top 3px, left 3px bottom 3px, right 3px bottom 3px; background-repeat:no-repeat } @keyframes figma-selection{0%{opacity:1}70%{opacity:1}100%{opacity:0}}
 
 /* AI-assisted card badge */
 .project-card .card-badge{position:absolute;top:12px;right:12px;font-family:var(--font-mono);font-size:9px;text-transform:uppercase;letter-spacing:0.08em;font-weight:600;padding:2px 7px;border-radius:3px;background:var(--accent-light);color:var(--accent-contrast);border:1px solid var(--accent)}
@@ -1037,7 +1035,13 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
                 {
                     target:'nav-layers',
                     title:'Navigate My Work',
-                    body:'Use this sidebar to explore my portfolio. Click "Selected Work" to see my projects, then click any project to view its case study.',
+                    body:'Use this sidebar to explore my portfolio. Click "Portfolio Overview" to see my projects, then click any project to view its case study.',
+                    position:'right'
+                },
+                {
+                    target:'nav-subheader',
+                    title:'On This Page',
+                    body:'This section shows what is inside the current view. When you open a project, it becomes the case study navigation with a Back to Portfolio option.',
                     position:'right'
                 },
                 {
@@ -1117,7 +1121,7 @@ tutorialBody.textContent = bodyText;
                 tutorialActive = true;
             }
 
-            function hideTutorial(){ tutorialTooltip.hidden=true; tutorialOverlay.classList.remove('active'); tutorialSkip.style.display='none'; document.querySelectorAll('.tutorial-highlight').forEach(el=>el.classList.remove('tutorial-highlight')); tutorialActive=false; currentStep=0; sessionStorage.setItem('tutorialShown','true'); }
+            function hideTutorial(){ tutorialTooltip.hidden=true; tutorialOverlay.classList.remove('active'); tutorialSkip.style.display='none'; document.querySelectorAll('.tutorial-highlight').forEach(el=>el.classList.remove('tutorial-highlight')); tutorialActive=false; currentStep=0; }
 
             function startTutorial() {
                 currentStep = 0;
@@ -1403,6 +1407,14 @@ tutorialBody.textContent = bodyText;
                         figmaCursor.classList.remove('cursor-hidden');
                     } else {
                         figmaCursor.classList.add('cursor-hidden');
+                    }
+                    // First-time Designer Mode visit → auto-start DESIGNER tutorial
+                    if (window.innerWidth > 768) {
+                        const shown = sessionStorage.getItem('tutorialShownDesigner');
+                        if (!shown) {
+                            sessionStorage.setItem('tutorialShownDesigner', 'true');
+                            setTimeout(startTutorial, 800);
+                        }
                     }
                 } else {
                     workspace.classList.add('standard-mode');
