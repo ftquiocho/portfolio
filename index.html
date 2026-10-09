@@ -283,6 +283,21 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
 
 /* AI-assisted card badge */
 .project-card .card-badge{position:absolute;top:12px;right:12px;font-family:var(--font-mono);font-size:9px;text-transform:uppercase;letter-spacing:0.08em;font-weight:600;padding:2px 7px;border-radius:3px;background:var(--accent-light);color:var(--accent-contrast);border:1px solid var(--accent)}
+/* Left Panel */
+.figma-left-panel #nav-layers{flex:0 0 auto;overflow-y:visible}
+.figma-left-panel #nav-children{flex:1;overflow-y:auto}
+.figma-left-panel .panel-subheader{padding:8px 12px;font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:0.08em;color:var(--figma-text-secondary);background:var(--figma-bg);border-top:1px solid var(--figma-border);border-bottom:1px solid var(--figma-border);flex-shrink:0;display:flex;align-items:center;justify-content:space-between}
+.figma-left-panel #nav-children .layer-group{padding:5px 12px 5px 26px;font-size:10.5px;color:var(--figma-text-secondary);opacity:0.9}
+.figma-left-panel #nav-children .layer-group:hover{opacity:1;background:rgba(0,0,0,0.06);color:var(--figma-text)}
+.figma-left-panel #nav-children .layer-group .layer-icon{opacity:0.6}
+.figma-left-panel #nav-children .layer-group.layer-back .layer-icon,
+.figma-left-panel #nav-children .layer-group.layer-back .layer-name{color:var(--accent-text)}
+.figma-left-panel #nav-children .layer-group.layer-back:hover{background:rgba(129,216,208,0.12)}
+.figma-left-panel #nav-children .layer-group.layer-back{margin-bottom:4px;padding-bottom:9px;border-bottom:1px dashed var(--figma-border)}
+/* Left Panel — locked group label (Figma-style frame) */
+.figma-left-panel .layer-subgroup{display:flex;align-items:center;justify-content:space-between;padding:10px 12px 4px 26px;font-family:var(--font-mono);font-size:9.5px;text-transform:uppercase;letter-spacing:0.1em;color:var(--figma-text-secondary);opacity:0.6;font-weight:600;pointer-events:none;user-select:none;-webkit-user-select:none}
+.figma-left-panel .layer-subgroup .layer-subgroup-name{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.figma-left-panel .layer-subgroup .layer-count{font-size:9px;background:var(--figma-border);padding:1px 5px;border-radius:8px;color:var(--figma-text-secondary);opacity:0.9;text-transform:none;letter-spacing:0}
 </style>
 </head>
 <body>
@@ -363,6 +378,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
         <nav class="figma-left-panel" aria-label="Portfolio navigation">
             <div class="panel-header"><span>Navigation</span></div>
             <div class="panel-content" id="nav-layers"></div>
+            <div class="panel-subheader" id="nav-subheader" hidden><span>On This Page</span></div>
+            <div class="panel-content" id="nav-children"></div>
         </nav>
 
         <aside class="figma-right-panel" aria-label="Properties panel">
@@ -474,7 +491,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
 
                     <section class="portfolio-section" id="section-work">
                         <div class="section-heading">
-                            <h2>Selected Work</h2>
+                            <h2>Portfolio Overview</h2>
                             <span class="section-tag">[enterprise_ux]</span>
                             <span class="section-note">click any card to open case study</span>
                         </div>
@@ -954,6 +971,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
             }
 
             let isCaseStudyView = false;
+            let currentProjectId = null;
             let isDark = true;
            // let currentMode = 'designer';
             let currentMode = 'standard';
@@ -1137,110 +1155,183 @@ tutorialBody.textContent = bodyText;
             }
 
             function buildMainNav() {
-                navLayers.innerHTML = '';
-                const parentDiv = document.createElement('div');
-                parentDiv.className = 'layer-group layer-parent';
-                parentDiv.innerHTML = '<span class="layer-name">Portfolio Overview</span>';
-                navLayers.appendChild(parentDiv);
+                const sectionsContainer = document.getElementById('nav-layers');
+                const childrenContainer = document.getElementById('nav-children');
+                const subheader = document.getElementById('nav-subheader');
+
+                sectionsContainer.innerHTML = '';
+
                 const sections = [
-                    { id: 'work', label: 'Selected Work', type: 'group', target: 'section-work', children: Object.keys(projectData).map(pid => ({ id: pid, label: projectData[pid].title.length > 24 ? projectData[pid].title.substring(0, 22) + '...' : projectData[pid].title, project: pid })) },
-                    { id: 'skills', label: 'Toolbox', type: 'frame', target: 'section-skills' },
-                    { id: 'contact', label: 'Contact', type: 'frame', target: 'section-contact' },
-                    { id: 'resume', label: 'Resume', type: 'frame', target: 'resume-view' }
+                    { id: 'work',    label: 'Portfolio Overview', icon: 'group', target: 'section-work' },
+                    { id: 'skills',  label: 'Toolbox',            icon: 'frame', target: 'section-skills' },
+                    { id: 'contact', label: 'Contact',            icon: 'frame', target: 'section-contact' },
+                    { id: 'resume',  label: 'Resume',             icon: 'frame', target: 'resume-view' }
                 ];
+
                 sections.forEach(section => {
                     const btn = document.createElement('a');
                     btn.href = '#';
-                    btn.className = 'layer-group layer-indent-1';
+                    btn.className = 'layer-group';
                     btn.setAttribute('data-target', section.target);
+                    btn.setAttribute('data-section-id', section.id);
                     btn.setAttribute('aria-label', section.label);
-                    btn.innerHTML = '<span class="layer-icon">' + (section.type === 'frame' ? frameIcon() : groupIcon()) + '</span><span class="layer-name">' + section.label + '</span>' + (section.children ? '<span class="layer-count">' + section.children.length + '</span>' : '');
+                    const countBadge = section.id === 'work'
+                        ? '<span class="layer-count">' + Object.keys(projectData).length + '</span>'
+                        : '';
+                    btn.innerHTML = '<span class="layer-icon">'
+                        + (section.icon === 'group' ? groupIcon() : frameIcon())
+                        + '</span><span class="layer-name">' + section.label + '</span>'
+                        + countBadge;
                     btn.addEventListener('click', (e) => {
                         e.preventDefault();
-                        if (section.id === 'resume') { 
-                            switchTab('inspect'); 
-                            setActiveNav(section.target); 
-                        } else { 
-                            // Close resume if it's open
+                        // If a case study is open, exit it first
+                        if (isCaseStudyView) {
+                            caseStudyView.classList.remove('active');
+                            caseStudyView.style.display = 'none';
+                            portfolioView.style.display = 'block';
+                            isCaseStudyView = false;
+                            currentProjectId = null;
+                        }
+                        if (section.id === 'resume') {
+                            switchTab('inspect');
+                            setActiveNav(section.target);
+                        } else {
                             if (resumeView.classList.contains('active')) {
                                 switchTab('design');
                             }
-                            document.getElementById(section.target).scrollIntoView({ behavior: 'smooth' }); 
-                            setActiveNav(section.target); 
+                            document.getElementById(section.target).scrollIntoView({ behavior: 'smooth' });
+                            setActiveNav(section.target);
                         }
                     });
-                    navLayers.appendChild(btn);
-                    if (section.children) {
-                        section.children.forEach(child => {
-                            const childBtn = document.createElement('a');
-                            childBtn.href = '#';
-                            childBtn.className = 'layer-group layer-indent-2';
-                            childBtn.setAttribute('data-project', child.project);
-                            childBtn.setAttribute('aria-label', 'Open ' + child.label);
-                            childBtn.innerHTML = '<span class="layer-icon">' + subIcon() + '</span><span class="layer-name">' + child.label + '</span>';
-                            childBtn.addEventListener('click', (e) => { e.preventDefault(); openCaseStudy(child.project) });
-                            navLayers.appendChild(childBtn);
-                        });
-                    }
+                    sectionsContainer.appendChild(btn);
                 });
-                isCaseStudyView = false;
+
+                // Populate "On This Page" children based on current state
+                childrenContainer.innerHTML = '';
+                if (isCaseStudyView && currentProjectId) {
+                    // Re-render the case study sub-nav so it survives mode switches
+                    buildCaseNav(currentProjectId);
+                    return;
+                }
+                if (resumeView.classList.contains('active')) {
+                    subheader.hidden = true;
+                } else {
+                    renderChildren('section-work');
+                }
             }
 
+            function renderChildren(sectionId) {
+                const childrenContainer = document.getElementById('nav-children');
+                const subheader = document.getElementById('nav-subheader');
+                childrenContainer.innerHTML = '';
+
+                if (sectionId !== 'section-work') {
+                    subheader.hidden = true;
+                    return;
+                }
+
+                subheader.hidden = false;
+
+                // Locked group label — non-clickable, mirrors Figma's group frame
+                const groupLabel = document.createElement('div');
+                groupLabel.className = 'layer-subgroup';
+                groupLabel.innerHTML = '<span class="layer-subgroup-name">Selected Work</span>'
+                    + '<span class="layer-count">' + Object.keys(projectData).length + '</span>';
+                childrenContainer.appendChild(groupLabel);
+
+                Object.keys(projectData).forEach(pid => {
+                    const p = projectData[pid];
+                    const btn = document.createElement('a');
+                    btn.href = '#';
+                    btn.className = 'layer-group';
+                    btn.setAttribute('data-project', pid);
+                    btn.setAttribute('aria-label', 'Open ' + p.cardTitle);
+                    btn.innerHTML = '<span class="layer-icon">' + subIcon() + '</span>'
+                        + '<span class="layer-name">' + p.cardTitle + '</span>';
+                    btn.addEventListener('click', (e) => { e.preventDefault(); openCaseStudy(pid); });
+                    childrenContainer.appendChild(btn);
+                });
+            }
             function buildCaseNav(projectId) {
                 const data = projectData[projectId];
-                navLayers.innerHTML = '';
+                const childrenContainer = document.getElementById('nav-children');
+                const subheader = document.getElementById('nav-subheader');
+
+                childrenContainer.innerHTML = '';
+                subheader.hidden = false;
+
+                // Back to Portfolio
                 const backBtn = document.createElement('button');
                 backBtn.type = 'button';
-                backBtn.className = 'layer-group';
+                backBtn.className = 'layer-group layer-back';
                 backBtn.setAttribute('aria-label', 'Back to Portfolio');
-                backBtn.innerHTML = '<span class="layer-icon" style="color:var(--accent);">←</span><span class="layer-name" style="color:var(--accent);">Back to Portfolio</span>';
+                backBtn.innerHTML = '<span class="layer-icon">←</span><span class="layer-name">Back to Portfolio</span>';
                 backBtn.addEventListener('click', closeCaseStudy);
-                navLayers.appendChild(backBtn);
-                const parentBtn = document.createElement('div');
-                parentBtn.className = 'layer-group layer-parent';
-                parentBtn.innerHTML = '<span class="layer-icon">' + frameIcon() + '</span><span class="layer-name">' + (data.title.length > 24 ? data.title.substring(0, 22) + '...' : data.title) + '</span>';
-                navLayers.appendChild(parentBtn);
-                const submodules = [{ id: 'overview', label: 'Overview' }, { id: 'problem', label: 'Problem' }, { id: 'process', label: 'Process' }, { id: 'solution', label: 'Solution' }, { id: 'impact', label: 'Impact' }];
+                childrenContainer.appendChild(backBtn);
+
+                // Case study sub-sections
+                const submodules = [
+                    { id: 'overview', label: 'Overview' },
+                    { id: 'problem',  label: 'Problem' },
+                    { id: 'process',  label: 'Process' },
+                    { id: 'solution', label: 'Solution' },
+                    { id: 'impact',   label: 'Impact' }
+                ];
                 submodules.forEach(sub => {
                     const btn = document.createElement('button');
                     btn.type = 'button';
-                    btn.className = 'layer-group layer-indent-1';
+                    btn.className = 'layer-group';
                     btn.setAttribute('aria-label', sub.label);
-                    btn.innerHTML = '<span class="layer-icon">' + subIcon() + '</span><span class="layer-name">' + sub.label + '</span>';
-                    btn.addEventListener('click', () => { const el = document.querySelector('[data-section="' + sub.id + '"]'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }) });
-                    navLayers.appendChild(btn);
+                    btn.innerHTML = '<span class="layer-icon">' + subIcon() + '</span>'
+                        + '<span class="layer-name">' + sub.label + '</span>';
+                    btn.addEventListener('click', () => {
+                        const el = document.querySelector('[data-section="' + sub.id + '"]');
+                        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    });
+                    childrenContainer.appendChild(btn);
                 });
+
                 isCaseStudyView = true;
+
+                // Keep "Portfolio Overview" highlighted in the top nav while drilled in
+                document.querySelectorAll('#nav-layers .layer-group').forEach(el => {
+                    el.classList.remove('active');
+                });
+                const overviewEl = document.querySelector('#nav-layers .layer-group[data-section-id="work"]');
+                if (overviewEl) overviewEl.classList.add('active');
             }
+           
+            function setActiveNav(targetId) {
+                // Top sections — highlight
+                document.querySelectorAll('#nav-layers .layer-group').forEach(el => {
+                    el.classList.remove('active');
+                    if (el.getAttribute('data-target') === targetId) el.classList.add('active');
+                });
 
-           function setActiveNav(targetId){
-    document.querySelectorAll('.layer-group').forEach(el=>{
-        el.classList.remove('active');
-        if(el.getAttribute('data-target')===targetId)el.classList.add('active');
-    });
-    
-    // Remove previous highlights
-    document.querySelectorAll('.portfolio-section').forEach(el=>{
-        el.classList.remove('highlighted');
-    });
-    
-    // Add highlight to the target section
-    const targetSection=document.getElementById(targetId);
-    if(targetSection && targetSection.classList.contains('portfolio-section')){
-        // Force reflow
-        void targetSection.offsetWidth;
-        targetSection.classList.add('highlighted');
-        
-        setTimeout(()=>{
-            targetSection.classList.remove('highlighted');
-        },1500);
-    }
-}
+                // Section highlight animation
+                document.querySelectorAll('.portfolio-section').forEach(el => el.classList.remove('highlighted'));
+                const targetSection = document.getElementById(targetId);
+                if (targetSection && targetSection.classList.contains('portfolio-section')) {
+                    void targetSection.offsetWidth;
+                    targetSection.classList.add('highlighted');
+                    setTimeout(() => targetSection.classList.remove('highlighted'), 1500);
+                }
 
+                // Update the "On This Page" children area (only when not in case study)
+                if (!isCaseStudyView) {
+                    if (targetId === 'section-work') {
+                        renderChildren('section-work');
+                    } else {
+                        renderChildren(null);
+                    }
+                }
+            }
+           
             function openCaseStudy(projectId) {
                 const data = projectData[projectId];
                 if (!data) return;
                 isCaseStudyView = true;
+                currentProjectId = projectId;
                 portfolioView.style.display = 'none';
                 resumeView.style.display = 'none';
                 caseStudyView.classList.add('active');
@@ -1276,6 +1367,8 @@ tutorialBody.textContent = bodyText;
                 resumeView.style.display = 'none';
                 caseStudyView.classList.remove('active');
                 caseStudyView.style.display = 'none';
+                isCaseStudyView = false;
+                currentProjectId = null;
                 buildMainNav();
                 setActiveNav('section-work');
                 canvas.scrollTo({ top: 0, behavior: 'smooth' });
