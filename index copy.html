@@ -296,32 +296,6 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
 .figma-left-panel .layer-subgroup{display:flex;align-items:center;justify-content:space-between;padding:10px 12px 4px 26px;font-family:var(--font-mono);font-size:9.5px;text-transform:uppercase;letter-spacing:0.1em;color:var(--figma-text-secondary);opacity:0.6;font-weight:600;pointer-events:none;user-select:none;-webkit-user-select:none}
 .figma-left-panel .layer-subgroup .layer-subgroup-name{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .figma-left-panel .layer-subgroup .layer-count{font-size:9px;background:var(--figma-border);padding:1px 5px;border-radius:8px;color:var(--figma-text-secondary);opacity:0.9;text-transform:none;letter-spacing:0}
-/* Contact list */
-.contact-list{display:flex;flex-direction:column;border:1px solid var(--canvas-border);border-radius:8px;overflow:hidden;background:var(--canvas-surface)}
-.contact-row{display:flex;align-items:center;gap:16px;padding:14px 18px;text-decoration:none;color:var(--canvas-text);border-bottom:1px solid var(--canvas-border);transition:background 0.15s;cursor:pointer;position:relative}
-.contact-row:last-child{border-bottom:none}
-.contact-row:hover{background:var(--canvas-bg)}
-.contact-row.contact-highlight{background:var(--accent-light)}
-.contact-row-static{cursor:default}
-.contact-row-static:hover{background:transparent}
-.contact-label{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.08em;color:var(--canvas-text-muted);min-width:80px;flex-shrink:0;font-weight:500}
-.contact-value{font-size:0.9rem;color:var(--canvas-text);flex:1;word-break:break-word}
-.contact-arrow{color:var(--accent-text);font-size:14px;font-weight:600;flex-shrink:0}
-
-@media(max-width:768px){
-    .contact-row{flex-direction:column;align-items:flex-start;gap:4px;padding:12px 16px}
-    .contact-label{min-width:0}
-    .contact-arrow{position:absolute;right:14px;top:50%;transform:translateY(-50%)}
-}
-/* Left panel — parent title + sections (no icons) */
-.figma-left-panel .nav-title{padding:8px 12px 6px;font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--figma-text);letter-spacing:-0.01em}
-.figma-left-panel .nav-section{display:block;padding:6px 12px 6px 24px;font-family:var(--font-mono);font-size:11px;color:var(--figma-text-secondary);text-decoration:none;border-left:2px solid transparent;transition:background 0.15s,border-color 0.15s,color 0.15s;cursor:pointer;user-select:none;-webkit-user-select:none;background:none;border-top:none;border-right:none;border-bottom:none;width:100%;text-align:left}
-.figma-left-panel .nav-section:hover{background:rgba(0,0,0,0.06);color:var(--figma-text)}
-.figma-left-panel .nav-section.active{border-left-color:var(--accent);background:rgba(129,216,208,0.15);color:var(--accent);font-weight:600}
-.figma-left-panel .nav-section:focus-visible{outline:2px solid var(--focus-ring);outline-offset:-2px}
-.figma-left-panel .nav-title{padding:8px 12px 6px;font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--figma-text);letter-spacing:-0.01em;cursor:pointer;transition:color 0.15s;user-select:none;-webkit-user-select:none;display:block;text-decoration:none;background:none;border:none;width:100%;text-align:left}
-.figma-left-panel .nav-title:hover{color:var(--accent)}
-.figma-left-panel .nav-title:focus-visible{outline:2px solid var(--focus-ring);outline-offset:-2px;border-radius:2px}
 </style>
 </head>
 <body>
@@ -549,23 +523,13 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
                             <h2>Let's Connect</h2>
                             <span class="section-tag">[open_to_remote]</span>
                         </div>
-                        <div class="contact-list">
-                            <a href="mailto:iamftq@gmail.com" class="contact-row" id="contact-email">
-                                <span class="contact-label">Email</span>
-                                <span class="contact-value">iamftq@gmail.com</span>
-                                <span class="contact-arrow" aria-hidden="true">↗</span>
-                            </a>
-                            <a href="https://linkedin.com/in/franchezca-q-a82b32251" target="_blank" rel="noopener noreferrer"
-                               class="contact-row" id="contact-linkedin">
-                                <span class="contact-label">LinkedIn</span>
-                                <span class="contact-value">franchezca-q-a82b32251</span>
-                                <span class="contact-arrow" aria-hidden="true">↗</span>
-                            </a>
-                            <div class="contact-row contact-row-static" id="contact-location">
-                                <span class="contact-label">Location</span>
-                                <span class="contact-value">Philippines · Open to Remote (Global)</span>
-                            </div>
-                        </div>
+                       <div class="contact-box">
+    <div class="contact-info">
+        <h3>Philippines · Open to Remote (Global)</h3>
+        <p>Direct email, no intake forms.</p>
+    </div>
+    <a href="mailto:iamftq@gmail.com" class="contact-btn">iamftq@gmail.com</a>
+</div>
                     </section>
                 </div>
             </div>
@@ -1007,15 +971,6 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
             let isCaseStudyView = false;
             let currentProjectId = null;
             let isDark = true;
-
-            // Suppress the scroll spy during programmatic scrolls so click > scroll wins
-            let suppressScrollSpy = false;
-            let suppressTimer = null;
-            function suppressSpy(ms) {
-                suppressScrollSpy = true;
-                clearTimeout(suppressTimer);
-                suppressTimer = setTimeout(() => { suppressScrollSpy = false; }, ms || 900);
-            }
            // let currentMode = 'designer';
             let currentMode = 'standard';
 
@@ -1080,7 +1035,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
                 {
                     target:'nav-layers',
                     title:'Navigate My Work',
-                    body:'Use this sidebar to explore my portfolio. Click "Selected Work" to jump to my projects, then click any project to view its case study. Use the other sections to navigate the rest of the page.',
+                    body:'Use this sidebar to explore my portfolio. Click "Portfolio Overview" to see my projects, then click any project to view its case study.',
                     position:'right'
                 },
                 {
@@ -1204,52 +1159,36 @@ tutorialBody.textContent = bodyText;
             }
 
             function buildMainNav() {
-                const container = document.getElementById('nav-layers');
-                container.innerHTML = '';
+                const sectionsContainer = document.getElementById('nav-layers');
+                const childrenContainer = document.getElementById('nav-children');
+                const subheader = document.getElementById('nav-subheader');
 
-                // Parent title — clickable, scrolls to top of canvas
-                const title = document.createElement('button');
-                title.type = 'button';
-                title.className = 'nav-title';
-                title.setAttribute('aria-label', 'Scroll to top of portfolio');
-                title.textContent = 'Portfolio Overview';
-                title.addEventListener('click', () => {
-                    if (isCaseStudyView) {
-                        caseStudyView.classList.remove('active');
-                        caseStudyView.style.display = 'none';
-                        portfolioView.style.display = 'block';
-                        isCaseStudyView = false;
-                        currentProjectId = null;
-                    }
-                    if (resumeView.classList.contains('active')) {
-                        switchTab('design');
-                    }
-                    suppressSpy(900);
-                    canvas.scrollTo({ top: 0, behavior: 'smooth' });
-                    setActiveNav('section-work');
-                });
-                container.appendChild(title);
+                sectionsContainer.innerHTML = '';
 
-                // 4 sections — clickable, no icons
                 const sections = [
-                    { id: 'work',    label: 'Selected Work', target: 'section-work' },
-                    { id: 'skills',  label: 'Toolbox',       target: 'section-skills' },
-                    { id: 'contact', label: 'Contact',       target: 'section-contact' },
-                    { id: 'resume',  label: 'Resume',        target: 'resume-view' }
+                    { id: 'work',    label: 'Portfolio Overview', icon: 'group', target: 'section-work' },
+                    { id: 'skills',  label: 'Toolbox',            icon: 'frame', target: 'section-skills' },
+                    { id: 'contact', label: 'Contact',            icon: 'frame', target: 'section-contact' },
+                    { id: 'resume',  label: 'Resume',             icon: 'frame', target: 'resume-view' }
                 ];
 
                 sections.forEach(section => {
                     const btn = document.createElement('a');
                     btn.href = '#';
-                    btn.className = 'nav-section';
+                    btn.className = 'layer-group';
                     btn.setAttribute('data-target', section.target);
                     btn.setAttribute('data-section-id', section.id);
                     btn.setAttribute('aria-label', section.label);
-                    btn.textContent = section.label;
-
+                    const countBadge = section.id === 'work'
+                        ? '<span class="layer-count">' + Object.keys(projectData).length + '</span>'
+                        : '';
+                    btn.innerHTML = '<span class="layer-icon">'
+                        + (section.icon === 'group' ? groupIcon() : frameIcon())
+                        + '</span><span class="layer-name">' + section.label + '</span>'
+                        + countBadge;
                     btn.addEventListener('click', (e) => {
                         e.preventDefault();
-                        // Exit case study if open
+                        // If a case study is open, exit it first
                         if (isCaseStudyView) {
                             caseStudyView.classList.remove('active');
                             caseStudyView.style.display = 'none';
@@ -1258,24 +1197,29 @@ tutorialBody.textContent = bodyText;
                             currentProjectId = null;
                         }
                         if (section.id === 'resume') {
-                            suppressSpy(900);
                             switchTab('inspect');
                             setActiveNav(section.target);
                         } else {
                             if (resumeView.classList.contains('active')) {
                                 switchTab('design');
                             }
-                            suppressSpy(900);
                             document.getElementById(section.target).scrollIntoView({ behavior: 'smooth' });
                             setActiveNav(section.target);
                         }
                     });
-
-                    container.appendChild(btn);
+                    sectionsContainer.appendChild(btn);
                 });
 
-                // Render children of active section
-                if (!isCaseStudyView && !resumeView.classList.contains('active')) {
+                // Populate "On This Page" children based on current state
+                childrenContainer.innerHTML = '';
+                if (isCaseStudyView && currentProjectId) {
+                    // Re-render the case study sub-nav so it survives mode switches
+                    buildCaseNav(currentProjectId);
+                    return;
+                }
+                if (resumeView.classList.contains('active')) {
+                    subheader.hidden = true;
+                } else {
                     renderChildren('section-work');
                 }
             }
@@ -1283,89 +1227,42 @@ tutorialBody.textContent = bodyText;
             function renderChildren(sectionId) {
                 const childrenContainer = document.getElementById('nav-children');
                 const subheader = document.getElementById('nav-subheader');
-                const subheaderLabel = subheader.querySelector('span');
                 childrenContainer.innerHTML = '';
 
-                const config = {
-                    'section-work': {
-                        label: 'Selected Work',
-                        items: Object.keys(projectData).map(pid => ({
-                            label: projectData[pid].cardTitle,
-                            action: 'openCaseStudy',
-                            id: pid
-                        }))
-                    },
-                    'section-skills': {
-                        label: 'Toolbox',
-                        items: [
-                            { label: 'All Tools', action: 'scroll', target: 'section-skills' }
-                        ]
-                    },
-                    'section-contact': {
-                        label: 'Contact',
-                        items: [
-                            { label: 'Email',    action: 'scroll', target: 'contact-email' },
-                            { label: 'LinkedIn', action: 'scroll', target: 'contact-linkedin' },
-                            { label: 'Location', action: 'scroll', target: 'contact-location' }
-                        ]
-                    },
-                    'resume-view': {
-                        label: 'Resume',
-                        items: [
-                            { label: 'Download PDF', action: 'download' },
-                            { label: 'Full Resume',  action: 'scroll', target: 'resume-view' }
-                        ]
-                    }
-                };
-
-                const c = config[sectionId];
-                if (!c) {
+                if (sectionId !== 'section-work') {
                     subheader.hidden = true;
                     return;
                 }
 
                 subheader.hidden = false;
-                subheaderLabel.textContent = c.label + ' · ' + c.items.length;
 
-                c.items.forEach(item => {
+                // Locked group label — non-clickable, mirrors Figma's group frame
+                const groupLabel = document.createElement('div');
+                groupLabel.className = 'layer-subgroup';
+                groupLabel.innerHTML = '<span class="layer-subgroup-name">Selected Work</span>'
+                    + '<span class="layer-count">' + Object.keys(projectData).length + '</span>';
+                childrenContainer.appendChild(groupLabel);
+
+                Object.keys(projectData).forEach(pid => {
+                    const p = projectData[pid];
                     const btn = document.createElement('a');
                     btn.href = '#';
                     btn.className = 'layer-group';
-                    btn.setAttribute('aria-label', item.label);
+                    btn.setAttribute('data-project', pid);
+                    btn.setAttribute('aria-label', 'Open ' + p.cardTitle);
                     btn.innerHTML = '<span class="layer-icon">' + subIcon() + '</span>'
-                        + '<span class="layer-name">' + item.label + '</span>';
-
-                    btn.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        if (item.action === 'openCaseStudy') {
-                            openCaseStudy(item.id);
-                        } else if (item.action === 'download') {
-                            triggerDownload();
-                        } else if (item.action === 'scroll') {
-                            const target = document.getElementById(item.target);
-                            if (target) {
-                                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                                if (item.target.startsWith('contact-')) {
-                                    target.classList.add('contact-highlight');
-                                    setTimeout(() => target.classList.remove('contact-highlight'), 1500);
-                                }
-                            }
-                        }
-                    });
-
+                        + '<span class="layer-name">' + p.cardTitle + '</span>';
+                    btn.addEventListener('click', (e) => { e.preventDefault(); openCaseStudy(pid); });
                     childrenContainer.appendChild(btn);
                 });
             }
-
             function buildCaseNav(projectId) {
                 const data = projectData[projectId];
                 const childrenContainer = document.getElementById('nav-children');
                 const subheader = document.getElementById('nav-subheader');
-                const subheaderLabel = subheader.querySelector('span');
 
                 childrenContainer.innerHTML = '';
                 subheader.hidden = false;
-                subheaderLabel.textContent = 'Case Study · ' + (data.cardTitle || data.title);
 
                 // Back to Portfolio
                 const backBtn = document.createElement('button');
@@ -1376,7 +1273,7 @@ tutorialBody.textContent = bodyText;
                 backBtn.addEventListener('click', closeCaseStudy);
                 childrenContainer.appendChild(backBtn);
 
-                // Sub-sections
+                // Case study sub-sections
                 const submodules = [
                     { id: 'overview', label: 'Overview' },
                     { id: 'problem',  label: 'Problem' },
@@ -1400,15 +1297,17 @@ tutorialBody.textContent = bodyText;
 
                 isCaseStudyView = true;
 
-                // Keep "Selected Work" highlighted while in a case study
-                document.querySelectorAll('#nav-layers .nav-section').forEach(el => el.classList.remove('active'));
-                const workSection = document.querySelector('#nav-layers .nav-section[data-section-id="work"]');
-                if (workSection) workSection.classList.add('active');
+                // Keep "Portfolio Overview" highlighted in the top nav while drilled in
+                document.querySelectorAll('#nav-layers .layer-group').forEach(el => {
+                    el.classList.remove('active');
+                });
+                const overviewEl = document.querySelector('#nav-layers .layer-group[data-section-id="work"]');
+                if (overviewEl) overviewEl.classList.add('active');
             }
-
+           
             function setActiveNav(targetId) {
-                // Update nav sections
-                document.querySelectorAll('#nav-layers .nav-section').forEach(el => {
+                // Top sections — highlight
+                document.querySelectorAll('#nav-layers .layer-group').forEach(el => {
                     el.classList.remove('active');
                     if (el.getAttribute('data-target') === targetId) el.classList.add('active');
                 });
@@ -1422,12 +1321,16 @@ tutorialBody.textContent = bodyText;
                     setTimeout(() => targetSection.classList.remove('highlighted'), 1500);
                 }
 
-                // Update children area (only when not in case study)
+                // Update the "On This Page" children area (only when not in case study)
                 if (!isCaseStudyView) {
-                    renderChildren(targetId);
+                    if (targetId === 'section-work') {
+                        renderChildren('section-work');
+                    } else {
+                        renderChildren(null);
+                    }
                 }
             }
-
+           
             function openCaseStudy(projectId) {
                 const data = projectData[projectId];
                 if (!data) return;
@@ -1677,23 +1580,17 @@ tutorialBody.textContent = bodyText;
 
             let scrollSpyTimeout;
             canvas.addEventListener('scroll', function () {
-                if (suppressScrollSpy) return;
                 clearTimeout(scrollSpyTimeout);
                 scrollSpyTimeout = setTimeout(function () {
                     if (isCaseStudyView) return;
                     if (resumeView.classList.contains('active')) return;
-                    if (suppressScrollSpy) return;
                     const sections = ['section-work', 'section-skills', 'section-contact'];
-                    let currentSection = 'section-work';
+                    let currentSection = 'portfolio-header';
                     sections.forEach(sectionId => {
                         const el = document.getElementById(sectionId);
-                        if (el) {
-                            const rect = el.getBoundingClientRect();
-                            const canvasRect = canvas.getBoundingClientRect();
-                            if (rect.top < canvasRect.top + 120) currentSection = sectionId;
-                        }
+                        if (el) { const rect = el.getBoundingClientRect(); const canvasRect = canvas.getBoundingClientRect(); if (rect.top < canvasRect.top + 120) { currentSection = sectionId } }
                     });
-                    setActiveNav(currentSection);
+                    if (currentSection === 'section-work' || currentSection === 'section-skills' || currentSection === 'section-contact') { setActiveNav(currentSection) } else { setActiveNav('portfolio-header') }
                 }, 100);
             });
             
