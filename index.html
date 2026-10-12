@@ -301,6 +301,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
 .figma-left-panel .nav-section:hover{background:rgba(0,0,0,0.06);color:var(--figma-text)}
 .figma-left-panel .nav-section.active{border-left-color:var(--accent);background:rgba(129,216,208,0.15);color:var(--accent);font-weight:600}
 .figma-left-panel .nav-section:focus-visible{outline:2px solid var(--focus-ring);outline-offset:-2px}
+ [data-tooltip] {     position: relative; } [data-tooltip]:hover::after {     content: attr(data-tooltip);     position: absolute;     top: calc(100% + 6px);     left: 50%;     transform: translateX(-50%);     background: #1a1a1a;     color: #fff;     padding: 4px 10px;     border-radius: 4px;     font-size: 9px;     white-space: nowrap;     pointer-events: none;     z-index: 100;     font-family: var(--font-mono); } .figma-left-panel [data-tooltip]:hover::after, .figma-right-panel .panel-header .tab[data-tooltip]:hover::after {     top: auto;     bottom: -28px; }
 </style>
 </head>
 <body>
@@ -333,8 +334,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
             <div class="toolbar-right">
                 <div class="avatar-group" id="avatar-group">
                     <a href="https://linkedin.com/in/franchezca-q-a82b32251" target="_blank" rel="noopener noreferrer"
-                        class="avatar avatar--2" aria-label="LinkedIn profile" title="LinkedIn">LI</a>
-                    <a href="mailto:iamftq@gmail.com" class="avatar avatar--3" aria-label="Email" title="Email">@</a>
+                        class="avatar avatar--2" aria-label="LinkedIn profile" data-tooltip="LinkedIn">LI</a>
+                    <a href="mailto:iamftq@gmail.com" class="avatar avatar--3" aria-label="Email" data-tooltip="Email">@</a>
                 </div>
                 <button class="tutorial-trigger" id="tutorial-trigger" aria-label="Show tutorial guide"
                     data-tooltip="Tutorial">
@@ -344,7 +345,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
                     </svg>
                 </button>
                 <div class="present-control" id="present-control">
-                    <button class="present-btn" id="present-btn" aria-label="Present live UI">
+                    <button class="present-btn" id="present-btn" aria-label="Present live UI" data-tooltip="Open live UI">
                         <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 1.5 L10 6 L3 10.5 Z" fill="currentColor"/></svg>
                         <span>Present</span>
                     </button>
@@ -422,12 +423,12 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
                 <div class="prop-group" id="theme-control">
                     <div class="prop-label">Theme</div>
                     <div class="theme-toggle-group" id="theme-toggle" role="group" aria-label="Workspace theme">
-                        <button type="button" class="theme-btn active" data-theme="dark" aria-label="Dark theme" title="Dark">
+                        <button type="button" class="theme-btn active" data-theme="dark" aria-label="Dark theme" data-tooltip="Dark">
                             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2">
                                 <path d="M10 7.5A4.5 4.5 0 1 1 4.5 2a4.5 4.5 0 0 0 5.5 5.5Z" />
                             </svg>
                         </button>
-                        <button type="button" class="theme-btn" data-theme="light" aria-label="Light theme" title="Light">
+                        <button type="button" class="theme-btn" data-theme="light" aria-label="Light theme" data-tooltip="Light">
                             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2">
                                 <circle cx="6" cy="6" r="2" />
                                 <path d="M6 1V3M6 9V11M11 6H9M3 6H1M9.5 2.5L8 4M4 8L2.5 9.5M9.5 9.5L8 8M4 4L2.5 2.5" />
@@ -489,7 +490,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
                         <div class="section-heading">
                             <h2>Selected Work</h2>
                             <span class="section-tag">[enterprise_ux]</span>
-                            <span class="section-note">click any card to open case study</span>
+                            <span class="section-note">- click any card to open case study</span>
                         </div>
                         <div class="project-grid" id="project-grid" role="list"></div>
                     </section>
@@ -498,7 +499,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
                         <div class="section-heading">
                             <h2>Toolbox</h2>
                             <span class="section-tag">[daily_drivers]</span>
-                            <span class="section-note">what I work with</span>
+                            <span class="section-note">- what I work with</span>
                         </div>
                         <div class="skills-tags" role="list">
                             <span class="skill-tag" role="listitem">Figma</span>
