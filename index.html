@@ -127,12 +127,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
 .figma-right-panel .prop-checkbox input[type="checkbox"]:checked + .checkbox-mark::after{content:'';width:3px;height:6px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px)}
 .figma-right-panel .prop-checkbox input[type="checkbox"]:focus-visible + .checkbox-mark{outline:2px solid var(--focus-ring);outline-offset:2px}
 
-/* Theme toggle */
-.figma-right-panel .theme-toggle-group{display:flex;gap:4px;pointer-events:auto}
-.figma-right-panel .theme-toggle-group .theme-btn{flex:1;height:26px;background:var(--figma-bg);border:1px solid var(--figma-border);border-radius:3px;color:var(--figma-text-secondary);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:background 0.15s,border-color 0.15s,color 0.15s;padding:0}
-.figma-right-panel .theme-toggle-group .theme-btn:hover{color:var(--figma-text);border-color:var(--accent)}
-.figma-right-panel .theme-toggle-group .theme-btn.active{background:var(--accent);border-color:var(--accent);color:var(--accent-contrast)}
-.figma-right-panel .theme-toggle-group .theme-btn:focus-visible{outline:2px solid var(--focus-ring);outline-offset:2px}
+/* Muted read-only canvas value */ 
+.figma-right-panel .prop-input-muted{ color: var(--figma-text-secondary); opacity: 0.75; cursor: default; } /* Lock icon */ .figma-right-panel .prop-lock{ display: inline-flex; align-items: center; justify-content: center; color: var(--figma-text-secondary); opacity: 0.5; flex-shrink: 0; }
+/* Theme rows (Dark / Light) */ 
+.figma-right-panel .theme-row{ display: flex; align-items: center; gap: 8px; padding: 6px 8px; border: 1px solid var(--figma-border); border-radius: 3px; background: var(--figma-bg); width: 100%; cursor: pointer; pointer-events: auto; font-family: var(--font-mono); font-size: 10px; color: var(--figma-text); transition: border-color 0.15s, background 0.15s; text-align: left; } .figma-right-panel .theme-row:hover{ border-color: var(--accent); } .figma-right-panel .theme-row.active{ border-color: var(--accent); background: rgba(129,216,208,0.08); } .figma-right-panel .theme-row .prop-color-swatch{ width: 16px; height: 16px; flex-shrink: 0; } .figma-right-panel .theme-row .theme-name{ flex: 1; } .figma-right-panel .theme-row .theme-indicator{ color: var(--accent); font-size: 10px; line-height: 1; opacity: 0; transition: opacity 0.15s; } .figma-right-panel .theme-row.active .theme-indicator{ opacity: 1; }
 
 /* Selection block */
 .figma-right-panel .selection-block{background:var(--figma-bg);border:1px solid var(--figma-border);border-left:2px solid var(--figma-border);border-radius:3px;padding:9px 10px;transition:border-color 0.2s,background 0.2s;min-height:96px}
@@ -303,6 +301,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
 .figma-left-panel .nav-section.active{border-left-color:var(--accent);background:rgba(129,216,208,0.15);color:var(--accent);font-weight:600}
 .figma-left-panel .nav-section:focus-visible{outline:2px solid var(--focus-ring);outline-offset:-2px}
  [data-tooltip] {     position: relative; } [data-tooltip]:hover::after {     content: attr(data-tooltip);     position: absolute;     top: calc(100% + 6px);     left: 50%;     transform: translateX(-50%);     background: #1a1a1a;     color: #fff;     padding: 4px 10px;     border-radius: 4px;     font-size: 9px;     white-space: nowrap;     pointer-events: none;     z-index: 100;     font-family: var(--font-mono); } .figma-left-panel [data-tooltip]:hover::after, .figma-right-panel .panel-header .tab[data-tooltip]:hover::after {     top: auto;     bottom: -28px; }
+
 </style>
 </head>
 <body>
@@ -397,21 +396,32 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
                 </div>
                 <div class="prop-group">
                     <div class="prop-label">Canvas</div>
-                    <div class="prop-row"><span>W</span><span class="prop-input">720</span></div>
-                </div>
-                <div class="prop-group">
-                    <div class="prop-label">Fill</div>
                     <div class="prop-row">
-                        <div class="prop-color-swatch" style="background:#ffffff;"></div><span
-                            class="prop-input">#FFFFFF</span>
+                        <span>W</span>
+                        <span class="prop-input prop-input-muted">720</span>
+                        <span class="prop-lock" aria-hidden="true" title="Read-only">
+                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="11" width="18" height="11" rx="2"/>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                            </svg>
+                        </span>
                     </div>
                 </div>
                 <div class="prop-group">
-                    <div class="prop-label">Accent</div>
-                    <div class="prop-row">
-                        <div class="prop-color-swatch" style="background:#81d8d0;"></div><span
-                            class="prop-input">#81D8D0</span>
-                    </div>
+                    <div class="prop-label">Dark</div>
+                    <button type="button" class="theme-row active" data-theme="dark" aria-label="Apply dark theme">
+                        <div class="prop-color-swatch" style="background:#1e1e1e;"></div>
+                        <span class="theme-name">#1e1e1e</span>
+                        <span class="theme-indicator" aria-hidden="true">●</span>
+                    </button>
+                </div>
+                <div class="prop-group">
+                    <div class="prop-label">Light</div>
+                    <button type="button" class="theme-row" data-theme="light" aria-label="Apply light theme">
+                        <div class="prop-color-swatch" style="background:#f5f5f5;"></div>
+                        <span class="theme-name">#f5f5f5</span>
+                        <span class="theme-indicator" aria-hidden="true">●</span>
+                    </button>
                 </div>
                 <div class="prop-group" id="cursor-control">
                     <div class="prop-label">Cursor</div>
@@ -421,22 +431,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
                         <span>Show floating cursor</span>
                     </label>
                 </div>
-                <div class="prop-group" id="theme-control">
-                    <div class="prop-label">Theme</div>
-                    <div class="theme-toggle-group" id="theme-toggle" role="group" aria-label="Workspace theme">
-                        <button type="button" class="theme-btn active" data-theme="dark" aria-label="Dark theme" data-tooltip="Dark">
-                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2">
-                                <path d="M10 7.5A4.5 4.5 0 1 1 4.5 2a4.5 4.5 0 0 0 5.5 5.5Z" />
-                            </svg>
-                        </button>
-                        <button type="button" class="theme-btn" data-theme="light" aria-label="Light theme" data-tooltip="Light">
-                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2">
-                                <circle cx="6" cy="6" r="2" />
-                                <path d="M6 1V3M6 9V11M11 6H9M3 6H1M9.5 2.5L8 4M4 8L2.5 9.5M9.5 9.5L8 8M4 4L2.5 2.5" />
-                            </svg>
-                        </button>
-                    </div>
-                </div>
+
             </div>
             <div class="panel-content" id="panel-inspect-content" style="display:none;pointer-events:auto;">
                 <div class="prop-group">
@@ -956,7 +951,6 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--focus-ring);outline
             const downloadResumeMain = document.getElementById('download-resume-main');
             const cursorToggle = document.getElementById('cursor-toggle');
             const figmaCursor = document.getElementById('figma-cursor');
-            const themeToggleGroup = document.getElementById('theme-toggle');
             const workspace = document.getElementById('figma-workspace');
             const canvas = document.querySelector('.figma-canvas');
             const photoBtn = document.getElementById('photo-btn');
@@ -1537,23 +1531,52 @@ tutorialBody.textContent = bodyText;
             downloadResumeMain.addEventListener('click', triggerDownload);
 
             /* Theme toggle */
-            function applyTheme(theme) {
-                isDark = (theme === 'dark');
-                if (isDark) {
-                    workspace.classList.remove('workspace-light');
-                } else {
-                    workspace.classList.add('workspace-light');
-                }
-                themeToggleGroup.querySelectorAll('.theme-btn').forEach(b => {
-                    b.classList.toggle('active', b.getAttribute('data-theme') === theme);
-                });
-            }
+/* Theme rows */
+function applyTheme(theme) {
+    isDark = (theme === 'dark');
+    if (isDark) {
+        workspace.classList.remove('workspace-light');
+    } else {
+        workspace.classList.add('workspace-light');
+    }
+    document.querySelectorAll('.theme-row[data-theme]').forEach(row => {
+        row.classList.toggle('active', row.getAttribute('data-theme') === theme);
+    });
+}
 
-            themeToggleGroup.querySelectorAll('.theme-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    applyTheme(btn.getAttribute('data-theme'));
-                });
-            });
+document.querySelectorAll('.theme-row[data-theme]').forEach(row => {
+    row.addEventListener('click', () => {
+        applyTheme(row.getAttribute('data-theme'));
+    });
+});
+
+/* Canvas width — editable, clamped to min/max */
+const canvasWidthInput = document.getElementById('canvas-width');
+const CANVAS_MIN = 480;
+const CANVAS_MAX = 1200;
+
+function applyCanvasWidth(raw) {
+    let width = parseInt(raw, 10);
+    if (isNaN(width)) width = 720;
+    if (width < CANVAS_MIN) width = CANVAS_MIN;
+    if (width > CANVAS_MAX) width = CANVAS_MAX;
+    [portfolioView, caseStudyView, resumeView].forEach(el => {
+        if (el) el.style.maxWidth = width + 'px';
+    });
+    if (canvasWidthInput && canvasWidthInput.value !== String(width)) {
+        canvasWidthInput.value = width;
+    }
+}
+
+if (canvasWidthInput) {
+    canvasWidthInput.addEventListener('blur', () => {
+        applyCanvasWidth(canvasWidthInput.value);
+    });
+    canvasWidthInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') canvasWidthInput.blur();
+    });
+}
+
 
             /* Cursor toggle */
             cursorToggle.addEventListener('change', () => {
